@@ -1,7 +1,7 @@
 #ifndef CONFIGURATION_H_
 #define CONFIGURATION_H_
 
-#include <map>
+#include <QMap>
 
 #include "StorageCell.h"
 
@@ -11,8 +11,8 @@ private:
     StorageCell *AC; /* Akkumulator       */
     unsigned int PC; /* Befehlszähler     */
     unsigned int SR; /* Subroutine-Zeiger */
-    std::map<unsigned int,StorageCell *> Data;
-    std::map<unsigned int,StorageCell *> IndexRegister;
+    QMap<unsigned int,StorageCell *> Data;
+    QMap<unsigned int,StorageCell *> IndexRegister;
     
 public:
     Configuration();

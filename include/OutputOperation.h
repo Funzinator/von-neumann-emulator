@@ -6,7 +6,7 @@
 class OutputOperation : public UnaryOperation
 {
 public:
-    InputOperation(RawOperation*);
+    OutputOperation(RawOperation*);
 };
 
 #endif /*OUTPUTOPERATION_H_*/

@@ -3,7 +3,7 @@
 
 #include "IndirectOperation.h"
 
-class FloatOperation : public FloatOperation
+class FloatOperation : public IndirectOperation
 {
 public:
     FloatOperation(RawOperation*);

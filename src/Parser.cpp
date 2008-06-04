@@ -30,7 +30,7 @@ RawOperation* Parser::convertLine(QString line)
         res->Param1 = this->SplitRegExp->cap(5);
         res->Param2 = this->SplitRegExp->cap(7);
         res->Comment = this->SplitRegExp->cap(8);
-        res->indirect = (this->SplitRegExp->cap(3).toStdString() == ",I" ? true : false);
+        res->indirect = (this->SplitRegExp->cap(3).toStdString() == ",I");
 
         return res;
     }

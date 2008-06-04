@@ -2,6 +2,8 @@
 
 Configuration::Configuration()
 {
+	this->IndexRegister.resize(15);
+	
     this->AC = new StorageCell;
     this->PC = 0;
     this->SR = 0;
@@ -34,12 +36,19 @@ StorageCell* Configuration::getData(unsigned int x)
 
 StorageCell* Configuration::getIndexRegister(unsigned int x)
 {
-    if (this->IndexRegister[x] == 0)
-    {
-        this->IndexRegister[x] = new StorageCell;
-    }
-
-    return this->IndexRegister[x];
+	if (x < (unsigned int) this->IndexRegister.size())
+	{
+		if (this->IndexRegister[x] == 0)
+		{
+			this->IndexRegister[x] = new StorageCell;
+		}
+		
+		return this->IndexRegister[x];
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 void Configuration::setPC(unsigned int i)

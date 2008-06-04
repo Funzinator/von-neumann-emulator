@@ -2,6 +2,7 @@
 #define CONFIGURATION_H_
 
 #include <QMap>
+#include <QVector>
 
 #include "StorageCell.h"
 
@@ -12,7 +13,7 @@ private:
     unsigned int PC; /* Befehlszähler     */
     unsigned int SR; /* Subroutine-Zeiger */
     QMap<unsigned int,StorageCell *> Data;
-    QMap<unsigned int,StorageCell *> IndexRegister;
+    QVector<StorageCell *> IndexRegister;
     
 public:
     Configuration();

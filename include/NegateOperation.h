@@ -1,9 +1,9 @@
 #ifndef NEGATEOPERATION_H_
 #define NEGATEOPERATION_H_
 
-#include "UnaryOperation.h"
+#include "NullaryOperation.h"
 
-class NegateOperation : public UnaryOperation
+class NegateOperation : public NullaryOperation
 {
 public:
     NegateOperation(RawOperation*);

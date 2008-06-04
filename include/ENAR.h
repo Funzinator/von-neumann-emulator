@@ -2,9 +2,9 @@
 #define ENAR_H_
 
 #include "RawOperation.h"
-#include "BinaryOperation.h"
+#include "UnaryOperation.h"
 
-class ENAR : public BinaryOperation
+class ENAR : public UnaryOperation
 {
 public:
     ENAR(RawOperation*);

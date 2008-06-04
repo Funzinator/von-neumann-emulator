@@ -1,5 +1,5 @@
 #include "ConvertOperation.h"
 
-ConvertOperation::ConvertOperation(RawOperation *rawOp) : UnaryOperation(rawOp)
+ConvertOperation::ConvertOperation(RawOperation *rawOp) : NullaryOperation(rawOp)
 {
 }

@@ -2,9 +2,9 @@
 #define ENA_H_
 
 #include "RawOperation.h"
-#include "BinaryOperation.h"
+#include "UnaryOperation.h"
 
-class ENA : public BinaryOperation
+class ENA : public UnaryOperation
 {
 public:
     ENA(RawOperation*);

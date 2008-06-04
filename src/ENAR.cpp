@@ -1,7 +1,6 @@
 #include "ENAR.h"
 
-ENAR::ENAR(RawOperation *rawOp) :
-    BinaryOperation(rawOp)
+ENAR::ENAR(RawOperation *rawOp) : UnaryOperation(rawOp)
 {
     /* Dank ENAR kann ich erst hier die Parameter setzen */
     this->Param1 = new StorageCell;

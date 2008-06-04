@@ -6,13 +6,13 @@
 class StorageCell
 {
 private:
+    Storage values;
+    unsigned char type;
+public:
     static const unsigned char Integer = 1;
     static const unsigned char Float   = 2;
     static const unsigned char Binary  = 3;
     
-    Storage values;
-    unsigned char last_used;
-public:
     StorageCell();
 
     void setBinary(int);
@@ -22,6 +22,7 @@ public:
     int getBinary();
     int getInt();
     double getFloat();
+    unsigned char getType();
 };
 
 #endif /*STORAGECELL_H_*/

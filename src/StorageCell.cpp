@@ -8,19 +8,19 @@ StorageCell::StorageCell()
 void StorageCell::setBinary(int i)
 {
     this->values.i = i;
-    this->last_used = StorageCell::Binary;
+    this->type = StorageCell::Binary;
 }
 
 void StorageCell::setInt(int i)
 {
     this->values.i = i;
-    this->last_used = StorageCell::Integer;
+    this->type = StorageCell::Integer;
 }
 
 void StorageCell::setFloat(double f)
 {
     this->values.f = f;
-    this->last_used = StorageCell::Float;
+    this->type = StorageCell::Float;
 }
 
 int StorageCell::getBinary()
@@ -36,4 +36,9 @@ int StorageCell::getInt()
 double StorageCell::getFloat()
 {
     return this->values.f;
+}
+
+unsigned char StorageCell::getType()
+{
+	return this->type;
 }

@@ -1,9 +1,9 @@
 #ifndef INPUTOPERATION_H_
 #define INPUTOPERATION_H_
 
-#include "UnaryOperation.h"
+#include "NullaryOperation.h"
 
-class InputOperation : public UnaryOperation
+class InputOperation : public NullaryOperation
 {
 public:
     InputOperation(RawOperation*);

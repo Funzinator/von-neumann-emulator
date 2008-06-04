@@ -1,5 +1,5 @@
 #include "OutputOperation.h"
 
-OutputOperation::OutputOperation(RawOperation *rawOp) : UnaryOperation(rawOp)
+OutputOperation::OutputOperation(RawOperation *rawOp) : NullaryOperation(rawOp)
 {
 }

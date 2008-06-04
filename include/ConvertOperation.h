@@ -1,9 +1,9 @@
 #ifndef CONVERTOPERATION_H_
 #define CONVERTOPERATION_H_
 
-#include "UnaryOperation.h"
+#include "NullaryOperation.h"
 
-class ConvertOperation : public UnaryOperation
+class ConvertOperation : public NullaryOperation
 {
 public:
     ConvertOperation(RawOperation*);

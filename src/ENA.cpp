@@ -1,6 +1,6 @@
 #include "ENA.h"
 
-ENA::ENA(RawOperation *rawOp) : BinaryOperation(rawOp)
+ENA::ENA(RawOperation *rawOp) : UnaryOperation(rawOp)
 {
     /* Dank ENAR kann ich erst hier die Parameter setzen */
     this->Param1 = new StorageCell;

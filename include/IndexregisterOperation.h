@@ -1,9 +1,9 @@
 #ifndef INDEXREGISTEROPERATION_H_
 #define INDEXREGISTEROPERATION_H_
 
-#include "BinaryOperation.h"
+#include "UnaryOperation.h"
 
-class IndexregisterOperation : public BinaryOperation
+class IndexregisterOperation : public UnaryOperation
 {
 public:
     IndexregisterOperation(RawOperation*);

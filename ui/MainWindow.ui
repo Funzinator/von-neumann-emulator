@@ -1,0 +1,363 @@
+<ui version="4.0" >
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>420</width>
+    <height>470</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>von-Neumann-Emulator</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>31</y>
+     <width>420</width>
+     <height>415</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_4" >
+    <item>
+     <layout class="QVBoxLayout" name="mainLayout" >
+      <property name="sizeConstraint" >
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="configurationLayout" >
+        <item>
+         <layout class="QVBoxLayout" name="leftConfigurationLayout_3" >
+          <item>
+           <layout class="QVBoxLayout" name="IndexregisterLayout" >
+            <item>
+             <widget class="QLabel" name="labelIndexregister" >
+              <property name="text" >
+               <string>&lt;b>Indexregister&lt;/b></string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QListWidget" name="listWidgetIndexregister" />
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout" >
+            <item row="0" column="0" >
+             <widget class="QLabel" name="labelOperation" >
+              <property name="text" >
+               <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:600;">Operation:&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1" >
+             <widget class="QLabel" name="lblOperation" >
+              <property name="text" >
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2" >
+             <spacer name="horizontalSpacerOperation" >
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item rowspan="2" row="1" column="0" >
+             <widget class="QLabel" name="labelAC" >
+              <property name="text" >
+               <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:600;">AC:&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+              </property>
+             </widget>
+            </item>
+            <item rowspan="2" row="1" column="1" >
+             <widget class="QLabel" name="lblAC" >
+              <property name="text" >
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2" >
+             <spacer name="horizontalSpacerAC" >
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item rowspan="2" row="2" column="2" >
+             <spacer name="horizontalSpacerPC" >
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="3" column="0" >
+             <widget class="QLabel" name="labelPC" >
+              <property name="text" >
+               <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:600;">PC:&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1" >
+             <widget class="QLabel" name="lblPC" >
+              <property name="text" >
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0" >
+             <widget class="QLabel" name="labelSR" >
+              <property name="text" >
+               <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:600;">SR:&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1" >
+             <widget class="QLabel" name="lblSR" >
+              <property name="text" >
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="2" >
+             <spacer name="horizontalSpacerSR" >
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="rightConfigurationLayout" >
+          <item>
+           <widget class="QLabel" name="labelData" >
+            <property name="text" >
+             <string>&lt;b>Data&lt;b></string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QListWidget" name="listWidgetData" />
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="controlLayout" >
+        <item>
+         <spacer name="horizontalSpacerControlLeft" >
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="buttonLayout" >
+          <item>
+           <widget class="QToolButton" name="toollBtnPlay" >
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="icon" >
+             <iconset>
+              <normaloff>../res/img/play.png</normaloff>../res/img/play.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="toolBtnNext" >
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="icon" >
+             <iconset>
+              <normaloff>../res/img/next.png</normaloff>../res/img/next.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="toolBtnPause" >
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="icon" >
+             <iconset>
+              <normaloff>../res/img/pause.png</normaloff>../res/img/pause.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="toolBtnStop" >
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="icon" >
+             <iconset>
+              <normaloff>../res/img/stop.png</normaloff>../res/img/stop.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="horizontalSpacerControlRight" >
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>420</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuDatei" >
+    <property name="title" >
+     <string>&amp;Datei</string>
+    </property>
+    <addaction name="actionNew" />
+    <addaction name="actionOpen" />
+    <addaction name="separator" />
+    <addaction name="actionSave" />
+    <addaction name="actionSaveAs" />
+    <addaction name="separator" />
+    <addaction name="actionQuit" />
+   </widget>
+   <addaction name="menuDatei" />
+  </widget>
+  <widget class="QStatusBar" name="statusbar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>446</y>
+     <width>420</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <action name="actionNew" >
+   <property name="text" >
+    <string>&amp;Neu...</string>
+   </property>
+  </action>
+  <action name="actionOpen" >
+   <property name="text" >
+    <string>&amp;Öffnen</string>
+   </property>
+  </action>
+  <action name="actionSave" >
+   <property name="text" >
+    <string>&amp;Speichern</string>
+   </property>
+  </action>
+  <action name="actionSaveAs" >
+   <property name="text" >
+    <string>Speichern &amp;unter...</string>
+   </property>
+  </action>
+  <action name="actionQuit" >
+   <property name="text" >
+    <string>&amp;Beenden</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>toollBtnPlay</tabstop>
+  <tabstop>toolBtnNext</tabstop>
+  <tabstop>toolBtnPause</tabstop>
+  <tabstop>toolBtnStop</tabstop>
+  <tabstop>listWidgetIndexregister</tabstop>
+  <tabstop>listWidget_2</tabstop>
+  <tabstop>listWidgetData</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>231</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

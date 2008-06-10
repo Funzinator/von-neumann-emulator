@@ -19,4 +19,5 @@ void STA::run(Configuration *c)
             c->getData(this->Param1->getInt())->setFloat(c->getAC()->getFloat());
             break;
     }
+    c->setPC(c->getPC() + 1);
 }

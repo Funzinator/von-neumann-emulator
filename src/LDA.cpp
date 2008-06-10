@@ -19,4 +19,5 @@ void LDA::run(Configuration *c)
             c->getAC()->setFloat(c->getData(this->Param1->getInt())->getFloat());
             break;
     }
+    c->setPC(c->getPC() + 1);
 }

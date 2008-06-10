@@ -17,4 +17,5 @@ void FDV::run(Configuration *c)
     {
         //irgendeine Exception 
     }
+    c->setPC(c->getPC() + 1);
 }

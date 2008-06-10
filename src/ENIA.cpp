@@ -22,4 +22,5 @@ void ENIA::run(Configuration *c)
                 c->getAC()->getFloat());
             break;
     }
+    c->setPC(c->getPC() + 1);
 }

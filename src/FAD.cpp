@@ -11,4 +11,5 @@ void FAD::run(Configuration *c)
     c->getAC()->setFloat(
         c->getData(this->Param1->getInt())->getFloat()
         + c->getAC()->getFloat());
+    c->setPC(c->getPC() + 1);
 }

@@ -31,5 +31,6 @@ void ADI::run(Configuration *c)
 		    c->getIndexRegister(this->Param1->getInt())->getFloat()\
 		    ); 
 	    break;
-    }	
+    }
+    c->setPC(c->getPC() + 1);	
 }

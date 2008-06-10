@@ -1,6 +1,8 @@
 #ifndef STORAGECELL_H_
 #define STORAGECELL_H_
 
+#include <iostream>
+
 #include "Storage.h"
 
 class StorageCell
@@ -23,6 +25,8 @@ public:
     int getInt();
     double getFloat();
     unsigned char getType();
+    
+    void show();
 };
 
 #endif /*STORAGECELL_H_*/

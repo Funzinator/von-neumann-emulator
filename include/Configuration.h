@@ -1,6 +1,8 @@
 #ifndef CONFIGURATION_H_
 #define CONFIGURATION_H_
 
+#include <iostream>
+
 #include <QMap>
 #include <QVector>
 
@@ -26,7 +28,9 @@ public:
     StorageCell* getIndexRegister(unsigned int);
 
     void setPC(unsigned int);
-    void setSR(unsigned int);  
+    void setSR(unsigned int);
+
+    void show();
 };
 
 #endif /*CONFIGURATION_H_*/

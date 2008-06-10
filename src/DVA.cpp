@@ -8,7 +8,13 @@ DVA::DVA(RawOperation *rawOp) : IntegerOperation(rawOp)
 void DVA::run(Configuration *c)
 {
     IndirectToDirect(); // in Param1 steht nun der "echte" Wert.
-    c->getAC()->setInt(
-        c->getAC()->getInt()
-        / c->Data[this->Param1->getInt()]->getInt());
+    if (c->Data[this->Param1->getInt()]->getInt() != 0)
+    {
+        c->getAC()->setInt(
+            c->getAC()->getInt()
+            / c->Data[this->Param1->getInt()]->getInt());
+    } else
+    {
+        //irgendeine Exception
+    }
 }

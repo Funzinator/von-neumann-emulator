@@ -11,4 +11,5 @@ void FMU::run(Configuration *c)
     c->getAC()->setFloat(
         c->getAC()->getFloat()
         * c->getData(this->Param1->getInt())->getFloat());
+    c->setPC(c->getPC() + 1);
 }

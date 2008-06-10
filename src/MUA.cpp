@@ -11,4 +11,5 @@ void MUA::run(Configuration *c)
     c->getAC()->setInt(
         c->getAC()->getInt()
         * c->getData(this->Param1->getInt())->getInt());
+    c->setPC(c->getPC() + 1);
 }

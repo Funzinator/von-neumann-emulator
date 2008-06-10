@@ -25,5 +25,6 @@ void SBI::run(Configuration *c)
 	    c->getIndexRegister(this->Param1->getInt())->setFloat(\
 		    c->getIndexRegister(this->Param1->getInt())->getFloat() - c->getAC()->getFloat()); 
 	    break;
-    }	
+    }
+    c->setPC(c->getPC() + 1);
 }

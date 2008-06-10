@@ -11,4 +11,5 @@ void ADA::run(Configuration *c)
     c->getAC()->setInt(
         c->getData(this->Param1->getInt())->getInt()
         + c->getAC()->getInt());
+    c->setPC(c->getPC() + 1);
 }

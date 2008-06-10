@@ -2,6 +2,7 @@
 
 ENI::ENI(RawOperation *rawOp) : IndexregisterOperation(rawOp)
 {
+    this->Param2 = new StorageCell;
     this->Param2->setInt(rawOp->Param2.toInt());
 }
 

@@ -7,8 +7,8 @@ ADA::ADA(RawOperation *rawOp) : IntegerOperation(rawOp)
 
 void ADA::run(Configuration *c)
 {
-    IndirectToDirect(); // in Param1 steht nun der "echte" Wert.
+    IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
     c->getAC()->setInt(
-        c->Data[this->Param1->getInt()]->getInt()
+        c->getData(this->Param1->getInt())->getInt()
         + c->getAC()->getInt());
 }

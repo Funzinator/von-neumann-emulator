@@ -7,8 +7,8 @@ FSB::FSB(RawOperation *rawOp) : FloatOperation(rawOp)
 
 void FSB::run(Configuration *c)
 {
-    IndirectToDirect(); // in Param1 steht nun der "echte" Wert.
+    IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
     c->getAC()->setFloat(
         c->getAC()->getFloat()
-        - c->Data[this->Param1->getInt()]->getFloat());
+        - c->getData(this->Param1->getInt())->getFloat());
 }

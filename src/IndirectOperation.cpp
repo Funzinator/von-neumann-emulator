@@ -4,11 +4,11 @@ IndirectOperation::IndirectOperation(RawOperation *rawOp) : IndexregisterOperati
 {
 }
 
-void IndirectOperation::IndirectToDirect()
+void IndirectOperation::IndirectToDirect(Configuration *c)
 {
     if (this->indirect){
-    //überführe "OP,I x" in "OP Inh(x)"
-        this->Param1->setInt(c->Data[this->Param1->getInt()]->getInt());
+    //ÃœberfÃ¼hre "OP,I x" in "OP Inh(x)"
+        this->Param1->setInt(c->getData(this->Param1->getInt())->getInt());
         this->indirect=false; //just to be clean
     }
 }

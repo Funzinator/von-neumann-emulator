@@ -7,7 +7,7 @@ class IndirectOperation : public IndexregisterOperation
 {
 public:
     IndirectOperation(RawOperation*);
-    void IndirectToDirect();
+    void IndirectToDirect(Configuration*);
 };
 
 #endif /*INDIRECTOPERATION_H_*/

@@ -7,8 +7,8 @@ MDA::MDA(RawOperation *rawOp) : IntegerOperation(rawOp)
 
 void MDA::run(Configuration *c)
 {
-    IndirectToDirect(); // in Param1 steht nun der "echte" Wert.
+    IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
     c->getAC()->setInt(
         c->getAC()->getInt()
-        % c->Data[this->Param1->getInt()]->getInt());
+        % c->getData(this->Param1->getInt())->getInt());
 }

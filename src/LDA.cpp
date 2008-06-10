@@ -7,16 +7,16 @@ LDA::LDA(RawOperation *rawOp) : IndirectOperation(rawOp)
 
 void LDA::run(Configuration *c)
 {
-    IndirectToDirect(); // in Param1 steht nun der "echte" Wert.
-    switch(c->Data[this->Param1->getInt()]->getType()){
+    IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
+    switch(c->getData(this->Param1->getInt())->getType()){
         case StorageCell::Binary:
-            c->getAC()->setBinary(c->Data[this->Param1->getInt()]->getBinary());
+            c->getAC()->setBinary(c->getData(this->Param1->getInt())->getBinary());
             break;
         case StorageCell::Integer:
-            c->getAC()->setInt(c->Data[this->Param1->getInt()]->getInt());
+            c->getAC()->setInt(c->getData(this->Param1->getInt())->getInt());
             break;
         case StorageCell::Float:
-            c->getAC()->setFloat(c->Data[this->Param1->getInt()]->getFloat());
+            c->getAC()->setFloat(c->getData(this->Param1->getInt())->getFloat());
             break;
     }
 }

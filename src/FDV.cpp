@@ -7,12 +7,12 @@ FDV::FDV(RawOperation *rawOp) : FloatOperation(rawOp)
 
 void FDV::run(Configuration *c)
 {
-    IndirectToDirect(); // in Param1 steht nun der "echte" Wert.
-    if (c->Data[this->Param1->getInt()]->getFloat() != 0 )
+    IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
+    if (c->getData(this->Param1->getInt())->getFloat() != 0 )
     {
         c->getAC()->setFloat(
             c->getAC()->getFloat()
-            / c->Data[this->Param1->getInt()]->getFloat());
+            / c->getData(this->Param1->getInt())->getFloat());
     } else
     {
         //irgendeine Exception 

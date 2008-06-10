@@ -77,6 +77,7 @@ void Configuration::show()
     {
         if (this->IndexRegister[i])
         {
+            std::cout << i << ": ";
             this->IndexRegister[i]->show();
         }
     }
@@ -86,6 +87,7 @@ void Configuration::show()
     while (j.hasNext())
     {
         j.next();
+        std::cout << j.key() << ": ";
         j.value()->show();
     }
 }

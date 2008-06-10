@@ -66,9 +66,12 @@ int main()
     
     C = new Configuration();
     
-    C->show();
-    op[0]->run(C);
-    C->show();
+    for (int j = 0; j < zeilen.count(); j++)
+    {
+        C->show();
+        op[j]->run(C);
+        std::cout << "-----------------------" << std::endl;
+    }
     
     return 0;
 }

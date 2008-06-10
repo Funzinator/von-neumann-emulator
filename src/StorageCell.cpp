@@ -56,7 +56,7 @@ void StorageCell::show()
             break;
             
         case StorageCell::Float:
-            std::cout << this->values.i << " (F)";
+            std::cout << this->values.f << " (F)";
             break;
             
         default: /* FIXME (im Konstruktor) */

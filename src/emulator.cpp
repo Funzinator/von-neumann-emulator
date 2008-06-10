@@ -69,7 +69,7 @@ int main()
             zeilen.append(x);
         }
     }
-
+    
     QMap<unsigned int,Operation *> op;
 
     Operation *aaa = 0;

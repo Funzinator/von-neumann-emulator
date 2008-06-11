@@ -198,8 +198,8 @@
              <string/>
             </property>
             <property name="icon" >
-             <iconset>
-              <normaloff>../res/img/play.png</normaloff>../res/img/play.png</iconset>
+             <iconset resource="../res/general.qrc" >
+              <normaloff>:/img/play.png</normaloff>:/img/play.png</iconset>
             </property>
            </widget>
           </item>
@@ -209,8 +209,8 @@
              <string/>
             </property>
             <property name="icon" >
-             <iconset>
-              <normaloff>../res/img/next.png</normaloff>../res/img/next.png</iconset>
+             <iconset resource="../res/general.qrc" >
+              <normaloff>:/img/next.png</normaloff>:/img/next.png</iconset>
             </property>
            </widget>
           </item>
@@ -220,8 +220,8 @@
              <string/>
             </property>
             <property name="icon" >
-             <iconset>
-              <normaloff>../res/img/pause.png</normaloff>../res/img/pause.png</iconset>
+             <iconset resource="../res/general.qrc" >
+              <normaloff>:/img/pause.png</normaloff>:/img/pause.png</iconset>
             </property>
            </widget>
           </item>
@@ -231,8 +231,8 @@
              <string/>
             </property>
             <property name="icon" >
-             <iconset>
-              <normaloff>../res/img/stop.png</normaloff>../res/img/stop.png</iconset>
+             <iconset resource="../res/general.qrc" >
+              <normaloff>:/img/stop.png</normaloff>:/img/stop.png</iconset>
             </property>
            </widget>
           </item>
@@ -324,7 +324,9 @@
   <tabstop>listWidgetIndexregister</tabstop>
   <tabstop>listWidgetData</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../res/general.qrc" />
+ </resources>
  <connections>
   <connection>
    <sender>actionQuit</sender>

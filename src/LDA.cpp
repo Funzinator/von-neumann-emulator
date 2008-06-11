@@ -7,7 +7,7 @@ LDA::LDA(RawOperation *rawOp) : IndirectOperation(rawOp)
 
 void LDA::run(Configuration *c)
 {
-    StorageCell* p1=IndirectToDirect(c); // in p1 steht nun der "echte" Wert.
+    StorageCell *p1=setP1(c);  // in p1 steht nun der "echte" Wert.
     switch(c->getData(p1->getInt())->getType()){
         case StorageCell::Binary:
             c->getAC()->setBinary(c->getData(p1->getInt())->getBinary());

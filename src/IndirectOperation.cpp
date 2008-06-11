@@ -17,3 +17,24 @@ StorageCell* IndirectOperation::IndirectToDirect(Configuration *c)
     }
     return p1;
 }
+
+StorageCell* IndirectOperation::setP1(Configuration *c)
+{
+    StorageCell *p1;
+/*    // Ein Befehl ist NIE Indirect UND 2-parametrig (vorerst)
+      // Dann funktioniert das hier:
+    if (this->Param2)
+        p1=BinaryToUnary(c);
+    if (this->indirect)
+        p1=IndirectToDirect(c);*/
+
+    //Falls wir Indirct und 2-param gleichzeitig zulassen:
+    int oldParam1=this->Param1->getInt();
+    if (this->Param2) this->Param1=BinaryToUnary(c);
+        //zuerst BinaryToUnary, siehe Inf-I-Skript Kap.3, S.38
+    if (this->indirect) p1=IndirectToDirect(c);
+    else p1->setInt(this->Param1->getInt());
+    this->Param1->setInt(oldParam1);
+    delete &oldParam1;
+    return p1;
+}

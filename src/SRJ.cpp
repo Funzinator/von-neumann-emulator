@@ -7,7 +7,8 @@ SRJ::SRJ(RawOperation *rawOp) : IndirectOperation(rawOp)
 
 void SRJ::run(Configuration *c)
 {
-    IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
+    StorageCell* p1=IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
     c->setSR(c->getPC() + 1);
-    c->setPC(this->Param1->getInt());
+    c->setPC(p1->getInt());
+    delete p1;
 }

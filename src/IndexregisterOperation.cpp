@@ -16,13 +16,17 @@ IndexregisterOperation::IndexregisterOperation(RawOperation *rawOp) : UnaryOpera
         }
 }
 
-void IndexregisterOperation::BinaryToUnary(Configuration *c)
+StorageCell* IndexregisterOperation::BinaryToUnary(Configuration *c)
 {
+    StorageCell *p1 = new StorageCell;
     if (this->Param2)
     {
-        // Param1 = Param1+ "Inhalt von IR Nr. Param2"
-        this->Param1->setInt( this->Param1->getInt() +
+        // p1 = Param1+ "Inhalt von IR Nr. Param2"
+        p1->setInt( this->Param1->getInt() +
             c->getIndexRegister(this->Param2->getInt())->getInt());
+    } else
+    {
+        p1->setInt(this->Param1->getInt());
     }
-
+    return p1;
 }

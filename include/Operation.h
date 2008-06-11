@@ -16,6 +16,8 @@ protected:
     QString Operatorname;
     QString Comment;
     
+    RawOperation *rawOp;
+    
 public:
     Operation(RawOperation*);
     

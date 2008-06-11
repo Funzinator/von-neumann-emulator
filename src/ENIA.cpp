@@ -7,9 +7,7 @@ ENIA::ENIA(RawOperation *rawOp) : IndexregisterOperation(rawOp)
 
 void ENIA::run(Configuration *c)
 {
-    //Um einheitlich zu bleiben, hier auch p1 statt Param1 verwenden
-    StorageCell *p1 = new StorageCell;
-    p1->setInt(this->Param1->getInt());	
+    StorageCell *p1 = BinaryToUnary(c); //in p1 ist jetzt der "echte" Wert
 
     // ENIA X: Lade Indexregister X mit Inhalt von AC	
     switch (c->getAC()->getType())

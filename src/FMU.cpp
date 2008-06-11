@@ -7,7 +7,7 @@ FMU::FMU(RawOperation *rawOp) : FloatOperation(rawOp)
 
 void FMU::run(Configuration *c)
 {
-    StorageCell* p1=IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
+    StorageCell* p1=IndirectToDirect(c); // in p1 steht nun der "echte" Wert.
     c->getAC()->setFloat(
         c->getAC()->getFloat()
         * c->getData(p1->getInt())->getFloat());

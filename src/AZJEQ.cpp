@@ -7,6 +7,7 @@ AZJEQ::AZJEQ(RawOperation *rawOp) : CompareOperation(rawOp)
 
 void AZJEQ::run(Configuration *c)
 {
-    StorageCell* p1=IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
+    StorageCell* p1=IndirectToDirect(c); // in p1 steht nun der "echte" Wert.
     (c->getAC()->getInt() == 0 ? c->setPC(p1->getInt()) : c->setPC(c->getPC() +1));
+    delete p1;
 }

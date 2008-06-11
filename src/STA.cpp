@@ -7,7 +7,7 @@ STA::STA(RawOperation *rawOp) : IndirectOperation(rawOp)
 
 void STA::run(Configuration *c)
 {
-    StorageCell* p1=IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
+    StorageCell* p1=IndirectToDirect(c); // in p1 steht nun der "echte" Wert.
     switch(c->getAC()->getType()){
         case StorageCell::Binary:
             c->getData(p1->getInt())->setBinary(c->getAC()->getBinary());

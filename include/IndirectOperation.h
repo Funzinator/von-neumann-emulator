@@ -8,6 +8,8 @@ class IndirectOperation : public IndexregisterOperation
 public:
     IndirectOperation(RawOperation*);
     StorageCell* IndirectToDirect(Configuration*);
+
+    StorageCell* setP1(Configuration*);
 };
 
 #endif /*INDIRECTOPERATION_H_*/

@@ -7,7 +7,7 @@ FSB::FSB(RawOperation *rawOp) : FloatOperation(rawOp)
 
 void FSB::run(Configuration *c)
 {
-    StorageCell* p1=IndirectToDirect(c); // in p1 steht nun der "echte" Wert.
+    StorageCell *p1=setP1(c);  // in p1 steht nun der "echte" Wert.
     c->getAC()->setFloat(
         c->getAC()->getFloat()
         - c->getData(p1->getInt())->getFloat());

@@ -7,7 +7,7 @@ UJP::UJP(RawOperation *rawOp) : ControlOperation(rawOp)
 
 void UJP::run(Configuration *c)
 {
-    StorageCell* p1=IndirectToDirect(c); // in p1 steht nun der "echte" Wert.
+    StorageCell *p1=setP1(c);  // in p1 steht nun der "echte" Wert.
     c->setPC(p1->getInt());
     delete p1;
 }

@@ -7,15 +7,16 @@ DVA::DVA(RawOperation *rawOp) : IntegerOperation(rawOp)
 
 void DVA::run(Configuration *c)
 {
-    IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
-    if (c->getData(this->Param1->getInt())->getInt() != 0)
+    StorageCell* p1=IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
+    if (c->getData(p1->getInt())->getInt() != 0)
     {
         c->getAC()->setInt(
             c->getAC()->getInt()
-            / c->getData(this->Param1->getInt())->getInt());
+            / c->getData(p1->getInt())->getInt());
     } else
     {
         //irgendeine Exception
     }
     c->setPC(c->getPC() + 1);
+    delete p1;
 }

@@ -7,9 +7,10 @@ FAD::FAD(RawOperation *rawOp) : FloatOperation(rawOp)
 
 void FAD::run(Configuration *c)
 {
-    IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
+    StorageCell* p1=IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
     c->getAC()->setFloat(
-        c->getData(this->Param1->getInt())->getFloat()
+        c->getData(p1->getInt())->getFloat()
         + c->getAC()->getFloat());
     c->setPC(c->getPC() + 1);
+    delete p1;
 }

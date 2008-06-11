@@ -217,13 +217,19 @@ int main()
     C = new Configuration();
     
     C->show();
-    std::cout << "-----------------------" << std::endl;
-    for (int j = 0; j < zeilen.count(); j++)
+    while (C->getPC() < zeilen.count()){
+        zeilen[C->getPC()]->show();
+        std::cout << "-----------------------" << std::endl;
+        op[C->getPC()]->run(C);
+        C->show();
+    }
+
+/*    for (int j = 0; j < zeilen.count(); j++)
     {
         op[j]->run(C);
         C->show();
         std::cout << "-----------------------" << std::endl;
-    }
+    } (so geht UJP nicht) */
     
     return 0;
 }

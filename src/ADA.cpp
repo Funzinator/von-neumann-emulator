@@ -7,7 +7,7 @@ ADA::ADA(RawOperation *rawOp) : IntegerOperation(rawOp)
 
 void ADA::run(Configuration *c)
 {
-    StorageCell* p1=IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
+    StorageCell* p1=IndirectToDirect(c); // in p1 steht nun der "echte" Wert.
     c->getAC()->setInt(
         c->getData(p1->getInt())->getInt()
         + c->getAC()->getInt());

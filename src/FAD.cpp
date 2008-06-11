@@ -7,7 +7,7 @@ FAD::FAD(RawOperation *rawOp) : FloatOperation(rawOp)
 
 void FAD::run(Configuration *c)
 {
-    StorageCell* p1=IndirectToDirect(c); // in Param1 steht nun der "echte" Wert.
+    StorageCell* p1=IndirectToDirect(c); // in p1 steht nun der "echte" Wert.
     c->getAC()->setFloat(
         c->getData(p1->getInt())->getFloat()
         + c->getAC()->getFloat());

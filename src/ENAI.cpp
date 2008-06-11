@@ -7,9 +7,7 @@ ENAI::ENAI(RawOperation *rawOp) : IndexregisterOperation(rawOp)
 
 void ENAI::run(Configuration *c)
 {
-    //Um einheitlich zu bleiben, hier auch p1 statt Param1 verwenden
-    StorageCell *p1 = new StorageCell;
-    p1->setInt(this->Param1->getInt());	
+    StorageCell *p1 = BinaryToUnary(c); //in p1 ist jetzt der "echte" Wert
 
     // ENAI X: Lade AC mit Inhalt von Indexregister X	
     switch (c->getIndexRegister(p1->getInt())->getType())

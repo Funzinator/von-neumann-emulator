@@ -7,10 +7,7 @@ SBI::SBI(RawOperation *rawOp) : IndexregisterOperation(rawOp)
 
 void SBI::run(Configuration *c)
 {	
-    //Um einheitlich zu bleiben, hier auch p1 statt Param1 verwenden
-    StorageCell *p1 = new StorageCell;
-    p1->setInt(this->Param1->getInt());	
-
+    StorageCell *p1 = BinaryToUnary(c); //in p1 ist jetzt der "echte" Wert
     // switch AC-Storage-Typ
     // falls Binary, speichere IR_Inhalt-AC als Binary im IR
     //  .... Int .............................. Integer ....

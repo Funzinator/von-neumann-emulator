@@ -3,6 +3,7 @@
 
 #include "ADA.h"
 #include "ADI.h"
+#include "AND.h"
 #include "AZJEQ.h"
 #include "AZJGE.h"
 #include "AZJGR.h"
@@ -27,11 +28,15 @@
 #include "MUA.h"
 #include "NGA.h"
 #include "NOP.h"
+#include "NOT.h"
+#include "OR.h"
+#include "RIN.h"
 #include "SBA.h"
 #include "SBI.h"
 #include "SRJ.h"
 #include "SRR.h"
 #include "STA.h"
 #include "UJP.h"
+#include "XOR.h"
 
 #endif /*OPERATIONS_H_*/

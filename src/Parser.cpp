@@ -58,6 +58,10 @@ QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
             {
                 op[rawOp->LineNumber] = new ADI(rawOp);
             }
+            else if (rawOp->Operator == "AND")
+            {
+                op[rawOp->LineNumber] = new AND(rawOp);
+            }
             else if (rawOp->Operator == "AZJ,EQ")
             {
                 op[rawOp->LineNumber] = new AZJEQ(rawOp);
@@ -154,6 +158,18 @@ QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
             {
                 op[rawOp->LineNumber] = new NOP(rawOp);
             }
+            else if (rawOp->Operator == "NOT")
+            {
+                op[rawOp->LineNumber] = new NOT(rawOp);
+            }
+            else if (rawOp->Operator == "OR")
+            {
+                op[rawOp->LineNumber] = new OR(rawOp);
+            }
+            else if (rawOp->Operator == "RIN")
+            {
+                op[rawOp->LineNumber] = new RIN(rawOp);
+            }
             else if (rawOp->Operator == "SBA")
             {
                 op[rawOp->LineNumber] = new SBA(rawOp);
@@ -178,9 +194,9 @@ QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
             {
                 op[rawOp->LineNumber] = new UJP(rawOp);
             }
-            else if (rawOp->Operator == "ENAR")
+            else if (rawOp->Operator == "XOR")
             {
-                op[rawOp->LineNumber] = new ENAR(rawOp);
+                op[rawOp->LineNumber] = new XOR(rawOp);
             }
             else
             {

@@ -2,7 +2,7 @@
 
 Configuration::Configuration()
 {
-	this->IndexRegister.resize(15);
+	this->IndexRegister.resize(16);
 	
     this->AC = new StorageCell;
     this->PC = 0;
@@ -87,7 +87,23 @@ void Configuration::show()
     while (j.hasNext())
     {
         j.next();
-        std::cout << j.key() << ": ";
+        //std::cout << j.key() << ": ";
         j.value()->show();
     }
+}
+
+QVector<unsigned int> Configuration::getUsedData()
+{
+    QVector<unsigned int> res;
+    
+    QMapIterator<unsigned int, StorageCell *> j(this->Data);
+    while (j.hasNext())
+    {
+        j.next();
+        //std::cout << j.key() << ": ";
+        //j.value()->show();
+        res.append(j.key());
+    }
+    //std::cout << res.size() << std::endl;
+    return res;
 }

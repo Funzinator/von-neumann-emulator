@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>420</width>
-    <height>470</height>
+    <height>545</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -193,7 +193,7 @@
         <item>
          <layout class="QHBoxLayout" name="buttonLayout" >
           <item>
-           <widget class="QToolButton" name="toollBtnPlay" >
+           <widget class="QToolButton" name="toolBtnPlay" >
             <property name="text" >
              <string/>
             </property>
@@ -317,7 +317,7 @@
   </action>
  </widget>
  <tabstops>
-  <tabstop>toollBtnPlay</tabstop>
+  <tabstop>toolBtnPlay</tabstop>
   <tabstop>toolBtnNext</tabstop>
   <tabstop>toolBtnPause</tabstop>
   <tabstop>toolBtnStop</tabstop>

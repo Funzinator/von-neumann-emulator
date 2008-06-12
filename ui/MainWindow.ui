@@ -216,6 +216,9 @@
           </item>
           <item>
            <widget class="QToolButton" name="toolBtnPause" >
+	    <property name="enabled" >
+	     <bool>false</bool>
+	    </property>
             <property name="text" >
              <string/>
             </property>
@@ -227,6 +230,9 @@
           </item>
           <item>
            <widget class="QToolButton" name="toolBtnStop" >
+	    <property name="enabled" >
+	     <bool>false</bool>
+	    </property>
             <property name="text" >
              <string/>
             </property>

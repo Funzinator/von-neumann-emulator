@@ -5,9 +5,12 @@
 #define SPLIT_REGEXP "\\s*([0-9]+)\\s*:\\s*(AZJ,[a-zA-Z][a-zA-Z]|[a-zA-Z]{3,6})(,I)?(\\s*([0-9]+\\.?[0-9]*)\\s*(,\\s*([0-9]+))?)?\\s*((\\{([^\\}])*\\}\\s*)*)"
 
 #include <QRegExp>
+#include <QVector>
 #include <QString>
+#include <QFile>
 
 #include "RawOperation.h"
+#include "Operations.h"
 
 class Parser
 {
@@ -16,12 +19,14 @@ private:
     QRegExp *SplitRegExp;
 
     bool validateLine(QString);
+    RawOperation* convertLine(QString);
 
 public:
     Parser();
     ~Parser();
-        
-    RawOperation* convertLine(QString);
+    
+    QMap<unsigned int,Operation *> Parse(QVector<QString>);
+    QMap<unsigned int,Operation *> Parse(QFile *);
 };
 
 #endif /*PARSER_H_*/

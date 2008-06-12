@@ -26,6 +26,7 @@ public:
 
     StorageCell* getData(unsigned int);
     StorageCell* getIndexRegister(unsigned int);
+    QVector<unsigned int> getUsedData();
 
     void setPC(unsigned int);
     void setSR(unsigned int);

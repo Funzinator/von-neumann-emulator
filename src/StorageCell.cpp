@@ -3,6 +3,7 @@
 StorageCell::StorageCell()
 {
     this->values.i = this->values.f = 0;
+    this->type = StorageCell::Integer;
 }
 
 void StorageCell::setBinary(int i)

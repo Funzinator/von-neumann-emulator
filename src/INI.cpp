@@ -7,7 +7,7 @@ INI::INI(RawOperation *rawOp) : InputOperation(rawOp)
 
 void INI::run(Configuration *c)
 {
-    c->getAC()->setInt(c->getInterface()->receiveString().toInt()); /* FIXME: Fehlerbehandlung */
+    c->getAC()->setInt(c->getInterface()->receiveInteger());
     
     c->setPC(c->getPC() + 1);
 }

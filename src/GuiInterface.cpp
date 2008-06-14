@@ -24,10 +24,26 @@ void GuiInterface::sendString(QString message)
                              QMessageBox::Ok);
 }
 
+/* deprecated */
 QString GuiInterface::receiveString()
 {
     return QInputDialog::getText(this->MainWindow,
                                  "Eingabe",
                                  "Eingabe:",
                                  QLineEdit::Normal);
+}
+
+int GuiInterface::receiveInteger()
+{
+
+}
+
+double GuiInterface::receiveFloat()
+{
+
+}
+
+int GuiInterface::receiveBinary()
+{
+
 }

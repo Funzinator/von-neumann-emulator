@@ -18,7 +18,10 @@ public:
     void sendSignal(unsigned char);
     void sendSignal(unsigned char, QString);
     void sendString(QString);
-    QString receiveString();
+    QString receiveString(); /* deprecated */
+    int receiveInteger();
+    double receiveFloat();
+    int receiveBinary();
 };
 
 #endif /*GUIINTERFACE_H_*/

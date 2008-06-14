@@ -22,6 +22,7 @@
 #include "FMU.h"
 #include "FNG.h"
 #include "FSB.h"
+#include "INI.h"
 #include "IRE.h"
 #include "LDA.h"
 #include "MDA.h"

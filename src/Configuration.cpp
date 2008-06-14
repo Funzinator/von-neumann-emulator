@@ -1,12 +1,14 @@
 #include "Configuration.h"
 
-Configuration::Configuration()
+Configuration::Configuration(CommunicationInterface *Interface)
 {
 	this->IndexRegister.resize(16);
-	
+
     this->AC = new StorageCell;
     this->PC = 0;
     this->SR = 0;
+
+    this->Interface = Interface;
 }
 
 StorageCell* Configuration::getAC()
@@ -106,4 +108,9 @@ QVector<unsigned int> Configuration::getUsedData()
     }
     //std::cout << res.size() << std::endl;
     return res;
+}
+
+CommunicationInterface* Configuration::getInterface()
+{
+    return this->Interface;
 }

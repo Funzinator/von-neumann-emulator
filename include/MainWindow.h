@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QTimer>
+#include <QString>
 #include "ui_MainWindow.h"
 
 #include "Interpreter.h"
@@ -32,6 +33,9 @@ public slots:
     void on_toolBtnStop_clicked();
     
     void timerNextStep();
+    
+    void stop(QString);
+    void halt(QString);
 };
 
 #endif /*MAINWINDOW_H_*/

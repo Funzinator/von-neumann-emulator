@@ -127,3 +127,21 @@ void MainWindow::timerNextStep()
     this->i->next();
     this->showConfiguration(this->i->getConfiguration());  
 }
+
+void MainWindow::stop(QString message)
+{
+    this->timerRun->stop();
+    
+    QMessageBox::information(this,
+                             "Programm terminierte ohne Fehler",
+                             message,
+                             QMessageBox::Ok);
+}
+
+void MainWindow::halt(QString message)
+{
+    QMessageBox::critical(this,
+                          "Programm terminierte mit Fehler",
+                          message,
+                          QMessageBox::Ok);
+}

@@ -134,6 +134,10 @@ QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
             {
                 op[rawOp->LineNumber] = new FSB(rawOp);
             }
+            else if (rawOp->Operator == "INI")
+            {
+                op[rawOp->LineNumber] = new INI(rawOp);
+            }
             else if (rawOp->Operator == "IRE")
             {
                 op[rawOp->LineNumber] = new IRE(rawOp);

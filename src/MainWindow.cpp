@@ -13,7 +13,7 @@ MainWindow::MainWindow() : QMainWindow()
     QFile *file = new QFile("bla");
 
     Parser p;
-    this->i = new Interpreter(p.Parse(file), new Configuration(new GuiInterface()));
+    this->i = new Interpreter(p.Parse(file), new Configuration(new GuiInterface(this)));
 }
 
 void MainWindow::resetConfiguration()

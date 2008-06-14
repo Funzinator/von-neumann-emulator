@@ -1,12 +1,19 @@
 #ifndef GUIINTERFACE_H_
 #define GUIINTERFACE_H_
 
+#include <QMainWindow>
+#include <QMessageBox>
+#include <QInputDialog>
+
 #include "CommunicationInterface.h"
 
 class GuiInterface : public CommunicationInterface
 {
+private:
+    QMainWindow *MainWindow;
+
 public:
-    GuiInterface();
+    GuiInterface(QMainWindow *);
     
     void sendSignal(unsigned char);
     void sendSignal(unsigned char, QString);

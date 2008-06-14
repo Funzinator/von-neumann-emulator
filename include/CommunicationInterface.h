@@ -14,7 +14,10 @@ public:
     virtual void sendSignal(unsigned char) = 0;
     virtual void sendSignal(unsigned char, QString) = 0;
     virtual void sendString(QString) = 0;
-    virtual QString receiveString() = 0;
+    virtual QString receiveString() = 0; /* deprecated */
+    virtual int receiveInteger() = 0;
+    virtual double receiveFloat() = 0;
+    virtual int receiveBinary() = 0;
 };
 
 #endif /*COMMUNICATIONINTERFACE_H_*/

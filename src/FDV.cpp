@@ -15,7 +15,7 @@ void FDV::run(Configuration *c)
             / c->getData(p1->getInt())->getFloat());
     } else
     {
-        //irgendeine Exception 
+        c->getInterface()->sendSignal(CommunicationInterface::HLT, "Division durch Null");
     }
     c->setPC(c->getPC() + 1);
     delete p1;

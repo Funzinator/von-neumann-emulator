@@ -1,8 +1,5 @@
 #include "MainWindow.h"
 
-#include <QFile>
-#include "Parser.h"
-
 MainWindow::MainWindow() : QMainWindow()
 {
     this->setupUi(this);
@@ -16,7 +13,7 @@ MainWindow::MainWindow() : QMainWindow()
     QFile *file = new QFile("bla");
 
     Parser p;
-    this->i = new Interpreter(p.Parse(file), 0);
+    this->i = new Interpreter(p.Parse(file), new Configuration(new GuiInterface()));
 }
 
 void MainWindow::resetConfiguration()

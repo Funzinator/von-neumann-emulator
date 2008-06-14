@@ -1,11 +1,16 @@
 #ifndef MAINWINDOW_H_
 #define MAINWINDOW_H_
 
-#include <QTimer>
 #include <QMainWindow>
+#include <QFile>
+#include <QFileDialog>
+#include <QTimer>
 #include "ui_MainWindow.h"
 
 #include "Interpreter.h"
+#include "Parser.h"
+#include "Configuration.h"
+#include "GuiInterface.h"
 
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {

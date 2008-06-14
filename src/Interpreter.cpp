@@ -1,8 +1,8 @@
 #include "Interpreter.h"
 
-Interpreter::Interpreter(QMap<unsigned int, Operation *> ops, Configuration *config = 0)
+Interpreter::Interpreter(QMap<unsigned int, Operation *> ops, Configuration *config)
 {
-    this->config = (config == 0 ? new Configuration() : config);
+    this->config = config;
     this->ops = ops;
 }
 

@@ -6,6 +6,7 @@
 #include <QMap>
 #include <QVector>
 
+#include "CommunicationInterface.h"
 #include "StorageCell.h"
 
 class Configuration
@@ -16,9 +17,10 @@ private:
     unsigned int SR; /* Subroutine-Zeiger */
     QMap<unsigned int,StorageCell *> Data;
     QVector<StorageCell *> IndexRegister;
+    CommunicationInterface *Interface;
     
 public:
-    Configuration();
+    Configuration(CommunicationInterface *);
 
     StorageCell* getAC();
     unsigned int getPC();
@@ -27,10 +29,11 @@ public:
     StorageCell* getData(unsigned int);
     StorageCell* getIndexRegister(unsigned int);
     QVector<unsigned int> getUsedData();
-
+    CommunicationInterface* getInterface();
+    
     void setPC(unsigned int);
     void setSR(unsigned int);
-
+    
     void show();
 };
 

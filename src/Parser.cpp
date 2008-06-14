@@ -134,9 +134,21 @@ QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
             {
                 op[rawOp->LineNumber] = new FSB(rawOp);
             }
+            else if (rawOp->Operator == "HLT")
+            {
+                op[rawOp->LineNumber] = new HLT(rawOp);
+            }
+            else if (rawOp->Operator == "INB")
+            {
+                op[rawOp->LineNumber] = new INB(rawOp);
+            }
             else if (rawOp->Operator == "INI")
             {
                 op[rawOp->LineNumber] = new INI(rawOp);
+            }
+            else if (rawOp->Operator == "INR")
+            {
+                op[rawOp->LineNumber] = new INR(rawOp);
             }
             else if (rawOp->Operator == "IRE")
             {
@@ -170,6 +182,18 @@ QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
             {
                 op[rawOp->LineNumber] = new OR(rawOp);
             }
+            else if (rawOp->Operator == "OUB")
+            {
+                op[rawOp->LineNumber] = new OUB(rawOp);
+            }
+            else if (rawOp->Operator == "OUI")
+            {
+                op[rawOp->LineNumber] = new OUI(rawOp);
+            }
+            else if (rawOp->Operator == "OUR")
+            {
+                op[rawOp->LineNumber] = new OUR(rawOp);
+            }
             else if (rawOp->Operator == "RIN")
             {
                 op[rawOp->LineNumber] = new RIN(rawOp);
@@ -193,6 +217,10 @@ QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
             else if (rawOp->Operator == "STA")
             {
                 op[rawOp->LineNumber] = new STA(rawOp);
+            }
+            else if (rawOp->Operator == "STP")
+            {
+                op[rawOp->LineNumber] = new STP(rawOp);
             }
             else if (rawOp->Operator == "UJP")
             {

@@ -12,6 +12,15 @@ MainWindow::MainWindow() : QMainWindow()
     connect(this->timerRun, SIGNAL(timeout()), this, SLOT(timerNextStep()));
 
     this->resetConfiguration();
+    
+    /* Editor einstellen (sollte man vielleicht im UI schon tun) */
+    QFont font;
+    font.setFamily("DejaVu Sans Mono");
+    font.setFixedPitch(true);
+    font.setPointSize(10);
+
+    this->txtEditSourcecode->setFont(font);
+    this->highlighter = new Highlighter(this->txtEditSourcecode->document());
 }
 
 void MainWindow::resetConfiguration()
@@ -169,9 +178,15 @@ void MainWindow::on_actionOpen_activated()
             delete this->i;
             this->i = 0;
         }
-        this->i = new Interpreter(this->parser->Parse(file), new Configuration(new GuiInterface(this)));
+        this->i = new Interpreter(this->parser->Parse(this->file), new Configuration(new GuiInterface(this)));
 
         this->toolBtnPlay->setEnabled(true);
         this->toolBtnNext->setEnabled(true);
+        
+        QFile file(filename);
+        if (file.open(QFile::ReadOnly | QFile::Text))
+        {
+            this->txtEditSourcecode->setPlainText(file.readAll());
+        }
     }
 }

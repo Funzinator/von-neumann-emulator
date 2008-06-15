@@ -12,6 +12,7 @@
 #include "Parser.h"
 #include "Configuration.h"
 #include "GuiInterface.h"
+#include "Highlighter.h"
 
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {
@@ -25,6 +26,8 @@ private:
     Interpreter *i;
     Parser *parser;
     QFile *file;
+    
+    Highlighter *highlighter;
 
 public:
     MainWindow();

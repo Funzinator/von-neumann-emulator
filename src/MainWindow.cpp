@@ -48,6 +48,7 @@ void MainWindow::showConfiguration(Configuration *config)
     this->lblAC->setText(tmp);
     this->lblPC->setNum((int)config->getPC()); /* caste nach int... vielleicht sollten wir den Typ generell ändern */
     this->lblSR->setNum((int)config->getSR());
+    this->lblOperation->setText(this->i->getNextOperation(true));
     
     for (int i = 0; i < 16; i++) /* FIXME auslagern in Konstante */
     {

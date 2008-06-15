@@ -16,6 +16,7 @@ public:
     Interpreter(QMap<unsigned int, Operation *>, Configuration*);
     void next();
     Configuration *getConfiguration();
+    QString getNextOperation(bool);
 };
 
 #endif /*INTERPRETER_H_*/

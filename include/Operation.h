@@ -18,6 +18,7 @@ protected:
     
 public:
     Operation(RawOperation*);
+    QString getOperationName(bool);
     
     virtual void run(Configuration*) = 0;
 };

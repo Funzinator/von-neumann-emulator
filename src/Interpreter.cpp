@@ -20,3 +20,17 @@ Configuration *Interpreter::getConfiguration()
 {
     return this->config;
 }
+
+QString Interpreter::getNextOperation(bool full)
+{
+    unsigned int PC = this->config->getPC();
+    
+    if (this->ops[PC])
+    {
+        return this->ops[PC]->getOperationName(full);
+    }
+    else
+    {
+        return "";
+    }
+}

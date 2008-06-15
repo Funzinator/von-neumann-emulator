@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>420</width>
-    <height>545</height>
+    <height>695</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -18,15 +18,12 @@
      <x>0</x>
      <y>31</y>
      <width>420</width>
-     <height>490</height>
+     <height>640</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_4" >
+   <layout class="QHBoxLayout" name="horizontalLayout" >
     <item>
      <layout class="QVBoxLayout" name="mainLayout" >
-      <property name="sizeConstraint" >
-       <enum>QLayout::SetDefaultConstraint</enum>
-      </property>
       <item>
        <layout class="QHBoxLayout" name="configurationLayout" >
         <item>
@@ -41,7 +38,14 @@
              </widget>
             </item>
             <item>
-             <widget class="QListWidget" name="listWidgetIndexregister" />
+             <widget class="QListWidget" name="listWidgetIndexregister" >
+              <property name="minimumSize" >
+               <size>
+                <width>0</width>
+                <height>310</height>
+               </size>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -265,6 +269,16 @@
         </item>
        </layout>
       </item>
+      <item>
+       <widget class="QTextEdit" name="txtEditSourcecode" >
+        <property name="maximumSize" >
+         <size>
+          <width>16777215</width>
+          <height>150</height>
+         </size>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
@@ -296,7 +310,7 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>521</y>
+     <y>671</y>
      <width>420</width>
      <height>24</height>
     </rect>

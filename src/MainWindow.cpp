@@ -4,16 +4,14 @@ MainWindow::MainWindow() : QMainWindow()
 {
     this->setupUi(this);
 
+    this->i = 0;
+    this->parser = 0;
+    this->file = 0;
+    
     this->timerRun = new QTimer(this);
     connect(this->timerRun, SIGNAL(timeout()), this, SLOT(timerNextStep()));
 
     this->resetConfiguration();
-
-    /* Replace me */
-    QFile *file = new QFile("bla");
-
-    Parser p;
-    this->i = new Interpreter(p.Parse(file), new Configuration(new GuiInterface(this)));
 }
 
 void MainWindow::resetConfiguration()
@@ -144,4 +142,35 @@ void MainWindow::halt(QString message)
                           "Programm terminierte mit Fehler",
                           message,
                           QMessageBox::Ok);
+}
+
+void MainWindow::on_actionOpen_activated()
+{
+    QString filename = QFileDialog::getOpenFileName(this,
+                                                    "von-Neumann-Programm öffnen",
+                                                    "",
+                                                    "Alle Dateien (*)");
+    if (filename != "")
+    {
+        if (this->parser == 0)
+        {
+            this->parser = new Parser;
+        }
+        
+        if (this->file != 0)
+        {
+            delete this->file;
+        }
+        this->file = new QFile(filename);
+
+        if (this->i != 0)
+        {
+            delete this->i;
+            this->i = 0;
+        }
+        this->i = new Interpreter(this->parser->Parse(file), new Configuration(new GuiInterface(this)));
+
+        this->toolBtnPlay->setEnabled(true);
+        this->toolBtnNext->setEnabled(true);
+    }
 }

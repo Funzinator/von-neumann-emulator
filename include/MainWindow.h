@@ -18,10 +18,13 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
     Q_OBJECT
 
 private:
-    Interpreter *i;
     void showConfiguration(Configuration *);
     void resetConfiguration();
     QTimer *timerRun;
+
+    Interpreter *i;
+    Parser *parser;
+    QFile *file;
 
 public:
     MainWindow();
@@ -31,6 +34,7 @@ public slots:
     void on_toolBtnPause_clicked();
     void on_toolBtnPlay_clicked();
     void on_toolBtnStop_clicked();
+    void on_actionOpen_activated();
     
     void timerNextStep();
     

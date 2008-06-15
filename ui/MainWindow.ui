@@ -318,12 +318,12 @@
   </widget>
   <action name="actionNew" >
    <property name="text" >
-    <string>&amp;Neu...</string>
+    <string>&amp;Neu</string>
    </property>
   </action>
   <action name="actionOpen" >
    <property name="text" >
-    <string>&amp;Öffnen</string>
+    <string>&amp;Öffnen...</string>
    </property>
   </action>
   <action name="actionSave" >

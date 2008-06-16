@@ -1,8 +1,6 @@
 #ifndef CONFIGURATION_H_
 #define CONFIGURATION_H_
 
-#include <iostream>
-
 #include <QMap>
 #include <QVector>
 

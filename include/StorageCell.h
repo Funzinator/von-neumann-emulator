@@ -1,8 +1,6 @@
 #ifndef STORAGECELL_H_
 #define STORAGECELL_H_
 
-#include <iostream>
-
 #include "Storage.h"
 
 class StorageCell

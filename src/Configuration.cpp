@@ -63,37 +63,6 @@ void Configuration::setSR(unsigned int i)
     this->SR = i;
 }
 
-/*! deprecated! 
- * nur zum kurzen Testen!
- */
-void Configuration::show()
-{
-    std::cout << "AC: ";
-    this->AC->show();
-    
-    std::cout << "PC: " << this->PC << std::endl;
-    std::cout << "SR: " << this->SR << std::endl;
-    
-    std::cout << "Indexregister" << std::endl;
-    for (int i = 0; i < this->IndexRegister.size(); i++)
-    {
-        if (this->IndexRegister[i])
-        {
-            std::cout << i << ": ";
-            this->IndexRegister[i]->show();
-        }
-    }
-    
-    std::cout << "Daten" << std::endl;
-    QMapIterator<unsigned int, StorageCell *> j(this->Data);
-    while (j.hasNext())
-    {
-        j.next();
-        //std::cout << j.key() << ": ";
-        j.value()->show();
-    }
-}
-
 QVector<unsigned int> Configuration::getUsedData()
 {
     QVector<unsigned int> res;

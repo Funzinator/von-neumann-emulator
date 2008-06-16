@@ -25,8 +25,6 @@ public:
     int getInt();
     double getFloat();
     unsigned char getType();
-    
-    void show();
 };
 
 #endif /*STORAGECELL_H_*/

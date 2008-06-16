@@ -43,25 +43,3 @@ unsigned char StorageCell::getType()
 {
 	return this->type;
 }
-
-void StorageCell::show()
-{
-    switch (this->type)
-    {
-        case StorageCell::Binary:
-            std::cout << this->values.i << " (B)";
-            break;
-            
-        case StorageCell::Integer:
-            std::cout << this->values.i << " (I)";
-            break;
-            
-        case StorageCell::Float:
-            std::cout << this->values.f << " (F)";
-            break;
-            
-        default: /* FIXME (im Konstruktor) */
-            std::cout << "null";
-    }
-    std::cout << std::endl; 
-}

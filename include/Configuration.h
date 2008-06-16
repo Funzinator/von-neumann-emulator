@@ -33,8 +33,6 @@ public:
     
     void setPC(unsigned int);
     void setSR(unsigned int);
-    
-    void show();
 };
 
 #endif /*CONFIGURATION_H_*/

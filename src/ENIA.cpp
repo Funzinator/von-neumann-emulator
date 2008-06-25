@@ -7,7 +7,7 @@ ENIA::ENIA(RawOperation *rawOp) : IndexregisterOperation(rawOp)
 
 void ENIA::run(Configuration *c)
 {
-    StorageCell *p1 = BinaryToUnary(c); //in p1 ist jetzt der "echte" Wert
+    StorageCell *p1 = IndirectToDirect(c); //in p1 ist jetzt der "echte" Wert
 
     // ENIA X: Lade Indexregister X mit Inhalt von AC	
     switch (c->getAC()->getType())

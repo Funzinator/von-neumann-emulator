@@ -7,7 +7,7 @@ ADI::ADI(RawOperation *rawOp) : IndexregisterOperation(rawOp)
 
 void ADI::run(Configuration *c)
 {
-    StorageCell *p1 = BinaryToUnary(c); //in p1 ist jetzt der "echte" Wert
+    StorageCell *p1 = IndirectToDirect(c); //in p1 ist jetzt der "echte" Wert
     // switch AC-Storage-Typ
     // falls Binary, speichere AC+IR-Inhalt als Binary im IR
     //  .... Int .............................. Integer ....

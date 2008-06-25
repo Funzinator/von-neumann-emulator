@@ -7,7 +7,7 @@ class IndexregisterOperation : public UnaryOperation
 {
 public:
     IndexregisterOperation(RawOperation*);
-    StorageCell* BinaryToUnary(Configuration*);
+    StorageCell* IndirectToDirect(Configuration*);
 };
 
 #endif /*INDEXREGISTEROPERATION_H_*/

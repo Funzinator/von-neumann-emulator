@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>420</width>
-    <height>695</height>
+    <height>716</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -18,7 +18,7 @@
      <x>0</x>
      <y>31</y>
      <width>420</width>
-     <height>640</height>
+     <height>661</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout" >
@@ -271,9 +271,9 @@
       </item>
       <item>
        <widget class="QTextEdit" name="txtEditSourcecode" >
-        <property name="maximumSize" >
+        <property name="minimumSize" >
          <size>
-          <width>16777215</width>
+          <width>0</width>
           <height>150</height>
          </size>
         </property>
@@ -310,7 +310,7 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>671</y>
+     <y>692</y>
      <width>420</width>
      <height>24</height>
     </rect>

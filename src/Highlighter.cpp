@@ -20,14 +20,6 @@ Highlighter::Highlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
     rule.format = classFormat;
     highlightingRules.append(rule);
 
-    /* Kommentare */
-    classFormat.setForeground(Qt::gray);
-    classFormat.setFontItalic(true);
-    classFormat.setFontWeight(QFont::Normal);
-    rule.pattern = QRegExp("(\\{([^\\}])*\\}?\\s*)$");
-    rule.format = classFormat;
-    highlightingRules.append(rule);
-
     /* Integer-Zahlen */
     classFormat.setForeground(Qt::darkGreen);
     classFormat.setFontItalic(false);
@@ -49,6 +41,14 @@ Highlighter::Highlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
     classFormat.setFontWeight(QFont::Normal);
     classFormat.setFontItalic(false);
     rule.pattern = QRegExp("^[0-9]+:");
+    rule.format = classFormat;
+    highlightingRules.append(rule);
+
+    /* Kommentare */
+    classFormat.setForeground(Qt::gray);
+    classFormat.setFontItalic(true);
+    classFormat.setFontWeight(QFont::Normal);
+    rule.pattern = QRegExp("(\\{([^\\}])*\\}?\\s*)$");
     rule.format = classFormat;
     highlightingRules.append(rule);
 }

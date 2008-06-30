@@ -21,6 +21,8 @@ MainWindow::MainWindow() : QMainWindow()
 
     this->txtEditSourcecode->setFont(font);
     this->highlighter = new Highlighter(this->txtEditSourcecode->document());
+    
+    this->sourcecodeEdited = false;
 }
 
 void MainWindow::resetConfiguration()
@@ -107,7 +109,9 @@ void MainWindow::on_toolBtnPause_clicked()
     this->toolBtnPlay->setEnabled(true);
     this->toolBtnStop->setEnabled(true);
     this->toolBtnNext->setEnabled(true);
-    
+
+    this->txtEditSourcecode->setReadOnly(false);
+
     this->timerRun->stop();
 }
 
@@ -117,7 +121,9 @@ void MainWindow::on_toolBtnPlay_clicked()
     this->toolBtnNext->setEnabled(false);
     this->toolBtnPause->setEnabled(true);
     this->toolBtnStop->setEnabled(true);
- 
+
+    this->txtEditSourcecode->setReadOnly(true);
+
     this->timerRun->start(100);
 }
 
@@ -127,7 +133,9 @@ void MainWindow::on_toolBtnStop_clicked()
     this->toolBtnPause->setEnabled(false);
     this->toolBtnPlay->setEnabled(true);
     this->toolBtnNext->setEnabled(true);
-    
+
+    this->txtEditSourcecode->setReadOnly(false);
+
     this->timerRun->stop();
 
     /* FIXME: alles zurücksetzen */    
@@ -191,6 +199,16 @@ void MainWindow::on_actionOpen_activated()
         if (file.open(QFile::ReadOnly | QFile::Text))
         {
             this->txtEditSourcecode->setPlainText(file.readAll());
+            this->sourcecodeEdited = false;
         }
+    }
+}
+#include <iostream>
+void MainWindow::on_txtEditSourcecode_textChanged()
+{
+    if (this->sourcecodeEdited == false)
+    {
+        this->sourcecodeEdited = true;
+        std::cout << this->txtEditSourcecode->toPlainText().toStdString() << std::endl;
     }
 }

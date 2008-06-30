@@ -9,10 +9,14 @@ CLI::CLI(QString filename)
     this->file = new QFile(filename);
 
     this->i = new Interpreter(this->parser->Parse(this->file), new Configuration(new CliInterface()));
-    
+
     this->showConfiguration(this->i->getConfiguration());
 
-    this->timerRun->start(100);
+    //this->timerRun->start(100);
+    while (true){
+        this->i->next();
+        this->showConfiguration(this->i->getConfiguration());
+    }
 }
 
 void CLI::resetConfiguration()
@@ -21,7 +25,7 @@ void CLI::resetConfiguration()
 
 void CLI::showConfiguration(Configuration *config)
 {
-    QString AC_PC_SR;
+    QString AC_PC_SR, *tmp=new QString;
     switch(config->getAC()->getType())
     {
         case StorageCell::Integer:
@@ -38,9 +42,10 @@ void CLI::showConfiguration(Configuration *config)
     }
     AC_PC_SR.insert(0,"AC: ");
     AC_PC_SR.append("\tPC: ");
-    AC_PC_SR.append(config->getPC());
+    AC_PC_SR.append(tmp->setNum(config->getPC()));
     AC_PC_SR.append("\tSR: ");
-    AC_PC_SR.append(config->getSR());
+    AC_PC_SR.append(tmp->setNum(config->getSR()));
+    delete tmp;
     std::cout << AC_PC_SR.toStdString() << std::endl;
 
     std::cout << "next Operation: " << (this->i->getNextOperation(true)).toStdString() << std::endl;
@@ -53,7 +58,7 @@ void CLI::showConfiguration(Configuration *config)
     std::cout << "Indexregister:\n";
     for (int i = 0; i < 16; i++) /* FIXME auslagern in Konstante */
     {
-        if (config->getIndexRegister(i)->getInt() != 0)
+        if (config->getIndexRegister(i)->getInt() != 0) /* FIXME gibt nur IR aus mit Inhalt != 0, da sonst alle ausgegeben werden*/
         {
             switch(config->getIndexRegister(i)->getType())
             {

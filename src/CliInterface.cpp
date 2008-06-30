@@ -45,5 +45,17 @@ double CliInterface::receiveFloat()
 
 int CliInterface::receiveBinary()
 {
-    return this->receiveInteger(); /* vielleicht mal ändern */
+    std::cout << "Binaer-Wert eingeben: ";
+    int i; std::cin >>i;
+    // Eingabe ist int i = 101010, gebraucht wird res = 42
+    int res=0;
+    int w=1;
+    while (i!=0) {
+        if ( i%10 !=0 && i%10!=1)
+            this->sendSignal(CommunicationInterface::HLT, "Ungueltige Eingabe. Nur 0 und 1 verwenden!");
+        res+=(i%10)*w;
+        i/=10;
+        w*=2;
+    }
+    return res;
 }

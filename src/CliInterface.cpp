@@ -1,7 +1,11 @@
 #include "CliInterface.h"
 
-CliInterface::CliInterface() : CommunicationInterface()
+CliInterface::CliInterface(QThread *Cli) : CommunicationInterface()
 {
+    this->Cli = Cli;
+
+    QObject::connect(this, SIGNAL(stop(QString)), this->Cli, SLOT(stop(QString)));
+    QObject::connect(this, SIGNAL(halt(QString)), this->Cli, SLOT(halt(QString)));
 }
 
 void CliInterface::sendSignal(unsigned char signal)

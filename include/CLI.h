@@ -1,9 +1,11 @@
 #ifndef CLI_H_
 #define CLI_H_
 
+#include <QApplication>
 #include <QFile>
 #include <QTimer>
 #include <QString>
+#include <QThread>
 #include <string>
 
 #include "Interpreter.h"
@@ -11,7 +13,7 @@
 #include "Configuration.h"
 #include "CliInterface.h"
 
-class CLI  : public QObject
+class CLI : public QThread
 {
     Q_OBJECT
 
@@ -25,6 +27,7 @@ private:
     QFile *file;
 
 public:
+    void run();
     CLI(QString);
     
 public slots:

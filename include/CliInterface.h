@@ -5,13 +5,17 @@
 #include <QString>
 
 #include "CommunicationInterface.h"
+#include "CLI.h"
 
 class CliInterface : public CommunicationInterface
 {
     Q_OBJECT
 
+private:
+    QThread *Cli;
+    
 public:
-    CliInterface();
+    CliInterface(QThread *);
     
     void sendSignal(unsigned char);
     void sendSignal(unsigned char, QString);

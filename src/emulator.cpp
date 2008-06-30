@@ -17,18 +17,20 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    QApplication app(argc, argv);
+
     if (argc == 1)
     {
-        QApplication app(argc, argv);
         MainWindow *form = new MainWindow();
-    
         form->show();
-        return app.exec();
     }
     else
     {
         QString filename(argv[1]);
         CLI *CommandLine = new CLI(filename);
-        return 0;
+        
+        CommandLine->run();
     }
+
+    return app.exec();
 }

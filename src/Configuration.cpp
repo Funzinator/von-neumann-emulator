@@ -71,11 +71,8 @@ QVector<unsigned int> Configuration::getUsedData()
     while (j.hasNext())
     {
         j.next();
-        //std::cout << j.key() << ": ";
-        //j.value()->show();
         res.append(j.key());
     }
-    //std::cout << res.size() << std::endl;
     return res;
 }
 

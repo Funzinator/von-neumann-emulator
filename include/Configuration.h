@@ -18,6 +18,8 @@ private:
     CommunicationInterface *Interface;
     
 public:
+    static const unsigned short int IndexRegisterCount = 16;
+    
     Configuration(CommunicationInterface *);
 
     StorageCell* getAC();

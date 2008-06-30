@@ -56,7 +56,7 @@ void CLI::showConfiguration(Configuration *config)
         std::cout << (usedSlots[i]) <<": " << config->getData(usedSlots[i])->getInt() << std::endl;
 
     std::cout << "Indexregister:\n";
-    for (int i = 0; i < 16; i++) /* FIXME auslagern in Konstante */
+    for (int i = 0; i < Configuration::IndexRegisterCount; i++)
     {
         if (config->getIndexRegister(i) != 0)
         {

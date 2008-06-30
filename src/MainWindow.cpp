@@ -61,7 +61,7 @@ void MainWindow::showConfiguration(Configuration *config)
     this->lblSR->setNum((int)config->getSR());
     this->lblOperation->setText(this->i->getNextOperation(true));
     
-    for (int i = 0; i < 16; i++) /* FIXME auslagern in Konstante */
+    for (int i = 0; i < Configuration::IndexRegisterCount; i++)
     {
         if (config->getIndexRegister(i) != 0)
         {

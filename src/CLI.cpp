@@ -58,7 +58,7 @@ void CLI::showConfiguration(Configuration *config)
     std::cout << "Indexregister:\n";
     for (int i = 0; i < 16; i++) /* FIXME auslagern in Konstante */
     {
-        if (config->getIndexRegister(i)->getInt() != 0) /* FIXME gibt nur IR aus mit Inhalt != 0, da sonst alle ausgegeben werden*/
+        if (config->getIndexRegister(i) != 0)
         {
             switch(config->getIndexRegister(i)->getType())
             {

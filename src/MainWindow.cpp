@@ -76,7 +76,11 @@ void MainWindow::showConfiguration(Configuration *config)
     
                 case StorageCell::Binary:
                     tmp.setNum(config->getIndexRegister(i)->getInt()); /* vielleicht umwandeln, dann aber bereits in StorageCell */
-                    break;     
+                    break;
+                    
+                case StorageCell::Unused:
+                    tmp = "NULL";
+                    break;
             }
             this->listWidgetIndexregister->addItem(QString("%1: %2").arg(i).arg(tmp));
         }

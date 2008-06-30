@@ -27,6 +27,8 @@ private:
     Parser *parser;
     QFile *file;
     
+    bool sourcecodeEdited;
+    
     Highlighter *highlighter;
 
 public:
@@ -38,6 +40,7 @@ public slots:
     void on_toolBtnPlay_clicked();
     void on_toolBtnStop_clicked();
     void on_actionOpen_activated();
+    void on_txtEditSourcecode_textChanged();
     
     void timerNextStep();
     

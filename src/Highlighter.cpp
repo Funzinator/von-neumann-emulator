@@ -26,21 +26,21 @@ Highlighter::Highlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
     classFormat.setFontWeight(QFont::Normal);
     rule.pattern = QRegExp("-?[0-9]+");
     rule.format = classFormat;
-    highlightingRules.append(rule);    
+    highlightingRules.append(rule);
 
     /* Float-Zahlen */
     classFormat.setForeground(Qt::darkGreen); // gleiche Farbe, wie Integer... könnte man aber ändern
     classFormat.setFontItalic(false);
     classFormat.setFontWeight(QFont::Normal);
-    rule.pattern = QRegExp("-?([0-9]*\\.[0-9]+)");
+    rule.pattern = QRegExp("-?([0-9]*\\.[0-9]*)");
     rule.format = classFormat;
-    highlightingRules.append(rule);    
+    highlightingRules.append(rule);
 
     /* Zeilennummern */
     classFormat.setForeground(Qt::darkBlue);
     classFormat.setFontWeight(QFont::Normal);
     classFormat.setFontItalic(false);
-    rule.pattern = QRegExp("^[0-9]+:");
+    rule.pattern = QRegExp("^\\s*[0-9]+:");
     rule.format = classFormat;
     highlightingRules.append(rule);
 

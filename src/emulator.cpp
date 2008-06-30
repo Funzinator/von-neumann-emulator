@@ -4,8 +4,6 @@
 #include <QString>
 #include <QFile>
 #include <QMap>
-#include <iostream>
-#include <string>
 
 #include "Parser.h"
 #include "RawOperation.h"
@@ -13,14 +11,24 @@
 
 #include <QApplication>
 #include "MainWindow.h"
+#include "CLI.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
-    MainWindow *form = new MainWindow();
+    if (argc == 1)
+    {
+        QApplication app(argc, argv);
+        MainWindow *form = new MainWindow();
     
-    form->show();
-    return app.exec();
+        form->show();
+        return app.exec();
+    }
+    else
+    {
+        QString filename(argv[1]);
+        CLI *CommandLine = new CLI(filename);
+        return 0;
+    }
 }

@@ -8,15 +8,16 @@ CLI::CLI(QString filename)
     this->parser = new Parser;
     this->file = new QFile(filename);
 
-    this->i = new Interpreter(this->parser->Parse(this->file), new Configuration(new CliInterface()));
+    this->i = new Interpreter(this->parser->Parse(this->file), new Configuration(new CliInterface(this)));
 
     this->showConfiguration(this->i->getConfiguration());
+}
 
-    //this->timerRun->start(100);
-    while (true){
-        this->i->next();
-        this->showConfiguration(this->i->getConfiguration());
-    }
+void CLI::run()
+{
+    this->timerRun->start(100);    
+
+    this->quit();
 }
 
 void CLI::resetConfiguration()
@@ -88,12 +89,21 @@ void CLI::timerNextStep()
 
 void CLI::stop(QString message)
 {
+    std::cout << "STOP received! Application should terminate... but doesn't..." << std::endl; /* FIXME */
+    
+    /*
+     * Ich kann mir schon denken, warum es nicht funktioniert. Vermutlich muss man einen Thread implementieren,
+     * der dann CLI aufruft und nicht CLI direkt als Thread, weil ich sonst den Eventhandler nicht mehr
+     * beendet bekomme.
+     * vielleicht ist es auch etwas komplett anderes
+     */
+    
+    this->timerRun->stop();
 
+    this->quit();
 }
 
 void CLI::halt(QString message)
 {
 
 }
-
-

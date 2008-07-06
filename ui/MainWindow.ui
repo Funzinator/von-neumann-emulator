@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>420</width>
-    <height>716</height>
+    <width>853</width>
+    <height>682</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -17,19 +17,25 @@
     <rect>
      <x>0</x>
      <y>31</y>
-     <width>420</width>
-     <height>661</height>
+     <width>853</width>
+     <height>627</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout" >
+   <layout class="QHBoxLayout" name="horizontalLayout_5" >
     <item>
-     <layout class="QVBoxLayout" name="mainLayout" >
+     <layout class="QHBoxLayout" name="mainLayout" >
       <item>
-       <layout class="QHBoxLayout" name="configurationLayout" >
+       <layout class="QVBoxLayout" name="configurationLayout" >
+        <property name="sizeConstraint" >
+         <enum>QLayout::SetMaximumSize</enum>
+        </property>
         <item>
-         <layout class="QVBoxLayout" name="leftConfigurationLayout" >
+         <layout class="QHBoxLayout" name="storageLayout" >
+          <property name="sizeConstraint" >
+           <enum>QLayout::SetMaximumSize</enum>
+          </property>
           <item>
-           <layout class="QVBoxLayout" name="IndexregisterLayout" >
+           <layout class="QVBoxLayout" name="indexregisterLayout" >
             <item>
              <widget class="QLabel" name="labelIndexregister" >
               <property name="text" >
@@ -38,164 +44,198 @@
              </widget>
             </item>
             <item>
-             <widget class="QListWidget" name="listWidgetIndexregister" >
-              <property name="minimumSize" >
-               <size>
-                <width>0</width>
-                <height>310</height>
-               </size>
-              </property>
-             </widget>
+             <widget class="QListWidget" name="listWidgetIndexregister" />
             </item>
            </layout>
           </item>
           <item>
-           <layout class="QGridLayout" name="gridLayout" >
-            <item row="0" column="0" >
-             <widget class="QLabel" name="labelOperation" >
+           <layout class="QVBoxLayout" name="dataLayout" >
+            <item>
+             <widget class="QLabel" name="labelData" >
               <property name="text" >
-               <string>&lt;p align="right">&lt;b>Operation:&lt;/b>&lt;/p></string>
+               <string>&lt;b>Data&lt;b></string>
               </property>
              </widget>
             </item>
-            <item row="0" column="1" >
-             <widget class="QLabel" name="lblOperation" >
-              <property name="text" >
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2" >
-             <spacer name="horizontalSpacerOperation" >
-              <property name="orientation" >
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0" >
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item rowspan="2" row="1" column="0" >
-             <widget class="QLabel" name="labelAC" >
-              <property name="text" >
-               <string>&lt;p align="right">&lt;b>AC:&lt;/b>&lt;/p></string>
-              </property>
-             </widget>
-            </item>
-            <item rowspan="2" row="1" column="1" >
-             <widget class="QLabel" name="lblAC" >
-              <property name="text" >
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2" >
-             <spacer name="horizontalSpacerAC" >
-              <property name="orientation" >
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0" >
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item rowspan="2" row="2" column="2" >
-             <spacer name="horizontalSpacerPC" >
-              <property name="orientation" >
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0" >
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="3" column="0" >
-             <widget class="QLabel" name="labelPC" >
-              <property name="text" >
-               <string>&lt;p align="right">&lt;b>PC:&lt;/b>&lt;/p></string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1" >
-             <widget class="QLabel" name="lblPC" >
-              <property name="text" >
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0" >
-             <widget class="QLabel" name="labelSR" >
-              <property name="text" >
-               <string>&lt;p align="right">&lt;b>SR:&lt;/b>&lt;/p></string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="1" >
-             <widget class="QLabel" name="lblSR" >
-              <property name="text" >
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="2" >
-             <spacer name="horizontalSpacerSR" >
-              <property name="orientation" >
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0" >
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
+            <item>
+             <widget class="QListWidget" name="listWidgetData" />
             </item>
            </layout>
           </item>
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="rightConfigurationLayout" >
+         <layout class="QHBoxLayout" name="ioLayout" >
           <item>
-           <widget class="QLabel" name="labelData" >
-            <property name="text" >
-             <string>&lt;b>Data&lt;b></string>
+           <layout class="QVBoxLayout" name="inputstatusLayout" >
+            <item>
+             <layout class="QVBoxLayout" name="inputLayout" >
+              <item>
+               <widget class="QLabel" name="labelInput" >
+                <property name="font" >
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text" >
+                 <string>&lt;b>Eingabe&lt;/b></string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEditInput" />
+              </item>
+              <item>
+               <widget class="QListWidget" name="listWidgetInput" />
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QGridLayout" name="statusLayout" >
+              <item row="0" column="0" >
+               <widget class="QLabel" name="labelOperation" >
+                <property name="text" >
+                 <string>&lt;p align="right">&lt;b>Operation:&lt;/b>&lt;/p></string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1" >
+               <widget class="QLabel" name="lblOperation" >
+                <property name="text" >
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2" >
+               <spacer name="horizontalSpacerOperation" >
+                <property name="orientation" >
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0" >
+                 <size>
+                  <width>95</width>
+                  <height>17</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item rowspan="2" row="1" column="1" >
+               <widget class="QLabel" name="lblAC" >
+                <property name="text" >
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2" >
+               <spacer name="horizontalSpacerAC" >
+                <property name="orientation" >
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0" >
+                 <size>
+                  <width>95</width>
+                  <height>17</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="3" column="0" >
+               <widget class="QLabel" name="labelPC" >
+                <property name="text" >
+                 <string>&lt;p align="right">&lt;b>PC:&lt;/b>&lt;/p></string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1" >
+               <widget class="QLabel" name="lblPC" >
+                <property name="text" >
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item rowspan="2" row="2" column="2" >
+               <spacer name="horizontalSpacerPC" >
+                <property name="orientation" >
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0" >
+                 <size>
+                  <width>95</width>
+                  <height>21</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="4" column="0" >
+               <widget class="QLabel" name="labelSR" >
+                <property name="text" >
+                 <string>&lt;p align="right">&lt;b>SR:&lt;/b>&lt;/p></string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1" >
+               <widget class="QLabel" name="lblSR" >
+                <property name="text" >
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2" >
+               <spacer name="horizontalSpacerSR" >
+                <property name="orientation" >
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0" >
+                 <size>
+                  <width>95</width>
+                  <height>17</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item rowspan="2" row="1" column="0" >
+               <widget class="QLabel" name="labelAC" >
+                <property name="text" >
+                 <string>&lt;p align="right">&lt;b>AC:&lt;/b>&lt;/p></string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="outputLayout" >
+            <item>
+             <widget class="QLabel" name="labelOutput" >
+              <property name="text" >
+               <string>&lt;b>Ausgabeband&lt;/b></string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QListWidget" name="listWidgetOutput" />
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="controlLayout" >
+          <item>
+           <spacer name="horizontalSpacerControlLeft" >
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
             </property>
-           </widget>
+            <property name="sizeHint" stdset="0" >
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
-          <item>
-           <widget class="QListWidget" name="listWidgetData" />
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="controlLayout" >
-        <item>
-         <spacer name="horizontalSpacerControlLeft" >
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0" >
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="buttonLayout" >
           <item>
            <widget class="QToolButton" name="toolBtnPlay" >
             <property name="enabled" >
@@ -252,32 +292,49 @@
             </property>
            </widget>
           </item>
+          <item>
+           <spacer name="horizontalSpacerControlRight" >
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0" >
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
-        </item>
-        <item>
-         <spacer name="horizontalSpacerControlRight" >
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0" >
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </item>
       <item>
-       <widget class="QTextEdit" name="txtEditSourcecode" >
-        <property name="minimumSize" >
-         <size>
-          <width>0</width>
-          <height>150</height>
-         </size>
-        </property>
-       </widget>
+       <layout class="QVBoxLayout" name="sourcecodeLayout" >
+        <item>
+         <widget class="QLabel" name="labelSourcecode" >
+          <property name="text" >
+           <string>&lt;b>Quellcode&lt;/b></string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="txtEditSourcecode" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>350</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </item>
@@ -288,7 +345,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>420</width>
+     <width>853</width>
      <height>31</height>
     </rect>
    </property>
@@ -310,8 +367,8 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>692</y>
-     <width>420</width>
+     <y>658</y>
+     <width>853</width>
      <height>24</height>
     </rect>
    </property>
@@ -343,12 +400,16 @@
   </action>
  </widget>
  <tabstops>
+  <tabstop>listWidgetIndexregister</tabstop>
+  <tabstop>listWidgetData</tabstop>
+  <tabstop>lineEditInput</tabstop>
+  <tabstop>listWidgetInput</tabstop>
+  <tabstop>listWidgetOutput</tabstop>
+  <tabstop>txtEditSourcecode</tabstop>
   <tabstop>toolBtnPlay</tabstop>
   <tabstop>toolBtnNext</tabstop>
   <tabstop>toolBtnPause</tabstop>
   <tabstop>toolBtnStop</tabstop>
-  <tabstop>listWidgetIndexregister</tabstop>
-  <tabstop>listWidgetData</tabstop>
  </tabstops>
  <resources>
   <include location="../res/general.qrc" />

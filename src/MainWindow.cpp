@@ -13,13 +13,6 @@ MainWindow::MainWindow() : QMainWindow()
 
     this->resetConfiguration();
     
-    /* Editor einstellen (sollte man vielleicht im UI schon tun) */
-    QFont font;
-    font.setFamily("DejaVu Sans Mono");
-    font.setFixedPitch(true);
-    font.setPointSize(10);
-
-    this->txtEditSourcecode->setFont(font);
     this->highlighter = new Highlighter(this->txtEditSourcecode->document());
     
     this->sourcecodeEdited = false;

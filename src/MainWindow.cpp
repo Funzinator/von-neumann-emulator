@@ -23,7 +23,7 @@ MainWindow::MainWindow() : QMainWindow()
 
 void MainWindow::resetConfiguration()
 {
-    this->lblOperation->setText("");
+    this->lblOperation->setText(this->i ? this->i->getNextOperation(true) : "");
     this->lblAC->setText("0");
     this->lblPC->setText("0");
     this->lblSR->setText("0");
@@ -55,7 +55,6 @@ void MainWindow::showConfiguration(Configuration *config)
     this->lblAC->setText(tmp);
     this->lblPC->setNum((int)config->getPC()); /* caste nach int... vielleicht sollten wir den Typ generell ändern */
     this->lblSR->setNum((int)config->getSR());
-    this->lblOperation->setText(this->i->getNextOperation(true));
     
     for (int i = 0; i < Configuration::IndexRegisterCount; i++)
     {
@@ -132,6 +131,9 @@ void MainWindow::on_toolBtnStop_clicked()
 
     this->txtEditSourcecode->setReadOnly(false);
 
+    this->listWidgetOutput->clear();
+    this->on_txtEditSourcecode_textChanged();
+
     this->timerRun->stop();
 
     /* FIXME: alles zurücksetzen */    
@@ -190,25 +192,25 @@ void MainWindow::on_txtEditSourcecode_textChanged()
 {
     this->timerRun->stop();
 
-    this->toolBtnPause->setEnabled(false);
-    this->toolBtnPlay->setEnabled(true);
-    this->toolBtnStop->setEnabled(false);
-    this->toolBtnNext->setEnabled(true);
-    
-    this->resetConfiguration();
-
     if (this->parser == 0)
     {
         this->parser = new Parser;
     }
-    
+
     if (this->i)
     {
         delete this->i;
         this->i = 0;
     }
-    
+
+    this->toolBtnPause->setEnabled(false);
+    this->toolBtnPlay->setEnabled(true);
+    this->toolBtnStop->setEnabled(false);
+    this->toolBtnNext->setEnabled(true);
+
     this->i = new Interpreter(this->parser->Parse(this->txtEditSourcecode->toPlainText()), new Configuration(new GuiInterface(this, this->listWidgetInput, this->listWidgetOutput)));
+
+    this->resetConfiguration();
 }
 
 void MainWindow::on_lineEditInput_returnPressed()

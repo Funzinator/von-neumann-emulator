@@ -7,6 +7,7 @@
 #include <QRegExp>
 #include <QVector>
 #include <QString>
+#include <QStringList>
 #include <QFile>
 
 #include "RawOperation.h"
@@ -27,6 +28,7 @@ public:
     
     QMap<unsigned int,Operation *> Parse(QVector<QString>);
     QMap<unsigned int,Operation *> Parse(QFile *);
+    QMap<unsigned int,Operation *> Parse(QString);
 };
 
 #endif /*PARSER_H_*/

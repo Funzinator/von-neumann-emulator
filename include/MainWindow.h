@@ -28,9 +28,7 @@ private:
     Interpreter *i;
     Parser *parser;
     QFile *file;
-    
-    bool sourcecodeEdited;
-    
+
     Highlighter *highlighter;
 
 public:

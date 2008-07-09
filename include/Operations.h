@@ -46,5 +46,6 @@
 #include "STP.h"
 #include "UJP.h"
 #include "XOR.h"
+#include "PRIM.h"
 
 #endif /*OPERATIONS_H_*/

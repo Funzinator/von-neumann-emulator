@@ -7,6 +7,8 @@ class IndirectOperation : public IndexregisterOperation
 {
 public:
     IndirectOperation(RawOperation*);
+
+protected:
     StorageCell* BinaryToUnary(Configuration*);
     StorageCell* setP1(Configuration*);
 };

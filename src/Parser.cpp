@@ -230,12 +230,6 @@ QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
             {
                 op[rawOp->LineNumber] = new XOR(rawOp);
             }
-            else
-            {
-                op[rawOp->LineNumber] = new NOP(rawOp);
-                /* FIXME - wenn alle Befehle drin sind, kann das weg */
-                std::cout << "unbekannter Befehl '" << rawOp->Operator.toStdString() << "'" << std::endl;
-            }
         }
 
         delete rawOp;

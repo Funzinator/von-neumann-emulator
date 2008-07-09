@@ -49,7 +49,7 @@ void MainWindow::showConfiguration(Configuration *config)
             break;
 
         case StorageCell::Binary:
-            tmp.setNum(config->getAC()->getInt()); /* vielleicht umwandeln, dann aber bereits in StorageCell */
+            tmp = config->getAC()->getBinary();
             break;
     }
     this->lblAC->setText(tmp);
@@ -72,7 +72,7 @@ void MainWindow::showConfiguration(Configuration *config)
                     break;
     
                 case StorageCell::Binary:
-                    tmp.setNum(config->getIndexRegister(i)->getInt()); /* vielleicht umwandeln, dann aber bereits in StorageCell */
+                    tmp = config->getIndexRegister(i)->getBinary();
                     break;
                     
                 case StorageCell::Unused:

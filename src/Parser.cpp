@@ -250,3 +250,18 @@ QMap<unsigned int,Operation *> Parser::Parse(QFile *file)
 
     return this->Parse(input);
 }
+
+QMap<unsigned int,Operation *> Parser::Parse(QString plainText)
+{
+    QVector<QString> input;
+
+    QString tmp(plainText);
+    tmp.replace(QString("\r\n"), QString("\n")); /* Windows-Zeilenumbrüche */
+    QStringList list = tmp.split("\n", QString::SkipEmptyParts);
+    for (int i = 0; i < list.size(); i++)
+    {
+        input.append(list.at(i).toUtf8().constData());
+    }
+
+    return this->Parse(input);
+}

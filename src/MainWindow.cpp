@@ -19,8 +19,6 @@ MainWindow::MainWindow() : QMainWindow()
     this->resetConfiguration();
 
     this->highlighter = new Highlighter(this->txtEditSourcecode->document());
-
-    this->sourcecodeEdited = false;
 }
 
 void MainWindow::resetConfiguration()
@@ -173,10 +171,6 @@ void MainWindow::on_actionOpen_activated()
                                                     "Alle Dateien (*)");
     if (filename != "")
     {
-        if (this->parser == 0)
-        {
-            this->parser = new Parser;
-        }
         
         if (this->file != 0)
         {
@@ -184,32 +178,37 @@ void MainWindow::on_actionOpen_activated()
         }
         this->file = new QFile(filename);
 
-        if (this->i != 0)
-        {
-            delete this->i;
-            this->i = 0;
-        }
-        this->i = new Interpreter(this->parser->Parse(this->file), new Configuration(new GuiInterface(this, this->listWidgetInput, this->listWidgetOutput)));
-
-        this->toolBtnPlay->setEnabled(true);
-        this->toolBtnNext->setEnabled(true);
-        
         QFile file(filename);
         if (file.open(QFile::ReadOnly | QFile::Text))
         {
             this->txtEditSourcecode->setPlainText(file.readAll());
-            this->sourcecodeEdited = false;
         }
     }
 }
-#include <iostream>
+
 void MainWindow::on_txtEditSourcecode_textChanged()
 {
-    if (this->sourcecodeEdited == false)
+    this->timerRun->stop();
+
+    this->toolBtnPause->setEnabled(false);
+    this->toolBtnPlay->setEnabled(true);
+    this->toolBtnStop->setEnabled(false);
+    this->toolBtnNext->setEnabled(true);
+    
+    this->resetConfiguration();
+
+    if (this->parser == 0)
     {
-        this->sourcecodeEdited = true;
-        std::cout << this->txtEditSourcecode->toPlainText().toStdString() << std::endl;
+        this->parser = new Parser;
     }
+    
+    if (this->i)
+    {
+        delete this->i;
+        this->i = 0;
+    }
+    
+    this->i = new Interpreter(this->parser->Parse(this->txtEditSourcecode->toPlainText()), new Configuration(new GuiInterface(this, this->listWidgetInput, this->listWidgetOutput)));
 }
 
 void MainWindow::on_lineEditInput_returnPressed()

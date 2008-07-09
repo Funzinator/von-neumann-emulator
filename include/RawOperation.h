@@ -12,7 +12,5 @@ struct RawOperation
     QString Param2;
     QString Comment;
     bool indirect;
-    
-    void show();
 };
 #endif /*RAWOPERATION_H_*/

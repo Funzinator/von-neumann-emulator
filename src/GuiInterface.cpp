@@ -1,9 +1,11 @@
 #include "GuiInterface.h"
 
-GuiInterface::GuiInterface(QMainWindow *MainWindow) : CommunicationInterface()
+GuiInterface::GuiInterface(QMainWindow *MainWindow, QListWidget *listWidgetInput, QListWidget *listWidgetOutput) : CommunicationInterface()
 {
     this->MainWindow = MainWindow;
-    
+    this->listWidgetInput = listWidgetInput;
+    this->listWidgetOutput = listWidgetOutput; 
+
     QObject::connect(this, SIGNAL(stop(QString)), this->MainWindow, SLOT(stop(QString)));
     QObject::connect(this, SIGNAL(halt(QString)), this->MainWindow, SLOT(halt(QString)));
 }
@@ -30,50 +32,67 @@ void GuiInterface::sendSignal(unsigned char signal, QString message)
 
 void GuiInterface::sendString(QString message)
 {
-    /* wird später durch Ausgabeband ersetzt */
-    QMessageBox::information(this->MainWindow,
-                             "Ausgabe",
-                             message,
-                             QMessageBox::Ok);
+    this->listWidgetOutput->addItem(message);
 }
 
 int GuiInterface::receiveInteger()
 {
-    bool ok = false;
     int res;
-    
-    do
+
+    if (this->listWidgetInput->count())
     {
-        res = QInputDialog::getInteger(this->MainWindow,
-                                       "Eingabe",
-                                       "Integerwert:",
-                                       0,           /* Voreinstellung */
-                                       -2147483647, /* Minimum */
-                                       2147483647,  /* Maximum */
-                                       1,           /* Schrittweite */
-                                       &ok);
-    } while (ok == false);
-    
+        /* es befindet sich etwas auf dem Eingabeband */
+        res = this->listWidgetInput->item(0)->text().toInt();
+        delete this->listWidgetInput->takeItem(0);
+    }
+    else
+    {
+        /* Eingabeband ist leer, Benutzer muss gefragt werden */
+        bool ok = false;
+
+        do
+        {
+            res = QInputDialog::getInteger(this->MainWindow,
+                                           "Eingabe",
+                                           "Integerwert:",
+                                           0,           /* Voreinstellung */
+                                           -2147483647, /* Minimum */
+                                           2147483647,  /* Maximum */
+                                           1,           /* Schrittweite */
+                                           &ok);
+        } while (ok == false);
+    }
+
     return res;
 }
 
 double GuiInterface::receiveFloat()
 {
-    bool ok = false;
     double res;
-    
-    do
+
+    if (this->listWidgetInput->count())
     {
-        res = QInputDialog::getDouble(this->MainWindow,
-                                     "Eingabe",
-                                     "Integerwert:",
-                                     0,           /* Voreinstellung */
-                                     -2147483647, /* Minimum */
-                                     2147483647,  /* Maximum */
-                                     10,           /* Maximale Anzahl Nachkommastellen */
-                                     &ok);
-    } while (ok == false);
-    
+        /* es befindet sich etwas auf dem Eingabeband */
+        res = this->listWidgetInput->item(0)->text().toDouble();
+        delete this->listWidgetInput->takeItem(0);
+    }
+    else
+    {
+        bool ok = false;
+        
+        do
+        {
+            res = QInputDialog::getDouble(this->MainWindow,
+                                          "Eingabe",
+                                          "Doublewert:",
+                                          0,           /* Voreinstellung */
+                                          -2147483647, /* Minimum */
+                                          2147483647,  /* Maximum */
+                                          10,           /* Maximale Anzahl Nachkommastellen */
+                                          &ok);
+        } while (ok == false);
+    }
+
     return res;
 }
 

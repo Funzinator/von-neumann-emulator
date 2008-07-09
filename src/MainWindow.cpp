@@ -7,14 +7,19 @@ MainWindow::MainWindow() : QMainWindow()
     this->i = 0;
     this->parser = 0;
     this->file = 0;
-    
+
     this->timerRun = new QTimer(this);
     connect(this->timerRun, SIGNAL(timeout()), this, SLOT(timerNextStep()));
 
+    /* Nur Zahlen (Integer und Float) für lineEditInput zulassen */ 
+    QRegExp inputRegExp("-?([0-9]+|[0-9]*\\.[0-9]*)");
+    QValidator *inputValidator = new QRegExpValidator(inputRegExp, this);
+    this->lineEditInput->setValidator(inputValidator); 
+
     this->resetConfiguration();
-    
+
     this->highlighter = new Highlighter(this->txtEditSourcecode->document());
-    
+
     this->sourcecodeEdited = false;
 }
 
@@ -27,6 +32,9 @@ void MainWindow::resetConfiguration()
 
     this->listWidgetData->clear();
     this->listWidgetIndexregister->clear();
+    this->listWidgetInput->clear();
+    this->listWidgetOutput->clear();
+    this->lineEditInput->clear();
 }
 
 void MainWindow::showConfiguration(Configuration *config)
@@ -145,16 +153,17 @@ void MainWindow::stop(QString message)
 {
     this->timerRun->stop();
     
-    QMessageBox::information(this,
-                             "Programm terminierte ohne Fehler",
-                             message,
-                             QMessageBox::Ok);
+    this->listWidgetOutput->addItem(QString("System stopped%1").arg((message.length() ? QString(": %1").arg(message) : ".")));
 }
 
 void MainWindow::halt(QString message)
 {
+    this->timerRun->stop();
+
+    this->listWidgetOutput->addItem(QString("System halted%1").arg((message.length() ? QString(": %1").arg(message) : ".")));
+
     QMessageBox::critical(this,
-                          "Programm terminierte mit Fehler",
+                          "Programmabbruch",
                           message,
                           QMessageBox::Ok);
 }
@@ -183,7 +192,7 @@ void MainWindow::on_actionOpen_activated()
             delete this->i;
             this->i = 0;
         }
-        this->i = new Interpreter(this->parser->Parse(this->file), new Configuration(new GuiInterface(this)));
+        this->i = new Interpreter(this->parser->Parse(this->file), new Configuration(new GuiInterface(this, this->listWidgetInput, this->listWidgetOutput)));
 
         this->toolBtnPlay->setEnabled(true);
         this->toolBtnNext->setEnabled(true);
@@ -203,5 +212,14 @@ void MainWindow::on_txtEditSourcecode_textChanged()
     {
         this->sourcecodeEdited = true;
         std::cout << this->txtEditSourcecode->toPlainText().toStdString() << std::endl;
+    }
+}
+
+void MainWindow::on_lineEditInput_returnPressed()
+{
+    if (this->lineEditInput->hasAcceptableInput())
+    {
+        this->listWidgetInput->addItem(this->lineEditInput->text());
+        this->lineEditInput->clear();
     }
 }

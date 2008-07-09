@@ -6,6 +6,8 @@
 #include <QFileDialog>
 #include <QTimer>
 #include <QString>
+#include <QValidator>
+#include <QMessageBox>
 #include "ui_MainWindow.h"
 
 #include "Interpreter.h"
@@ -33,7 +35,7 @@ private:
 
 public:
     MainWindow();
-    
+
 public slots:
     void on_toolBtnNext_clicked();
     void on_toolBtnPause_clicked();
@@ -41,6 +43,7 @@ public slots:
     void on_toolBtnStop_clicked();
     void on_actionOpen_activated();
     void on_txtEditSourcecode_textChanged();
+    void on_lineEditInput_returnPressed();
     
     void timerNextStep();
     

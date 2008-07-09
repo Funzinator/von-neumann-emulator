@@ -1,7 +1,6 @@
 #ifndef RAWOPERATION_H_
 #define RAWOPERATION_H_
 
-#include <iostream>
 #include <QString>
 
 struct RawOperation

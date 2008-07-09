@@ -230,6 +230,10 @@ QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
             {
                 op[rawOp->LineNumber] = new XOR(rawOp);
             }
+            else if (rawOp->Operator == "PRIM")
+            {
+                op[rawOp->LineNumber] = new PRIM(rawOp);
+            }
         }
 
         delete rawOp;

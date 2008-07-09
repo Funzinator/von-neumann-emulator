@@ -2,7 +2,7 @@
 #define GUIINTERFACE_H_
 
 #include <QMainWindow>
-#include <QMessageBox>
+#include <QListWidget>
 #include <QInputDialog>
 #include <QString>
 
@@ -14,9 +14,11 @@ class GuiInterface : public CommunicationInterface
 
 private:
     QMainWindow *MainWindow;
+    QListWidget *listWidgetInput;
+    QListWidget *listWidgetOutput;
 
 public:
-    GuiInterface(QMainWindow *);
+    GuiInterface(QMainWindow *, QListWidget*, QListWidget *);
     
     void sendSignal(unsigned char);
     void sendSignal(unsigned char, QString);

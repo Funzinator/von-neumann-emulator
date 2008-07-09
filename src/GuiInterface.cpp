@@ -100,7 +100,38 @@ double GuiInterface::receiveFloat()
     return res;
 }
 
-int GuiInterface::receiveBinary()
+QString GuiInterface::receiveBinary()
 {
-    return this->receiveInteger(); /* vielleicht mal ändern */
+    QString res;
+    int resInt; //FIXME: doof
+
+    if (this->listWidgetInput->count())
+    {
+        /* es befindet sich etwas auf dem Eingabeband */
+
+        QListWidgetItem *item = this->listWidgetInput->takeItem(0); 
+        res = item->text();
+        delete item;
+    }
+    else
+    {
+        /* Eingabeband ist leer, Benutzer muss gefragt werden */
+        bool ok = false;
+
+        do
+        {
+            resInt = QInputDialog::getInteger(this->MainWindow,
+                                           "Eingabe",
+                                           "Integerwert:",
+                                           0,           /* Voreinstellung */
+                                           -2147483647, /* Minimum */
+                                           2147483647,  /* Maximum */
+                                           1,           /* Schrittweite */
+                                           &ok);
+        } while (ok == false);
+        res.setNum(resInt); //FIXME:Das ist nicht schön, sollte aber laufen
+    }
+
+    return res;
+
 }

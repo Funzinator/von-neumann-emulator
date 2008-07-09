@@ -14,12 +14,8 @@ void ADI::run(Configuration *c)
     //  .... Float .....
     switch(c->getAC()->getType())
     {
-	case StorageCell::Binary:
-	    c->getIndexRegister(p1->getInt())->setBinary(\
-		    c->getAC()->getBinary() + \
-		    c->getIndexRegister(p1->getInt())->getBinary()\
-		    ); 
-	    break;
+        case StorageCell::Binary:
+
 	case StorageCell::Integer:
 	    c->getIndexRegister(p1->getInt())->setInt(\
 		    c->getAC()->getInt() + \

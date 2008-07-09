@@ -15,9 +15,7 @@ void SBI::run(Configuration *c)
     switch(c->getAC()->getType())
     {
 	case StorageCell::Binary:
-	    c->getIndexRegister(p1->getInt())->setBinary(\
-		    c->getIndexRegister(p1->getInt())->getBinary() - c->getAC()->getBinary()); 
-	    break;
+
 	case StorageCell::Integer:
 	    c->getIndexRegister(p1->getInt())->setInt(\
 		    c->getIndexRegister(p1->getInt())->getInt() - c->getAC()->getInt()); 

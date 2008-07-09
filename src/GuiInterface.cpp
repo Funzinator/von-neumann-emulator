@@ -124,12 +124,12 @@ QString GuiInterface::receiveBinary()
                                            "Eingabe",
                                            "Integerwert:",
                                            0,           /* Voreinstellung */
-                                           -2147483647, /* Minimum */
+                                           0, /* Minimum */
                                            2147483647,  /* Maximum */
                                            1,           /* Schrittweite */
                                            &ok);
         } while (ok == false);
-        res.setNum(resInt); //FIXME:Das ist nicht schön, sollte aber laufen
+        res.setNum(resInt, 2); //FIXME:Das ist nicht schön, sollte aber laufen
     }
 
     return res;

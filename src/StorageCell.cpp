@@ -6,8 +6,15 @@ StorageCell::StorageCell()
     this->type = StorageCell::Unused;
 }
 
-void StorageCell::setBinary(int i)
+void StorageCell::setBinary(QString s)
 {
+    // Eingabe ist s="101010", gespeichert wird values.i = 42
+    int i=0;
+    int w=1;
+    for (int bit=s.size()-1; bit>=0 ; bit--){
+        i+= QString(1,s[bit]).toInt() *w;
+        w*=2;
+    }
     this->values.i = i;
     this->type = StorageCell::Binary;
 }
@@ -24,9 +31,11 @@ void StorageCell::setFloat(double f)
     this->type = StorageCell::Float;
 }
 
-int StorageCell::getBinary()
+QString StorageCell::getBinary()
 {
-    return this->values.i;
+    QString bin;
+    bin.setNum(this->values.i,2);
+    return bin;
 }
 
 int StorageCell::getInt()

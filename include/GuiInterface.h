@@ -25,7 +25,7 @@ public:
     void sendString(QString);
     int receiveInteger();
     double receiveFloat();
-    int receiveBinary();
+    QString receiveBinary();
     
 signals:
     void halt(QString);

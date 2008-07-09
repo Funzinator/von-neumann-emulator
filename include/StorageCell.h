@@ -1,6 +1,8 @@
 #ifndef STORAGECELL_H_
 #define STORAGECELL_H_
 
+#include<QString>
+
 #include "Storage.h"
 
 class StorageCell
@@ -16,11 +18,11 @@ public:
 
     StorageCell();
 
-    void setBinary(int);
+    void setBinary(QString);
     void setInt(int);
     void setFloat(double);
 
-    int getBinary();
+    QString getBinary();
     int getInt();
     double getFloat();
     unsigned char getType();

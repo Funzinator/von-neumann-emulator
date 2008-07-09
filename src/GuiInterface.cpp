@@ -42,8 +42,10 @@ int GuiInterface::receiveInteger()
     if (this->listWidgetInput->count())
     {
         /* es befindet sich etwas auf dem Eingabeband */
-        res = this->listWidgetInput->item(0)->text().toInt();
-        delete this->listWidgetInput->takeItem(0);
+
+        QListWidgetItem *item = this->listWidgetInput->takeItem(0); 
+        res = item->text().toInt();
+        delete item;
     }
     else
     {
@@ -73,8 +75,10 @@ double GuiInterface::receiveFloat()
     if (this->listWidgetInput->count())
     {
         /* es befindet sich etwas auf dem Eingabeband */
-        res = this->listWidgetInput->item(0)->text().toDouble();
-        delete this->listWidgetInput->takeItem(0);
+
+        QListWidgetItem *item = this->listWidgetInput->takeItem(0); 
+        res = item->text().toDouble();
+        delete item;
     }
     else
     {

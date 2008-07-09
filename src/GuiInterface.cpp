@@ -103,7 +103,6 @@ double GuiInterface::receiveFloat()
 QString GuiInterface::receiveBinary()
 {
     QString res;
-    int resInt; //FIXME: doof
 
     if (this->listWidgetInput->count())
     {
@@ -120,16 +119,13 @@ QString GuiInterface::receiveBinary()
 
         do
         {
-            resInt = QInputDialog::getInteger(this->MainWindow,
+            res = QInputDialog::getText(this->MainWindow,
                                            "Eingabe",
-                                           "Integerwert:",
-                                           0,           /* Voreinstellung */
-                                           0, /* Minimum */
-                                           2147483647,  /* Maximum */
-                                           1,           /* Schrittweite */
+                                           "Binärwert:",
+                                           QLineEdit::Normal, /*EchoMode*/
+                                           "0", /*Voreinstellung*/
                                            &ok);
         } while (ok == false);
-        res.setNum(resInt, 2); //FIXME:Das ist nicht schön, sollte aber laufen
     }
 
     return res;

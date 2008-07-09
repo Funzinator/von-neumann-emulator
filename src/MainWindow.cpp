@@ -32,9 +32,6 @@ void MainWindow::resetConfiguration()
 
     this->listWidgetData->clear();
     this->listWidgetIndexregister->clear();
-    this->listWidgetInput->clear();
-    this->listWidgetOutput->clear();
-    this->lineEditInput->clear();
 }
 
 void MainWindow::showConfiguration(Configuration *config)

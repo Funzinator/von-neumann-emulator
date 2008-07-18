@@ -68,7 +68,18 @@ void MainWindow::showConfiguration(Configuration *config)
     QVector<unsigned int> usedSlots = config->getUsedData();
     for (int i = 0; i < usedSlots.size(); i++)
     {
-        this->listWidgetData->addItem(QString("%1: %2").arg(usedSlots[i]).arg(config->getData(usedSlots[i])->getInt()));
+        switch(config->getData(usedSlots[i])->getType())
+        {
+            case StorageCell::Integer:
+                this->listWidgetData->addItem(QString("%1: %2").arg(usedSlots[i]).arg(config->getData(usedSlots[i])->getInt()));
+                break;
+            case StorageCell::Float:
+                this->listWidgetData->addItem(QString("%1: %2").arg(usedSlots[i]).arg(config->getData(usedSlots[i])->getFloat()));
+                break;
+            case StorageCell::Binary:
+                this->listWidgetData->addItem(tmp.setNum(usedSlots[i])+": " +config->getData(usedSlots[i])->getBinary());
+                break;
+        }
     }
 }
 

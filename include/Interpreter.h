@@ -14,7 +14,7 @@ private:
     
 public:
     Interpreter(QMap<unsigned int, Operation *>, Configuration*);
-    void next();
+    bool next();
     Configuration *getConfiguration();
     QString getNextOperation(bool);
 };

@@ -87,8 +87,7 @@ void MainWindow::on_toolBtnNext_clicked()
 {
     this->toolBtnStop->setEnabled(true);
     
-    this->i->next();
-    this->showConfiguration(this->i->getConfiguration());
+    timerNextStep();
 }
 
 void MainWindow::on_toolBtnPause_clicked()
@@ -135,7 +134,8 @@ void MainWindow::on_toolBtnStop_clicked()
 
 void MainWindow::timerNextStep()
 {
-    this->i->next();
+    if (!(this->i->next()))
+        halt("STP or HLT expected.");
     this->showConfiguration(this->i->getConfiguration());  
 }
 
@@ -146,6 +146,9 @@ void MainWindow::stop(QString message)
     this->listWidgetOutput->addItem(QString("System stopped%1").arg((message.length() ? QString(": %1").arg(message) : ".")));
 
     this->toolBtnPause->setEnabled(false);
+    this->toolBtnPlay->setEnabled(false);
+    this->toolBtnStop->setEnabled(true);
+    this->toolBtnNext->setEnabled(false);
 
     this->txtEditSourcecode->setReadOnly(false);
 }
@@ -162,6 +165,9 @@ void MainWindow::halt(QString message)
                           QMessageBox::Ok);
 
     this->toolBtnPause->setEnabled(false);
+    this->toolBtnPlay->setEnabled(false);
+    this->toolBtnStop->setEnabled(true);
+    this->toolBtnNext->setEnabled(false);
 
     this->txtEditSourcecode->setReadOnly(false);
 }

@@ -118,7 +118,7 @@ QString GuiInterface::receiveBinary()
         bool ok = false;
 
         do
-        {
+        { /*FIXME: hier soll der Benutzer nur Worte aus {0,1}+ eingeben*/
             res = QInputDialog::getText(this->MainWindow,
                                            "Eingabe",
                                            "Binärwert:",

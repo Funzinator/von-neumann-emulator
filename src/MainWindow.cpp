@@ -181,6 +181,43 @@ void MainWindow::on_actionOpen_activated()
     }
 }
 
+void MainWindow::on_actionSave_activated()
+{
+    if (this->file != 0)
+    {
+        QFile file(this->file->fileName());
+        if (file.open(QFile::WriteOnly | QFile::Text))
+        {
+            QTextStream ts(&file);
+            ts << this->txtEditSourcecode->toPlainText();
+        }
+    }
+}
+
+void MainWindow::on_actionSaveAs_activated()
+{
+    QString filename = QFileDialog::getSaveFileName(this,
+                                                    "von-Neumann-Programm speichern",
+                                                    "",
+                                                    "Alle Dateien (*)");
+    if (filename != "")
+    {
+        
+        if (this->file != 0)
+        {
+            delete this->file;
+        }
+        this->file = new QFile(filename);
+
+        QFile file(filename);
+        if (file.open(QFile::WriteOnly | QFile::Text))
+        {
+            QTextStream ts(&file);
+            ts << this->txtEditSourcecode->toPlainText();
+        }
+    }
+}
+
 void MainWindow::on_txtEditSourcecode_textChanged()
 {
     this->timerRun->stop();

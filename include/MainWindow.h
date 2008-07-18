@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QFile>
+#include <QTextStream>
 #include <QFileDialog>
 #include <QTimer>
 #include <QString>
@@ -40,6 +41,8 @@ public slots:
     void on_toolBtnPlay_clicked();
     void on_toolBtnStop_clicked();
     void on_actionOpen_activated();
+    void on_actionSave_activated();
+    void on_actionSaveAs_activated();
     void on_txtEditSourcecode_textChanged();
     void on_lineEditInput_returnPressed();
     

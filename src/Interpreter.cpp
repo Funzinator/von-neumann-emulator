@@ -6,14 +6,16 @@ Interpreter::Interpreter(QMap<unsigned int, Operation *> ops, Configuration *con
     this->ops = ops;
 }
 
-void Interpreter::next()
+bool Interpreter::next()
 {
     unsigned int PC = this->config->getPC();
     
     if (this->ops[PC])
     {
         this->ops[PC]->run(this->config);
+        return true;
     }
+    return false;
 }
 
 Configuration *Interpreter::getConfiguration()

@@ -58,27 +58,9 @@ void MainWindow::showConfiguration(Configuration *config)
     
     for (int i = 0; i < Configuration::IndexRegisterCount; i++)
     {
-        if (config->getIndexRegister(i) != 0)
+        if (config->getIndexRegister(i)->getType() != StorageCell::Unused)
         {
-            switch(config->getIndexRegister(i)->getType())
-            {
-                /* FIXME: Typen setzen */
-                case StorageCell::Integer:
-                    tmp.setNum(config->getIndexRegister(i)->getInt());
-                    break;
-    
-                case StorageCell::Float:
-                    tmp.setNum(config->getIndexRegister(i)->getFloat()); /* FIXME: testen */
-                    break;
-    
-                case StorageCell::Binary:
-                    tmp = config->getIndexRegister(i)->getBinary();
-                    break;
-                    
-                case StorageCell::Unused:
-                    tmp = "NULL";
-                    break;
-            }
+            tmp.setNum(config->getIndexRegister(i)->getInt());
             this->listWidgetIndexregister->addItem(QString("%1: %2").arg(i).arg(tmp));
         }
     }

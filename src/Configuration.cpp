@@ -2,7 +2,7 @@
 
 Configuration::Configuration(CommunicationInterface *Interface)
 {
-	this->IndexRegister.resize(Configuration::IndexRegisterCount);
+    this->IndexRegister.resize(Configuration::IndexRegisterCount);
 
     this->AC = new StorageCell;
     this->PC = 0;

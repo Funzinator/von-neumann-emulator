@@ -144,6 +144,10 @@ void MainWindow::stop(QString message)
     this->timerRun->stop();
     
     this->listWidgetOutput->addItem(QString("System stopped%1").arg((message.length() ? QString(": %1").arg(message) : ".")));
+
+    this->toolBtnPause->setEnabled(false);
+
+    this->txtEditSourcecode->setReadOnly(false);
 }
 
 void MainWindow::halt(QString message)
@@ -156,6 +160,10 @@ void MainWindow::halt(QString message)
                           "Programmabbruch",
                           message,
                           QMessageBox::Ok);
+
+    this->toolBtnPause->setEnabled(false);
+
+    this->txtEditSourcecode->setReadOnly(false);
 }
 
 void MainWindow::on_actionOpen_activated()

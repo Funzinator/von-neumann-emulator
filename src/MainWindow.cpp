@@ -272,10 +272,17 @@ void MainWindow::on_toolBtnNumber_clicked()
     tmp.replace(QString("\r\n"), QString("\n")); /* Windows-Zeilenumbrüche */
     QStringList list = tmp.split("\n", QString::SkipEmptyParts);
     QString line,out;
+    int comments=0;
     for (int i=0; i<list.size(); i++)
     {
         line=list.at(i);
-        out+=tmp.setNum(i)+": "+line.remove(QRegExp("^\\s*[0-9]+\\s*:\\s*"));
+        if (!(line.contains(QRegExp("^\\s*\\{"))))
+            out+=tmp.setNum(i-comments)+": "+line.remove(QRegExp("^\\s*[0-9]+\\s*:\\s*"));
+        else
+        { 
+            out+=line;
+            comments++;
+        }
         out+="\n";
     }
     this->txtEditSourcecode->setPlainText(out);

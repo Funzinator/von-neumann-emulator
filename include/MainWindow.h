@@ -45,7 +45,8 @@ public slots:
     void on_actionSaveAs_activated();
     void on_txtEditSourcecode_textChanged();
     void on_lineEditInput_returnPressed();
-    
+    void on_toolBtnNumber_clicked();
+
     void timerNextStep();
     
     void stop(QString);

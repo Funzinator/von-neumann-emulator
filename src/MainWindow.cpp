@@ -265,3 +265,18 @@ void MainWindow::on_lineEditInput_returnPressed()
         this->lineEditInput->clear();
     }
 }
+
+void MainWindow::on_toolBtnNumber_clicked()
+{
+    QString tmp(this->txtEditSourcecode->toPlainText());
+    tmp.replace(QString("\r\n"), QString("\n")); /* Windows-Zeilenumbrüche */
+    QStringList list = tmp.split("\n", QString::SkipEmptyParts);
+    QString line,out;
+    for (int i=0; i<list.size(); i++)
+    {
+        line=list.at(i);
+        out+=tmp.setNum(i)+": "+line.remove(QRegExp("^\\s*[0-9]+\\s*:\\s*"));
+        out+="\n";
+    }
+    this->txtEditSourcecode->setPlainText(out);
+}

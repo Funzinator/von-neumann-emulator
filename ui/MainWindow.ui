@@ -16,9 +16,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>31</y>
+     <y>28</y>
      <width>853</width>
-     <height>627</height>
+     <height>633</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_5" >
@@ -305,6 +305,13 @@
             </property>
            </spacer>
           </item>
+          <item>
+           <widget class="QToolButton" name="toolBtnNumber" >
+            <property name="text" >
+             <string>0:</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
        </layout>
@@ -352,7 +359,7 @@
      <x>0</x>
      <y>0</y>
      <width>853</width>
-     <height>31</height>
+     <height>28</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuDatei" >
@@ -373,9 +380,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>658</y>
+     <y>661</y>
      <width>853</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

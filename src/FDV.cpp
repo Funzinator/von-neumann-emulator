@@ -2,21 +2,22 @@
 
 FDV::FDV(RawOperation *rawOp) : FloatOperation(rawOp)
 {
-    /*nichts zu tun*/
+    /* nichts zu tun */
 }
 
 void FDV::run(Configuration *c)
 {
-    StorageCell *p1=setP1(c);  // in p1 steht nun der "echte" Wert.
-    if (c->getData(p1->getInt())->getFloat() != 0 )
+    StorageCell *p1 = this->setP1(c);
+
+    if (c->getData(p1->getInt())->getFloat())
     {
-        c->getAC()->setFloat(
-            c->getAC()->getFloat()
-            / c->getData(p1->getInt())->getFloat());
-    } else
-    {
-        c->getInterface()->sendSignal(CommunicationInterface::HLT, "Division durch Null");
+        c->getAC()->setFloat(c->getAC()->getFloat() / c->getData(p1->getInt())->getFloat());
+        c->setPC(c->getPC() + 1);
     }
-    c->setPC(c->getPC() + 1);
+    else
+    {
+        c->getInterface()->sendSignal(CommunicationInterface::HLT, "division by zero");
+    }
+
     delete p1;
 }

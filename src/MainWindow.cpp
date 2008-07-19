@@ -134,8 +134,9 @@ void MainWindow::on_toolBtnStop_clicked()
 
 void MainWindow::timerNextStep()
 {
+    QString tmp;
     if (!(this->i->next()))
-        halt("STP or HLT expected.");
+        halt("Error at line "+ tmp.setNum(this->i->getConfiguration()->getPC()) + ".");
     this->showConfiguration(this->i->getConfiguration());  
 }
 
@@ -170,6 +171,13 @@ void MainWindow::halt(QString message)
     this->toolBtnNext->setEnabled(false);
 
     this->txtEditSourcecode->setReadOnly(false);
+}
+
+void MainWindow::on_actionNew_activated()
+{
+    this->txtEditSourcecode->setPlainText("");
+    this->listWidgetOutput->clear();
+    this->listWidgetInput->clear();
 }
 
 void MainWindow::on_actionOpen_activated()
@@ -286,4 +294,14 @@ void MainWindow::on_toolBtnNumber_clicked()
         out+="\n";
     }
     this->txtEditSourcecode->setPlainText(out);
+}
+
+void MainWindow::on_toolBtnClearInput_clicked()
+{
+    this->listWidgetInput->clear();
+}
+
+void MainWindow::on_toolBtnOpenInput_clicked()
+{
+
 }

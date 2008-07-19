@@ -84,7 +84,25 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEditInput" />
+               <layout class="QHBoxLayout" name="InputCrtlLayout" >
+                <item>
+                 <widget class="QLineEdit" name="lineEditInput" />
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolBtnOpenInput" >
+                  <property name="text" >
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolBtnClearInput" >
+                  <property name="text" >
+                   <string>Löschen</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
                <widget class="QListWidget" name="listWidgetInput" />

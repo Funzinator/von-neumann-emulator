@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QListWidget>
 #include <QInputDialog>
-#include <QString>
 
 #include "CommunicationInterface.h"
 
@@ -19,7 +18,7 @@ private:
 
 public:
     GuiInterface(QMainWindow *, QListWidget*, QListWidget *);
-    
+
     void sendSignal(unsigned char);
     void sendSignal(unsigned char, QString);
     void sendString(QString);

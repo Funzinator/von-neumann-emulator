@@ -10,7 +10,6 @@
 #include <QStringList>
 #include <QFile>
 
-#include "RawOperation.h"
 #include "Operations.h"
 
 class Parser

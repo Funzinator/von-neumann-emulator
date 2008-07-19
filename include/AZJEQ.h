@@ -1,7 +1,6 @@
 #ifndef AZJEQ_H_
 #define AZJEQ_H_
 
-#include "RawOperation.h"
 #include "CompareOperation.h"
 
 class AZJEQ : public CompareOperation

@@ -1,7 +1,6 @@
 #ifndef SBI_H_
 #define SBI_H_
 
-#include "RawOperation.h"
 #include "IndexregisterOperation.h"
 
 class SBI : public IndexregisterOperation

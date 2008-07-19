@@ -1,7 +1,6 @@
 #ifndef ENAR_H_
 #define ENAR_H_
 
-#include "RawOperation.h"
 #include "UnaryOperation.h"
 
 class ENAR : public UnaryOperation

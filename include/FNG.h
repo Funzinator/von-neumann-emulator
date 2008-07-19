@@ -1,7 +1,6 @@
 #ifndef FNG_H_
 #define FNG_H_
 
-#include "RawOperation.h"
 #include "NegateOperation.h"
 
 class FNG : public NegateOperation

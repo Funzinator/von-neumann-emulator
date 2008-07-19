@@ -37,6 +37,7 @@
 #include "OUB.h"
 #include "OUI.h"
 #include "OUR.h"
+#include "PRIM.h"
 #include "RIN.h"
 #include "SBA.h"
 #include "SBI.h"
@@ -46,6 +47,5 @@
 #include "STP.h"
 #include "UJP.h"
 #include "XOR.h"
-#include "PRIM.h"
 
 #endif /*OPERATIONS_H_*/

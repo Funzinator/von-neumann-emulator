@@ -1,7 +1,7 @@
 #ifndef STORAGECELL_H_
 #define STORAGECELL_H_
 
-#include<QString>
+#include <QString>
 
 #include "Storage.h"
 

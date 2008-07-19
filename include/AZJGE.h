@@ -1,7 +1,6 @@
 #ifndef AZJGE_H_
 #define AZJGE_H_
 
-#include "RawOperation.h"
 #include "CompareOperation.h"
 
 class AZJGE : public CompareOperation

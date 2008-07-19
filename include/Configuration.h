@@ -21,6 +21,7 @@ public:
     static const unsigned short int IndexRegisterCount = 16;
     
     Configuration(CommunicationInterface *);
+    ~Configuration();
 
     StorageCell* getAC();
     unsigned int getPC();

@@ -5,10 +5,16 @@ Configuration::Configuration(CommunicationInterface *Interface)
     this->IndexRegister.resize(Configuration::IndexRegisterCount);
 
     this->AC = new StorageCell;
+
     this->PC = 0;
     this->SR = 0;
 
     this->Interface = Interface;
+}
+
+Configuration::~Configuration()
+{
+    delete this->AC;
 }
 
 StorageCell* Configuration::getAC()
@@ -38,13 +44,13 @@ StorageCell* Configuration::getData(unsigned int x)
 
 StorageCell* Configuration::getIndexRegister(unsigned int x)
 {
-	if (x < (unsigned int) this->IndexRegister.size())
+	if (x < Configuration::IndexRegisterCount)
 	{
 		if (this->IndexRegister[x] == 0)
 		{
 			this->IndexRegister[x] = new StorageCell;
 		}
-		
+
 		return this->IndexRegister[x];
 	}
 	else
@@ -66,13 +72,14 @@ void Configuration::setSR(unsigned int i)
 QVector<unsigned int> Configuration::getUsedData()
 {
     QVector<unsigned int> res;
-    
     QMapIterator<unsigned int, StorageCell *> j(this->Data);
+
     while (j.hasNext())
     {
         j.next();
         res.append(j.key());
     }
+
     return res;
 }
 

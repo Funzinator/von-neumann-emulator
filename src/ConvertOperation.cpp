@@ -2,4 +2,5 @@
 
 ConvertOperation::ConvertOperation(RawOperation *rawOp) : NullaryOperation(rawOp)
 {
+    /* nichts zu tun */
 }

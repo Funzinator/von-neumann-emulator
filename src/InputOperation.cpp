@@ -2,4 +2,5 @@
 
 InputOperation::InputOperation(RawOperation *rawOp) : NullaryOperation(rawOp)
 {
+    /* nichts zu tun */
 }

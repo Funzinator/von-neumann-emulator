@@ -29,7 +29,7 @@ Highlighter::Highlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
     highlightingRules.append(rule);
 
     /* Float-Zahlen */
-    classFormat.setForeground(Qt::darkGreen); // gleiche Farbe, wie Integer... könnte man aber ändern
+    classFormat.setForeground(Qt::darkGreen);
     classFormat.setFontItalic(false);
     classFormat.setFontWeight(QFont::Normal);
     rule.pattern = QRegExp("-?([0-9]*\\.[0-9]*)");
@@ -59,6 +59,7 @@ void Highlighter::highlightBlock(const QString &text)
     {
         QRegExp expression(rule.pattern);
         int index = text.indexOf(expression);
+
         while (index >= 0)
         {
             int length = expression.matchedLength();

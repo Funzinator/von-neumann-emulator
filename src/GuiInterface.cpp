@@ -6,8 +6,8 @@ GuiInterface::GuiInterface(QMainWindow *MainWindow, QListWidget *listWidgetInput
     this->listWidgetInput = listWidgetInput;
     this->listWidgetOutput = listWidgetOutput; 
 
-    QObject::connect(this, SIGNAL(stop(QString)), this->MainWindow, SLOT(stop(QString)));
-    QObject::connect(this, SIGNAL(halt(QString)), this->MainWindow, SLOT(halt(QString)));
+    connect(this, SIGNAL(stop(QString)), this->MainWindow, SLOT(stop(QString)));
+    connect(this, SIGNAL(halt(QString)), this->MainWindow, SLOT(halt(QString)));
 }
 
 void GuiInterface::sendSignal(unsigned char signal)
@@ -41,15 +41,12 @@ int GuiInterface::receiveInteger()
 
     if (this->listWidgetInput->count())
     {
-        /* es befindet sich etwas auf dem Eingabeband */
-
         QListWidgetItem *item = this->listWidgetInput->takeItem(0); 
         res = item->text().toInt();
         delete item;
     }
     else
     {
-        /* Eingabeband ist leer, Benutzer muss gefragt werden */
         bool ok = false;
 
         do
@@ -74,8 +71,6 @@ double GuiInterface::receiveFloat()
 
     if (this->listWidgetInput->count())
     {
-        /* es befindet sich etwas auf dem Eingabeband */
-
         QListWidgetItem *item = this->listWidgetInput->takeItem(0); 
         res = item->text().toDouble();
         delete item;
@@ -89,9 +84,9 @@ double GuiInterface::receiveFloat()
             res = QInputDialog::getDouble(this->MainWindow,
                                           "Eingabe",
                                           "Doublewert:",
-                                          0,           /* Voreinstellung */
-                                          -2147483647, /* Minimum */
-                                          2147483647,  /* Maximum */
+                                          0,            /* Voreinstellung */
+                                          -2147483647,  /* Minimum */
+                                          2147483647,   /* Maximum */
                                           10,           /* Maximale Anzahl Nachkommastellen */
                                           &ok);
         } while (ok == false);
@@ -106,28 +101,24 @@ QString GuiInterface::receiveBinary()
 
     if (this->listWidgetInput->count())
     {
-        /* es befindet sich etwas auf dem Eingabeband */
-
         QListWidgetItem *item = this->listWidgetInput->takeItem(0); 
         res = item->text();
         delete item;
     }
     else
     {
-        /* Eingabeband ist leer, Benutzer muss gefragt werden */
         bool ok = false;
 
         do
-        { /*FIXME: hier soll der Benutzer nur Worte aus {0,1}+ eingeben*/
+        { // FIXME: hier soll der Benutzer nur Worte aus {0,1}+ eingeben können
             res = QInputDialog::getText(this->MainWindow,
                                            "Eingabe",
                                            "Binärwert:",
-                                           QLineEdit::Normal, /*EchoMode*/
-                                           "0", /*Voreinstellung*/
+                                           QLineEdit::Normal, /* EchoMode */
+                                           "0",               /* Voreinstellung */
                                            &ok);
         } while (ok == false);
     }
 
     return res;
-
 }

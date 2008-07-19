@@ -2,7 +2,7 @@
 
 HLT::HLT(RawOperation *rawOp) : NullaryOperation(rawOp)
 {
-    /*nichts zu tun*/
+    /* nichts zu tun */
 }
 
 void HLT::run(Configuration *c)

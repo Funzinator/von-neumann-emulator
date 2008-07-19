@@ -2,42 +2,23 @@
 
 IndirectOperation::IndirectOperation(RawOperation *rawOp) : IndexregisterOperation(rawOp)
 {
+    /* nichts zu tun */
 }
 
 StorageCell* IndirectOperation::BinaryToUnary(Configuration *c)
 {
     StorageCell *p1 = new StorageCell;
-    if (this->Param2)
-    {
-        // p1 = Param1+ "Inhalt von IR Nr. Param2"
-        p1->setInt( this->Param1->getInt() +
-            c->getIndexRegister(this->Param2->getInt())->getInt());
-    } else
-    {
-        p1->setInt(this->Param1->getInt());
-    }
+
+    p1->setInt(this->Param1->getInt() + (this->Param2 ? c->getIndexRegister(this->Param2->getInt())->getInt() : 0));
+
     return p1;
 }
 
 StorageCell* IndirectOperation::setP1(Configuration *c)
 {
     StorageCell *p1;
-    // Ein Befehl ist NIE Indirect UND 2-parametrig (vorerst)
-      // Dann funktioniert das hier:
-    if (this->Param2)
-    {
-        p1=BinaryToUnary(c);
-    } 
-    else p1=IndirectToDirect(c); //behandelt auch !indirect (s.o.)
 
-    //Irgendwas funzt hier nicht so ganz:
-/*    //Falls wir Indirct und 2-param gleichzeitig zulassen:
-    int oldParam1=this->Param1->getInt();
-    if (this->Param2) this->Param1=BinaryToUnary(c);
-        //zuerst BinaryToUnary, siehe Inf-I-Skript Kap.3, S.38
-    if (this->indirect) p1=IndirectToDirect(c);
-    else p1->setInt(this->Param1->getInt());
-    this->Param1->setInt(oldParam1);
-    delete &oldParam1;*/
+    p1 = (this->Param2 ? this->BinaryToUnary(c) : this->IndirectToDirect(c));  
+
     return p1;
 }

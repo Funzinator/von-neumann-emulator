@@ -2,4 +2,5 @@
 
 CompareOperation::CompareOperation(RawOperation *rawOp) : ControlOperation(rawOp)
 {
+    /* nichts zu tun */
 }

@@ -2,21 +2,22 @@
 
 DVA::DVA(RawOperation *rawOp) : IntegerOperation(rawOp)
 {
-    /*nichts zu tun*/
+    /* nichts zu tun */
 }
 
 void DVA::run(Configuration *c)
 {
-    StorageCell *p1=setP1(c);  // in p1 steht nun der "echte" Wert.
-    if (c->getData(p1->getInt())->getInt() != 0)
+    StorageCell *p1 = this->setP1(c);
+
+    if (c->getData(p1->getInt())->getInt())
     {
-        c->getAC()->setInt(
-            c->getAC()->getInt()
-            / c->getData(p1->getInt())->getInt());
-    } else
-    {
-        c->getInterface()->sendSignal(CommunicationInterface::HLT, "Division durch Null");
+        c->getAC()->setInt(c->getAC()->getInt() / c->getData(p1->getInt())->getInt());
+        c->setPC(c->getPC() + 1);
     }
-    c->setPC(c->getPC() + 1);
+    else
+    {
+        c->getInterface()->sendSignal(CommunicationInterface::HLT, "division by zero");
+    }
+
     delete p1;
 }

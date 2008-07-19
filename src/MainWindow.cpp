@@ -71,13 +71,13 @@ void MainWindow::showConfiguration(Configuration *config)
         switch(config->getData(usedSlots[i])->getType())
         {
             case StorageCell::Integer:
-                this->listWidgetData->addItem(QString("%1: %2").arg(usedSlots[i]).arg(config->getData(usedSlots[i])->getInt()));
+                this->listWidgetData->addItem(QString("%1: %2").arg(usedSlots[i]).arg(config->getData(usedSlots[i])->getInt())+"\t[I]");
                 break;
             case StorageCell::Float:
-                this->listWidgetData->addItem(QString("%1: %2").arg(usedSlots[i]).arg(config->getData(usedSlots[i])->getFloat()));
+                this->listWidgetData->addItem(QString("%1: %2").arg(usedSlots[i]).arg(config->getData(usedSlots[i])->getFloat())+"\t[F]");
                 break;
             case StorageCell::Binary:
-                this->listWidgetData->addItem(tmp.setNum(usedSlots[i])+": " +config->getData(usedSlots[i])->getBinary());
+                this->listWidgetData->addItem(tmp.setNum(usedSlots[i])+": " +config->getData(usedSlots[i])->getBinary()+"\t[B]");
                 break;
         }
     }
@@ -178,6 +178,8 @@ void MainWindow::on_actionNew_activated()
     this->txtEditSourcecode->setPlainText("");
     this->listWidgetOutput->clear();
     this->listWidgetInput->clear();
+    if (this->file) delete this->file;
+    this->file = 0;
 }
 
 void MainWindow::on_actionOpen_activated()

@@ -1,7 +1,6 @@
 #ifndef ENAI_H_
 #define ENAI_H_
 
-#include "RawOperation.h"
 #include "IndexregisterOperation.h"
 
 class ENAI : public IndexregisterOperation

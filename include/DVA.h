@@ -1,7 +1,6 @@
 #ifndef DVA_H_
 #define DVA_H_
 
-#include "RawOperation.h"
 #include "IntegerOperation.h"
 
 class DVA : public IntegerOperation

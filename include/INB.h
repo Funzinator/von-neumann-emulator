@@ -1,7 +1,6 @@
 #ifndef INB_H_
 #define INB_H_
 
-#include "RawOperation.h"
 #include "InputOperation.h"
 
 class INB : public InputOperation

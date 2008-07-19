@@ -1,7 +1,6 @@
 #ifndef UJP_H_
 #define UJP_H_
 
-#include "RawOperation.h"
 #include "ControlOperation.h"
 
 class UJP : public ControlOperation

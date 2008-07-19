@@ -1,7 +1,6 @@
 #ifndef MDA_H_
 #define MDA_H_
 
-#include "RawOperation.h"
 #include "IntegerOperation.h"
 
 class MDA : public IntegerOperation

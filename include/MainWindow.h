@@ -2,18 +2,15 @@
 #define MAINWINDOW_H_
 
 #include <QMainWindow>
-#include <QFile>
 #include <QTextStream>
 #include <QFileDialog>
 #include <QTimer>
-#include <QString>
-#include <QValidator>
 #include <QMessageBox>
+
 #include "ui_MainWindow.h"
 
 #include "Interpreter.h"
 #include "Parser.h"
-#include "Configuration.h"
 #include "GuiInterface.h"
 #include "Highlighter.h"
 

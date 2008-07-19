@@ -1,7 +1,6 @@
 #ifndef XOR_H_
 #define XOR_H_
 
-#include "RawOperation.h"
 #include "LogicOperation.h"
 
 class XOR : public LogicOperation

@@ -1,7 +1,6 @@
 #ifndef SBA_H_
 #define SBA_H_
 
-#include "RawOperation.h"
 #include "IntegerOperation.h"
 
 class SBA : public IntegerOperation

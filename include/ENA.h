@@ -1,7 +1,6 @@
 #ifndef ENA_H_
 #define ENA_H_
 
-#include "RawOperation.h"
 #include "UnaryOperation.h"
 
 class ENA : public UnaryOperation

@@ -1,7 +1,6 @@
 #ifndef AZJLE_H_
 #define AZJLE_H_
 
-#include "RawOperation.h"
 #include "CompareOperation.h"
 
 class AZJLE : public CompareOperation

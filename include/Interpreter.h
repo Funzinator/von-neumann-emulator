@@ -10,7 +10,7 @@ class Interpreter
 {
 private:
     Configuration *config;
-    QMap<unsigned int, Operation *> ops; 
+    QMap<unsigned int, Operation *> ops;
     
 public:
     Interpreter(QMap<unsigned int, Operation *>, Configuration*);

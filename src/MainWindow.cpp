@@ -39,13 +39,12 @@ void MainWindow::showConfiguration(Configuration *config)
 
     switch(config->getAC()->getType())
     {
-        /* FIXME: Evtl. Icon für Typ setzen (in GUI ermöglichen) */
         case StorageCell::Integer:
             tmp.setNum(config->getAC()->getInt());
             break;
 
         case StorageCell::Float:
-            tmp.setNum(config->getAC()->getFloat()); /* FIXME: testen */
+            tmp.setNum(config->getAC()->getFloat());
             break;
 
         case StorageCell::Binary:
@@ -53,8 +52,8 @@ void MainWindow::showConfiguration(Configuration *config)
             break;
     }
     this->lblAC->setText(tmp);
-    this->lblPC->setNum((int)config->getPC()); /* caste nach int... vielleicht sollten wir den Typ generell ändern */
-    this->lblSR->setNum((int)config->getSR());
+    this->lblPC->setNum((int)config->getPC()); // FIXME: geht auch ohne cast
+    this->lblSR->setNum((int)config->getSR()); // FIXME: geht auch ohne cast
     
     for (int i = 0; i < Configuration::IndexRegisterCount; i++)
     {
@@ -128,13 +127,14 @@ void MainWindow::on_toolBtnStop_clicked()
 
     this->timerRun->stop();
 
-    /* FIXME: alles zurücksetzen */    
+    // FIXME: alles zurücksetzen
     this->resetConfiguration();
 }
 
 void MainWindow::timerNextStep()
 {
     QString tmp;
+
     if (!(this->i->next()))
         halt("Error at line "+ tmp.setNum(this->i->getConfiguration()->getPC()) + ".");
     this->showConfiguration(this->i->getConfiguration());  
@@ -226,7 +226,6 @@ void MainWindow::on_actionSaveAs_activated()
                                                     "Alle Dateien (*)");
     if (filename != "")
     {
-        
         if (this->file != 0)
         {
             delete this->file;
@@ -278,22 +277,23 @@ void MainWindow::on_lineEditInput_returnPressed()
 
 void MainWindow::on_toolBtnNumber_clicked()
 {
-    QString tmp(this->txtEditSourcecode->toPlainText());
-    tmp.replace(QString("\r\n"), QString("\n")); /* Windows-Zeilenumbrüche */
+    QString line, out, tmp(this->txtEditSourcecode->toPlainText());
     QStringList list = tmp.split("\n", QString::SkipEmptyParts);
-    QString line,out;
-    int comments=0;
-    for (int i=0; i<list.size(); i++)
+
+    int comments = 0;
+    for (int i = 0; i < list.size(); i++)
     {
-        line=list.at(i);
-        if (!(line.contains(QRegExp("^\\s*\\{"))))
-            out+=tmp.setNum(i-comments)+": "+line.remove(QRegExp("^\\s*[0-9]+\\s*:\\s*"));
+        line = list.at(i);
+        if (!line.contains(QRegExp("^\\s*\\{")))
+        {
+            out += tmp.setNum(i-comments) + ": " + line.remove(QRegExp("^\\s*[0-9]+\\s*:\\s*"));
+        }
         else
         { 
-            out+=line;
+            out += line;
             comments++;
         }
-        out+="\n";
+        out += "\n";
     }
     this->txtEditSourcecode->setPlainText(out);
 }
@@ -305,5 +305,5 @@ void MainWindow::on_toolBtnClearInput_clicked()
 
 void MainWindow::on_toolBtnOpenInput_clicked()
 {
-
+    // FIXME: implementieren!
 }

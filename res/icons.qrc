@@ -1,0 +1,16 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>famfamfam/control_end_blue.png</file>
+    <file>famfamfam/control_pause_blue.png</file>
+    <file>famfamfam/control_play_blue.png</file>
+    <file>famfamfam/control_stop_blue.png</file>
+    <file>famfamfam/folder_go.png</file>
+    <file>famfamfam/page_add.png</file>
+    <file>famfamfam/page_delete.png</file>
+    <file>tango/document-new.png</file>
+    <file>tango/document-open.png</file>
+    <file>tango/document-save-as.png</file>
+    <file>tango/document-save.png</file>
+    <file>tango/system-log-out.png</file>
+</qresource>
+</RCC>

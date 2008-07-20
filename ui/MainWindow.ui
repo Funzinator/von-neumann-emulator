@@ -93,12 +93,9 @@
                   <property name="toolTip" >
                    <string>Eingabeband-Datei öffnen</string>
                   </property>
-                  <property name="text" >
-                   <string>...</string>
-                  </property>
                   <property name="icon" >
-                   <iconset resource="../res/general.qrc" >
-                    <normaloff>:/img/input_open.png</normaloff>:/img/input_open.png</iconset>
+                   <iconset resource="../res/icons.qrc" >
+                    <normaloff>:/famfamfam/page_add.png</normaloff>:/famfamfam/page_add.png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -107,12 +104,9 @@
                   <property name="toolTip" >
                    <string>Eingabeband leeren</string>
                   </property>
-                  <property name="text" >
-                   <string/>
-                  </property>
                   <property name="icon" >
-                   <iconset resource="../res/general.qrc" >
-                    <normaloff>:/img/input_clear.png</normaloff>:/img/input_clear.png</iconset>
+                   <iconset resource="../res/icons.qrc" >
+                    <normaloff>:/famfamfam/page_delete.png</normaloff>:/famfamfam/page_delete.png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -273,12 +267,9 @@
             <property name="enabled" >
              <bool>false</bool>
             </property>
-            <property name="text" >
-             <string/>
-            </property>
             <property name="icon" >
-             <iconset resource="../res/general.qrc" >
-              <normaloff>:/img/play.png</normaloff>:/img/play.png</iconset>
+             <iconset resource="../res/icons.qrc" >
+              <normaloff>:/famfamfam/control_play_blue.png</normaloff>:/famfamfam/control_play_blue.png</iconset>
             </property>
            </widget>
           </item>
@@ -287,12 +278,9 @@
             <property name="enabled" >
              <bool>false</bool>
             </property>
-            <property name="text" >
-             <string/>
-            </property>
             <property name="icon" >
-             <iconset resource="../res/general.qrc" >
-              <normaloff>:/img/next.png</normaloff>:/img/next.png</iconset>
+             <iconset resource="../res/icons.qrc" >
+              <normaloff>:/famfamfam/control_end_blue.png</normaloff>:/famfamfam/control_end_blue.png</iconset>
             </property>
            </widget>
           </item>
@@ -301,12 +289,9 @@
             <property name="enabled" >
              <bool>false</bool>
             </property>
-            <property name="text" >
-             <string/>
-            </property>
             <property name="icon" >
-             <iconset resource="../res/general.qrc" >
-              <normaloff>:/img/pause.png</normaloff>:/img/pause.png</iconset>
+             <iconset resource="../res/icons.qrc" >
+              <normaloff>:/famfamfam/control_pause_blue.png</normaloff>:/famfamfam/control_pause_blue.png</iconset>
             </property>
            </widget>
           </item>
@@ -315,12 +300,9 @@
             <property name="enabled" >
              <bool>false</bool>
             </property>
-            <property name="text" >
-             <string/>
-            </property>
             <property name="icon" >
-             <iconset resource="../res/general.qrc" >
-              <normaloff>:/img/stop.png</normaloff>:/img/stop.png</iconset>
+             <iconset resource="../res/icons.qrc" >
+              <normaloff>:/famfamfam/control_stop_blue.png</normaloff>:/famfamfam/control_stop_blue.png</iconset>
             </property>
            </widget>
           </item>
@@ -342,12 +324,9 @@
             <property name="toolTip" >
              <string>Quelltext nummerieren</string>
             </property>
-            <property name="text" >
-             <string>0:</string>
-            </property>
             <property name="icon" >
-             <iconset resource="../res/general.qrc" >
-              <normaloff>:/img/number.png</normaloff>:/img/number.png</iconset>
+             <iconset resource="../res/icons.qrc" >
+              <normaloff>:/famfamfam/folder_go.png</normaloff>:/famfamfam/folder_go.png</iconset>
             </property>
            </widget>
           </item>
@@ -426,26 +405,46 @@
    </property>
   </widget>
   <action name="actionNew" >
+   <property name="icon" >
+    <iconset resource="../res/icons.qrc" >
+     <normaloff>:/tango/document-new.png</normaloff>:/tango/document-new.png</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Neu</string>
    </property>
   </action>
   <action name="actionOpen" >
+   <property name="icon" >
+    <iconset resource="../res/icons.qrc" >
+     <normaloff>:/tango/document-open.png</normaloff>:/tango/document-open.png</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Öffnen...</string>
    </property>
   </action>
   <action name="actionSave" >
+   <property name="icon" >
+    <iconset resource="../res/icons.qrc" >
+     <normaloff>:/tango/document-save.png</normaloff>:/tango/document-save.png</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Speichern</string>
    </property>
   </action>
   <action name="actionSaveAs" >
+   <property name="icon" >
+    <iconset resource="../res/icons.qrc" >
+     <normaloff>:/tango/document-save-as.png</normaloff>:/tango/document-save-as.png</iconset>
+   </property>
    <property name="text" >
     <string>Speichern &amp;unter...</string>
    </property>
   </action>
   <action name="actionQuit" >
+   <property name="icon" >
+    <iconset resource="../res/icons.qrc" >
+     <normaloff>:/tango/system-log-out.png</normaloff>:/tango/system-log-out.png</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Beenden</string>
    </property>
@@ -464,7 +463,7 @@
   <tabstop>toolBtnStop</tabstop>
  </tabstops>
  <resources>
-  <include location="../res/general.qrc" />
+  <include location="../res/icons.qrc" />
  </resources>
  <connections>
   <connection>

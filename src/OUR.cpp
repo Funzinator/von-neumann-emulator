@@ -8,7 +8,7 @@ OUR::OUR(RawOperation *rawOp) : OutputOperation(rawOp)
 void OUR::run(Configuration *c)
 {
     QString tmp = "%1";
+
     c->getInterface()->sendString(tmp.arg(c->getAC()->getFloat()));
-    
     c->setPC(c->getPC() + 1);
 }

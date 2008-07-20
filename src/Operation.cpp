@@ -11,6 +11,19 @@ Operation::Operation(RawOperation *rawOp)
     this->Param2 = 0;
 }
 
+Operation::~Operation()
+{
+    if (this->Param1)
+    {
+        delete this->Param1;
+    }
+    
+    if (this->Param2)
+    {
+        delete this->Param2;
+    }
+}
+
 QString Operation::getOperationName(bool full = false)
 {
     if (full)

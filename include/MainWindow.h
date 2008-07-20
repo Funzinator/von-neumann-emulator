@@ -30,6 +30,7 @@ private:
 
 public:
     MainWindow();
+    ~MainWindow();
 
 public slots:
     void on_toolBtnNext_clicked();

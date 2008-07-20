@@ -1,10 +1,7 @@
 #ifndef INTERPRETER_H_
 #define INTERPRETER_H_
 
-#include <QMap>
-
 #include "Operation.h"
-#include "Configuration.h"
 
 class Interpreter
 {

@@ -1,7 +1,6 @@
 #ifndef MAINWINDOW_H_
 #define MAINWINDOW_H_
 
-#include <QMainWindow>
 #include <QTextStream>
 #include <QFileDialog>
 #include <QTimer>

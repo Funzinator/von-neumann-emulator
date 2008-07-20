@@ -2,7 +2,7 @@
 
 NOP::NOP(RawOperation *rawOp) : NullaryOperation(rawOp)
 {
-    /*nichts zu tun*/
+    /* nichts zu tun */
 }
 
 void NOP::run(Configuration *c)

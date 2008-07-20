@@ -34,6 +34,24 @@ void StorageCell::setFloat(double f)
     this->type = StorageCell::Float;
 }
 
+void StorageCell::setRaw(Storage values, const unsigned char type)
+{
+    this->values = values;
+    
+    switch (type)
+    {
+        case StorageCell::Integer:
+        case StorageCell::Float:
+        case StorageCell::Binary:
+            this->type = type;
+            break;
+
+        default:
+            this->type = StorageCell::Unused;
+            break;
+    }
+}
+
 QString StorageCell::getBinary()
 {
     QString bin;
@@ -53,7 +71,12 @@ double StorageCell::getFloat()
     return this->values.f;
 }
 
-unsigned char StorageCell::getType()
+Storage StorageCell::getRaw()
+{
+    return this->values;
+}
+
+const unsigned char StorageCell::getType()
 {
 	return this->type;
 }

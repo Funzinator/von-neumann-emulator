@@ -90,6 +90,9 @@
                 </item>
                 <item>
                  <widget class="QToolButton" name="toolBtnOpenInput" >
+                  <property name="toolTip" >
+                   <string>Eingabeband-Datei öffnen</string>
+                  </property>
                   <property name="text" >
                    <string>...</string>
                   </property>
@@ -101,6 +104,9 @@
                 </item>
                 <item>
                  <widget class="QToolButton" name="toolBtnClearInput" >
+                  <property name="toolTip" >
+                   <string>Eingabeband leeren</string>
+                  </property>
                   <property name="text" >
                    <string/>
                   </property>
@@ -333,6 +339,9 @@
           </item>
           <item>
            <widget class="QToolButton" name="toolBtnNumber" >
+            <property name="toolTip" >
+             <string>Quelltext nummerieren</string>
+            </property>
             <property name="text" >
              <string>0:</string>
             </property>

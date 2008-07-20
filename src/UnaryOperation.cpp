@@ -2,5 +2,5 @@
 
 UnaryOperation::UnaryOperation(RawOperation *rawOp) : Operation(rawOp)
 {
-    /* nothing to do here */
+    /* nichts zu tun */
 }

@@ -18,8 +18,10 @@ protected:
     
 public:
     Operation(RawOperation*);
+    ~Operation();
+
     QString getOperationName(bool);
-    
+
     virtual void run(Configuration*) = 0;
 };
 

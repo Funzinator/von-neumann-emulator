@@ -43,7 +43,7 @@ RawOperation* Parser::convertLine(QString line)
 QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
 {
     QMap<unsigned int,Operation *> op;
-    
+
     for (int i = 0; i < input.count(); i++)
     {
         RawOperation *rawOp = this->convertLine(input[i]);
@@ -194,6 +194,10 @@ QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
             {
                 op[rawOp->LineNumber] = new OUR(rawOp);
             }
+            else if (rawOp->Operator == "PRIM")
+            {
+                op[rawOp->LineNumber] = new PRIM(rawOp);
+            }
             else if (rawOp->Operator == "RIN")
             {
                 op[rawOp->LineNumber] = new RIN(rawOp);
@@ -230,14 +234,8 @@ QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
             {
                 op[rawOp->LineNumber] = new XOR(rawOp);
             }
-            else if (rawOp->Operator == "PRIM")
-            {
-                op[rawOp->LineNumber] = new PRIM(rawOp);
-            }
         }
-
         delete rawOp;
-        rawOp = 0;
     }
     return op;
 }
@@ -258,10 +256,9 @@ QMap<unsigned int,Operation *> Parser::Parse(QFile *file)
 QMap<unsigned int,Operation *> Parser::Parse(QString plainText)
 {
     QVector<QString> input;
-
     QString tmp(plainText);
-    tmp.replace(QString("\r\n"), QString("\n")); /* Windows-Zeilenumbrüche */
     QStringList list = tmp.split("\n", QString::SkipEmptyParts);
+
     for (int i = 0; i < list.size(); i++)
     {
         input.append(list.at(i).toUtf8().constData());

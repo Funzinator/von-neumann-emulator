@@ -2,7 +2,7 @@
 
 STP::STP(RawOperation *rawOp) : NullaryOperation(rawOp)
 {
-    /*nichts zu tun*/
+    /* nichts zu tun */
 }
 
 void STP::run(Configuration *c)

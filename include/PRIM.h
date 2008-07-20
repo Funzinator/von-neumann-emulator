@@ -6,7 +6,7 @@
 class PRIM : public NullaryOperation
 {
 private:
-    bool prim(int);
+    bool prim(unsigned int);
 
 public:
     PRIM(RawOperation*);

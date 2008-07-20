@@ -21,11 +21,14 @@ public:
     void setBinary(QString);
     void setInt(int);
     void setFloat(double);
+    void setRaw(Storage, const unsigned char);
 
     QString getBinary();
     int getInt();
     double getFloat();
-    unsigned char getType();
+    Storage getRaw();
+
+    const unsigned char getType();
 };
 
 #endif /*STORAGECELL_H_*/

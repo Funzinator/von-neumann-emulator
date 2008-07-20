@@ -1,9 +1,6 @@
 #ifndef OPERATION_H_
 #define OPERATION_H_
 
-#include <QString>
-
-#include "StorageCell.h"
 #include "RawOperation.h"
 #include "Configuration.h"
 

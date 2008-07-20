@@ -21,6 +21,15 @@ MainWindow::MainWindow() : QMainWindow()
     this->highlighter = new Highlighter(this->txtEditSourcecode->document());
 }
 
+MainWindow::~MainWindow()
+{
+    delete this->i;
+    delete this->parser;
+    delete this->file;
+    delete this->timerRun;
+    delete this->highlighter;
+}
+
 void MainWindow::resetConfiguration()
 {
     this->lblOperation->setText(this->i ? this->i->getNextOperation(true) : "");
@@ -133,10 +142,13 @@ void MainWindow::on_toolBtnStop_clicked()
 
 void MainWindow::timerNextStep()
 {
-    QString tmp;
+    if (!this->i->next())
+    {
+        QString tmp;
 
-    if (!(this->i->next()))
         halt("Error at line "+ tmp.setNum(this->i->getConfiguration()->getPC()) + ".");
+    }
+
     this->showConfiguration(this->i->getConfiguration());  
 }
 
@@ -178,7 +190,11 @@ void MainWindow::on_actionNew_activated()
     this->txtEditSourcecode->setPlainText("");
     this->listWidgetOutput->clear();
     this->listWidgetInput->clear();
-    if (this->file) delete this->file;
+
+    if (this->file)
+    {
+        delete this->file;
+    }
     this->file = 0;
 }
 
@@ -188,10 +204,9 @@ void MainWindow::on_actionOpen_activated()
                                                     "von-Neumann-Programm öffnen",
                                                     "",
                                                     "Alle Dateien (*)");
-    if (filename != "")
+    if (filename.length())
     {
-        
-        if (this->file != 0)
+        if (this->file)
         {
             delete this->file;
         }
@@ -207,7 +222,7 @@ void MainWindow::on_actionOpen_activated()
 
 void MainWindow::on_actionSave_activated()
 {
-    if (this->file != 0)
+    if (this->file)
     {
         QFile file(this->file->fileName());
         if (file.open(QFile::WriteOnly | QFile::Text))
@@ -224,9 +239,9 @@ void MainWindow::on_actionSaveAs_activated()
                                                     "von-Neumann-Programm speichern",
                                                     "",
                                                     "Alle Dateien (*)");
-    if (filename != "")
+    if (filename.length())
     {
-        if (this->file != 0)
+        if (this->file)
         {
             delete this->file;
         }
@@ -245,7 +260,7 @@ void MainWindow::on_txtEditSourcecode_textChanged()
 {
     this->timerRun->stop();
 
-    if (this->parser == 0)
+    if (!this->parser)
     {
         this->parser = new Parser;
     }
@@ -286,7 +301,7 @@ void MainWindow::on_toolBtnNumber_clicked()
         line = list.at(i);
         if (!line.contains(QRegExp("^\\s*\\{")))
         {
-            out += tmp.setNum(i-comments) + ": " + line.remove(QRegExp("^\\s*[0-9]+\\s*:\\s*"));
+            out += tmp.setNum(i - comments) + ": " + line.remove(QRegExp("^\\s*[0-9]+\\s*:\\s*"));
         }
         else
         { 

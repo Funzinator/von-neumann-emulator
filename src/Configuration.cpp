@@ -14,6 +14,15 @@ Configuration::Configuration(CommunicationInterface *Interface)
 
 Configuration::~Configuration()
 {
+    QVector<unsigned int> res;
+    QMapIterator<unsigned int, StorageCell *> i(this->Data);
+
+    while (i.hasNext())
+    {
+        i.next();
+        delete i.value();
+    }
+
     delete this->AC;
 }
 

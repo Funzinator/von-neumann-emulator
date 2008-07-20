@@ -61,8 +61,9 @@ void MainWindow::showConfiguration(Configuration *config)
             break;
     }
     this->lblAC->setText(tmp);
-    this->lblPC->setNum((int)config->getPC()); // FIXME: geht auch ohne cast
-    this->lblSR->setNum((int)config->getSR()); // FIXME: geht auch ohne cast
+
+    this->lblPC->setText(QString("%1").arg(config->getPC()));
+    this->lblSR->setText(QString("%1").arg(config->getSR()));
     
     for (int i = 0; i < Configuration::IndexRegisterCount; i++)
     {
@@ -79,13 +80,15 @@ void MainWindow::showConfiguration(Configuration *config)
         switch(config->getData(usedSlots[i])->getType())
         {
             case StorageCell::Integer:
-                this->listWidgetData->addItem(QString("%1: %2").arg(usedSlots[i]).arg(config->getData(usedSlots[i])->getInt())+"\t[I]");
+                this->listWidgetData->addItem(QString("%1: %2\t[I]").arg(usedSlots[i]).arg(config->getData(usedSlots[i])->getInt()));
                 break;
+
             case StorageCell::Float:
-                this->listWidgetData->addItem(QString("%1: %2").arg(usedSlots[i]).arg(config->getData(usedSlots[i])->getFloat())+"\t[F]");
+                this->listWidgetData->addItem(QString("%1: %2\t[F]").arg(usedSlots[i]).arg(config->getData(usedSlots[i])->getFloat()));
                 break;
+
             case StorageCell::Binary:
-                this->listWidgetData->addItem(tmp.setNum(usedSlots[i])+": " +config->getData(usedSlots[i])->getBinary()+"\t[B]");
+                this->listWidgetData->addItem(QString("%1: %2\t[B]").arg(usedSlots[i]).arg(config->getData(usedSlots[i])->getBinary()));
                 break;
         }
     }

@@ -3,6 +3,10 @@
 
 #include "IndexregisterOperation.h"
 
+//! ENI a,b: Inhalt(IRa) := b
+/*!
+ * Lade das Indexregister mit der Adresse a AC mit Festpunktzahl b.
+ */
 class ENI : public IndexregisterOperation
 {
 public:

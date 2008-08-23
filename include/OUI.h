@@ -3,6 +3,12 @@
 
 #include "OutputOperation.h"
 
+//! OUI: Festpunktzahl ausgeben
+/*!
+ * Verlängert den Inhalt des Ausgabemediums um den Inhalt im AC. Dabei wird der
+ * Inhalt des AC als Festpunktzahl interpretiert und als Festpunktzahl mit
+ * eventuellem Vorzeichen ausgegeben.
+ */
 class OUI : public OutputOperation
 {
 public:

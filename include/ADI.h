@@ -3,6 +3,11 @@
 
 #include "IndexregisterOperation.h"
 
+//! ADI b: Inhalt(IRb) := Inhalt(IRb) + AC
+/*!
+ * Lade Indexregister b mit der Summe des Inhalts von Indexregister b und des
+ * AC.
+ */
 class ADI : public IndexregisterOperation
 {
 public:

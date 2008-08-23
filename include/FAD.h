@@ -3,6 +3,12 @@
 
 #include "FloatOperation.h"
 
+//! FAD b: AC := AC + Inhalt(b)
+/*! 
+ * Addiere den Inhalt der Zelle mit der Adresse b zum Inhalt des AC und behalte
+ * dabei das Ergebnis im AC. Dabei sind die Inhalte als Gleitpunktzahlen zu
+ * interpretieren.
+ */
 class FAD : public FloatOperation
 {
 public:

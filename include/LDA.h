@@ -3,6 +3,11 @@
 
 #include "IndirectOperation.h"
 
+//! LDA b: AC := Inhalt(b)
+/*!
+ * Lade AC mit dem Inhalt derjenigen Zelle, die durch die Adresse b
+ * gekennzeichnet ist.
+ */
 class LDA : public IndirectOperation
 {
 public:

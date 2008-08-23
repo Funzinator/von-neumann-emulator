@@ -3,6 +3,10 @@
 
 #include "NegateOperation.h"
 
+//! NOT: AC := NOT AC
+/*!
+ * Negiere den Inhalt des AC bitweise.
+ */
 class NOT : public NegateOperation
 {
 public:

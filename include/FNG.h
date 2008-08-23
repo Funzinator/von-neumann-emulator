@@ -3,6 +3,10 @@
 
 #include "NegateOperation.h"
 
+//! FNG: AC := -AC
+/*! 
+ * Multipliziere den Inhalt des AC mit -1.
+ */
 class FNG : public NegateOperation
 {
 public:

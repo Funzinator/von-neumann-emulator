@@ -3,6 +3,10 @@
 
 #include "NullaryOperation.h"
 
+//! HLT: halt
+/*!
+ * Beendet die Rechnung irregulär und git eine Fehlermeldung aus.
+ */
 class HLT : public NullaryOperation
 {
 public:

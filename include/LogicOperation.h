@@ -3,6 +3,10 @@
 
 #include "IndirectOperation.h"
 
+//! abstrakte Klasse für Logikoperationen
+/*!
+ * diese Klasse enthält Methoden, die von Logikoperationen verwendet werden.
+ */
 class LogicOperation : public IndirectOperation
 {
 public:

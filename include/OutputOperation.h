@@ -3,6 +3,10 @@
 
 #include "NullaryOperation.h"
 
+//! abstrakte Klasse für Ausgabeoperationen
+/*!
+ * diese Klasse enthält Methoden, die von Ausgabeoperationen verwendet werden.
+ */
 class OutputOperation : public NullaryOperation
 {
 public:

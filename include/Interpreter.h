@@ -3,6 +3,11 @@
 
 #include "Operation.h"
 
+//! Interpreter
+/*!
+ * Ruft die jeweils aktuelle Operation auf und ändert dadurch die
+ * Konfiguration.
+ */
 class Interpreter
 {
 private:

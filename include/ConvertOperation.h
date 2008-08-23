@@ -3,6 +3,11 @@
 
 #include "NullaryOperation.h"
 
+//! abstrakte Klasse für Konvertierungsoperationen
+/*!
+ * diese Klasse enthält Methoden, die von Konvertierungsoperationen verwendet
+ * werden.
+ */
 class ConvertOperation : public NullaryOperation
 {
 public:

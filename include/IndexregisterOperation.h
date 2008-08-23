@@ -3,6 +3,10 @@
 
 #include "UnaryOperation.h"
 
+//! abstrakte Klasse für Indexregisteroerationen
+/*!
+ * diese Klasse enthält Methoden, die von Indexregisteroperationen verwendet werden.
+ */
 class IndexregisterOperation : public UnaryOperation
 {
 public:

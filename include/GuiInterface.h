@@ -7,6 +7,11 @@
 
 #include "CommunicationInterface.h"
 
+//! Kommunikationsschnittstelle zwischen Interpreter und grafischer Oberfläche
+/*!
+ * diese Klasse implementiert CommunicationInterface für die grafische
+ * Oberfläche.
+ */
 class GuiInterface : public CommunicationInterface
 {
     Q_OBJECT

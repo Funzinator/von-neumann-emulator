@@ -3,6 +3,11 @@
 
 #include "IndirectOperation.h"
 
+//! abstrakte Klasse für Festpunktzahloperationen
+/*!
+ * diese Klasse enthält Methoden, die von Festpunktzahloperationen verwendet
+ * werden.
+ */
 class IntegerOperation : public IndirectOperation
 {
 public:

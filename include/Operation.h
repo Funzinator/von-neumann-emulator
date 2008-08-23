@@ -4,6 +4,11 @@
 #include "RawOperation.h"
 #include "Configuration.h"
 
+//! abstrakte Operationsklasse
+/*!
+ * abstrakte Klasse, die die Grundfunktionalität einer Operation zur Verfügung
+ * stellt.
+ */
 class Operation
 {
 protected:

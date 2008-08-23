@@ -3,6 +3,11 @@
 
 #include "NullaryOperation.h"
 
+//! abstrakte Klasse für Negierungsoperationen
+/*!
+ * diese Klasse enthält Methoden, die von Negierungsoperationen verwendet
+ * werden.
+ */
 class NegateOperation : public NullaryOperation
 {
 public:

@@ -4,6 +4,11 @@
 #include <QObject>
 #include <QString>
 
+//! Kommunikationsschnittstelle zwischen Interpreter und Oberfläche
+/*!
+ * Abstrakte Schnittstelle, die erlaubt Signale und Ausgaben an die Oberfläche
+ * zu senden und Eingaben von der Oberfläche anzufordern.
+ */
 class CommunicationInterface : public QObject
 {
 public:

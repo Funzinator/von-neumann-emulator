@@ -3,6 +3,11 @@
 
 #include <QString>
 
+//! Rohoperation
+/*!
+ * enthält alle Informationen, die benötigt werden um eine Operation zu
+ * initialisieren.
+ */
 struct RawOperation
 {
     unsigned int LineNumber;

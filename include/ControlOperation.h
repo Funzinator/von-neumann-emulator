@@ -3,6 +3,10 @@
 
 #include "IndirectOperation.h"
 
+//! abstrakte Klasse für Kontrolloperationen
+/*!
+ * diese Klasse enthält Methoden, die von Kontrolloperationen verwendet werden.
+ */
 class ControlOperation : public IndirectOperation
 {
 public:

@@ -3,6 +3,10 @@
 
 #include <QSyntaxHighlighter>
 
+//! Highlightingklasse für von-Neumann-Befehle
+/*!
+ * Highlightingklasse, die von-Neumann-Befehle farblich hervorhebt.
+ */
 class Highlighter : public QSyntaxHighlighter
 {
     Q_OBJECT

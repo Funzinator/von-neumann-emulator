@@ -7,6 +7,10 @@
 #include "CommunicationInterface.h"
 #include "StorageCell.h"
 
+//! Konfiguration
+/*!
+ * Kapselung der Konfiguration.
+ */
 class Configuration
 {
 private:

@@ -5,6 +5,10 @@
 
 #include "Storage.h"
 
+//! Speicherzelle
+/*!
+ * Kapselung der Speicherzelle zur Verwendung innerhalb der Operationen.
+ */
 class StorageCell
 {
 private:

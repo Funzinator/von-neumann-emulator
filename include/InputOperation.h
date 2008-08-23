@@ -3,6 +3,10 @@
 
 #include "NullaryOperation.h"
 
+//! abstrakte Klasse für Eingabeoperationen
+/*!
+ * diese Klasse enthält Methoden, die von Eingabeoperationen verwendet werden.
+ */
 class InputOperation : public NullaryOperation
 {
 public:

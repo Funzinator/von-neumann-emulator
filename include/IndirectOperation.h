@@ -3,6 +3,11 @@
 
 #include "IndexregisterOperation.h"
 
+//! abstrakte Klasse für indirekte Operationen
+/*!
+ * diese Klasse enthält Methoden, die von indirekten Operationen verwendet
+ * werden.
+ */
 class IndirectOperation : public IndexregisterOperation
 {
 public:

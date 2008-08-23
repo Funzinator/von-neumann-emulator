@@ -3,6 +3,11 @@
 
 #include "IndirectOperation.h"
 
+//! abstrakte Klasse für Gleitpunktzahloperationen
+/*!
+ * diese Klasse enthält Methoden, die von Gleitpunktzahloperationen verwendet
+ * werden.
+ */
 class FloatOperation : public IndirectOperation
 {
 public:

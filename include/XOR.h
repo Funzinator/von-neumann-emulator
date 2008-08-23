@@ -3,6 +3,12 @@
 
 #include "LogicOperation.h"
 
+//! XOR b: AC := AC XOR Inhalt(b)
+/*!
+ * Führe mit dem Inhalt der Zelle mit der Adresse b und dem Inhalt des AC die
+ * bitweise ausschließendes-Oder-Operation XOR aus und behalte das Resultat im
+ * AC.
+ */
 class XOR : public LogicOperation
 {
 public:

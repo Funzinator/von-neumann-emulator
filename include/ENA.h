@@ -3,6 +3,10 @@
 
 #include "UnaryOperation.h"
 
+//! ENA b: AC := b
+/*!
+ * Lade AC mit Festpunktzahl b.
+ */
 class ENA : public UnaryOperation
 {
 public:

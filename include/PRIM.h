@@ -3,6 +3,11 @@
 
 #include "NullaryOperation.h"
 
+//! PRIM: Primzahltest
+/*!
+ * Lade den AC mit 1, wenn der Inhalt des AC, interpretiert als Festpunktzahl,
+ * einer Primzahl entspricht. Sonst lade den AC mit 0. 
+ */
 class PRIM : public NullaryOperation
 {
 private:

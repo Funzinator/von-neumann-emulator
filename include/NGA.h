@@ -3,6 +3,10 @@
 
 #include "NegateOperation.h"
 
+//! NGA: AC := -AC
+/*! 
+ * Multipliziere den Inhalt des AC mit -1.
+ */
 class NGA : public NegateOperation
 {
 public:

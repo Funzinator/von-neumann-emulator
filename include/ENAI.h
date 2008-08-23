@@ -3,6 +3,10 @@
 
 #include "IndexregisterOperation.h"
 
+//! ENAI b: AC := Inhalt(IRb)
+/*!
+ * Lade AC mit dem Inhalt von Indexregisters b.
+ */
 class ENAI : public IndexregisterOperation
 {
 public:

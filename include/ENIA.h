@@ -3,6 +3,10 @@
 
 #include "IndexregisterOperation.h"
 
+//! ENIA b: Inhalt(IRb) := AC
+/*!
+ * Lade Indexregister b mit dem Inhalt des AC.
+ */
 class ENIA : public IndexregisterOperation
 {
 public:

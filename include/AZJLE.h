@@ -3,6 +3,12 @@
 
 #include "CompareOperation.h"
 
+//! AZJ,LE b: if AC <= 0 then goto b
+/*!
+ * Trage die Programmadresse b in den BZ ein, falls der Inhalt des AC,
+ * interpretiert als Festpunktzahl, kleiner oder gleich 0 ist. Sonst erhöhe den
+ * Inhalt des BZ um 1.
+ */
 class AZJLE : public CompareOperation
 {
 public:

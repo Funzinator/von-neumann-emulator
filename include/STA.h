@@ -3,6 +3,11 @@
 
 #include "IndirectOperation.h"
 
+//! STA b: Inhalt(b) := AC
+/*!
+ * Speichere den Inhalt des AC in derjenigen Zelle, die durch Adresse b
+ * gekennzeichnet ist.
+ */
 class STA : public IndirectOperation
 {
 public:

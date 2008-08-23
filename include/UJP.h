@@ -3,6 +3,10 @@
 
 #include "ControlOperation.h"
 
+//! UJP b: goto b
+/*!
+ * Trage die Programmadresse b in den BZ ein.
+ */
 class UJP : public ControlOperation
 {
 public:

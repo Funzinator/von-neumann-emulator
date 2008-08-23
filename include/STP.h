@@ -3,6 +3,10 @@
 
 #include "NullaryOperation.h"
 
+//! STP: Stop
+/*!
+ * Beendet die Rechnung regulär.
+ */
 class STP : public NullaryOperation
 {
 public:

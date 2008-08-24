@@ -49,17 +49,19 @@ int GuiInterface::receiveInteger()
     {
         bool ok = false;
 
-        do
+        res = QInputDialog::getInteger(this->MainWindow,
+                                       "Eingabe",
+                                       "Integerwert:",
+                                       0,           /* Voreinstellung */
+                                       -2147483647, /* Minimum */
+                                       2147483647,  /* Maximum */
+                                       1,           /* Schrittweite */
+                                       &ok);
+
+        if(!ok)
         {
-            res = QInputDialog::getInteger(this->MainWindow,
-                                           "Eingabe",
-                                           "Integerwert:",
-                                           0,           /* Voreinstellung */
-                                           -2147483647, /* Minimum */
-                                           2147483647,  /* Maximum */
-                                           1,           /* Schrittweite */
-                                           &ok);
-        } while (ok == false);
+            throw "input error";
+        }
     }
 
     return res;
@@ -79,17 +81,19 @@ double GuiInterface::receiveFloat()
     {
         bool ok = false;
         
-        do
+        res = QInputDialog::getDouble(this->MainWindow,
+                                      "Eingabe",
+                                      "Doublewert:",
+                                      0,            /* Voreinstellung */
+                                      -2147483647,  /* Minimum */
+                                      2147483647,   /* Maximum */
+                                      10,           /* Maximale Anzahl Nachkommastellen */
+                                      &ok);
+
+        if(!ok)
         {
-            res = QInputDialog::getDouble(this->MainWindow,
-                                          "Eingabe",
-                                          "Doublewert:",
-                                          0,            /* Voreinstellung */
-                                          -2147483647,  /* Minimum */
-                                          2147483647,   /* Maximum */
-                                          10,           /* Maximale Anzahl Nachkommastellen */
-                                          &ok);
-        } while (ok == false);
+            throw "input error";
+        }
     }
 
     return res;
@@ -109,15 +113,18 @@ QString GuiInterface::receiveBinary()
     {
         bool ok = false;
 
-        do
-        { // FIXME: hier soll der Benutzer nur Worte aus {0,1}+ eingeben können
-            res = QInputDialog::getText(this->MainWindow,
-                                           "Eingabe",
-                                           "Binärwert:",
-                                           QLineEdit::Normal, /* EchoMode */
-                                           "0",               /* Voreinstellung */
-                                           &ok);
-        } while (ok == false);
+        // FIXME: hier soll der Benutzer nur Worte aus {0,1}+ eingeben können
+        res = QInputDialog::getText(this->MainWindow,
+                                   "Eingabe",
+                                   "Binärwert:",
+                                   QLineEdit::Normal, /* EchoMode */
+                                   "0",               /* Voreinstellung */
+                                   &ok);
+
+        if(!ok)
+        {
+            throw "input error";
+        }
     }
 
     return res;

@@ -7,6 +7,13 @@ INI::INI(RawOperation *rawOp) : InputOperation(rawOp)
 
 void INI::run(Configuration *c)
 {
-    c->getAC()->setInt(c->getInterface()->receiveInteger());
-    c->setPC(c->getPC() + 1);
+    try
+    {
+        c->getAC()->setInt(c->getInterface()->receiveInteger());
+        c->setPC(c->getPC() + 1);
+    }
+    catch (char *e)
+    {
+        c->getInterface()->sendSignal(CommunicationInterface::HLT, e);
+    }
 }

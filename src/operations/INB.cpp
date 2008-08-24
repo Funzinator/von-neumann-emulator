@@ -7,7 +7,13 @@ INB::INB(RawOperation *rawOp) : InputOperation(rawOp)
 
 void INB::run(Configuration *c)
 {
-    c->getAC()->setBinary(c->getInterface()->receiveBinary());
-    
-    c->setPC(c->getPC() + 1);
+    try
+    {
+        c->getAC()->setBinary(c->getInterface()->receiveBinary());
+        c->setPC(c->getPC() + 1);
+    }
+    catch (char *e)
+    {
+        c->getInterface()->sendSignal(CommunicationInterface::HLT, e);
+    }
 }

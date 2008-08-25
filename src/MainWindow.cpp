@@ -10,6 +10,8 @@ MainWindow::MainWindow() : QMainWindow()
 
     this->timerRun = new QTimer(this);
     connect(this->timerRun, SIGNAL(timeout()), this, SLOT(timerNextStep()));
+    
+    connect(this->actionAboutQt, SIGNAL(activated()), qApp, SLOT(aboutQt()));
 
     /* Nur Zahlen (Integer und Float) für lineEditInput zulassen */ 
     this->inputRegExp = new QRegExp(INPUT_REGEXP);
@@ -19,6 +21,8 @@ MainWindow::MainWindow() : QMainWindow()
     this->resetConfiguration();
 
     this->highlighter = new Highlighter(this->txtEditSourcecode->document());
+
+    this->aboutDialog = 0;
 }
 
 MainWindow::~MainWindow()
@@ -28,6 +32,7 @@ MainWindow::~MainWindow()
     delete this->file;
     delete this->timerRun;
     delete this->highlighter;
+    delete this->aboutDialog;
 }
 
 void MainWindow::resetConfiguration()
@@ -340,4 +345,14 @@ void MainWindow::on_toolBtnOpenInput_clicked()
             }
         }
     }
+}
+
+void MainWindow::on_actionAbout_activated()
+{
+    if (!this->aboutDialog)
+    {
+        this->aboutDialog = new AboutDialog;
+    }
+    
+    this->aboutDialog->show();
 }

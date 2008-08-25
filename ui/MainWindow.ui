@@ -412,6 +412,9 @@
    <property name="text" >
     <string>&amp;Neu</string>
    </property>
+   <property name="shortcut" >
+    <string>Ctrl+N</string>
+   </property>
   </action>
   <action name="actionOpen" >
    <property name="icon" >
@@ -421,6 +424,9 @@
    <property name="text" >
     <string>&amp;Öffnen...</string>
    </property>
+   <property name="shortcut" >
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="actionSave" >
    <property name="icon" >
@@ -429,6 +435,9 @@
    </property>
    <property name="text" >
     <string>&amp;Speichern</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionSaveAs" >
@@ -447,6 +456,9 @@
    </property>
    <property name="text" >
     <string>&amp;Beenden</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+Q</string>
    </property>
   </action>
  </widget>

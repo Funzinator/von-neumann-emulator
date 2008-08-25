@@ -12,6 +12,7 @@
 #include "Parser.h"
 #include "GuiInterface.h"
 #include "Highlighter.h"
+#include "AboutDialog.h"
 
 #define INPUT_REGEXP "(-|\\+)?([0-9]+|[0-9]*\\.[0-9]*)"
 
@@ -32,6 +33,8 @@ private:
 
     Highlighter *highlighter;
 
+    AboutDialog *aboutDialog;
+
 public:
     MainWindow();
     ~MainWindow();
@@ -45,6 +48,7 @@ public slots:
     void on_actionOpen_activated();
     void on_actionSave_activated();
     void on_actionSaveAs_activated();
+    void on_actionAbout_activated();
     void on_txtEditSourcecode_textChanged();
     void on_lineEditInput_returnPressed();
     void on_toolBtnNumber_clicked();

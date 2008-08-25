@@ -13,6 +13,9 @@ class AND : public LogicOperation
 public:
     AND(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

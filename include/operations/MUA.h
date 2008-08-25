@@ -14,6 +14,9 @@ class MUA : public IntegerOperation
 public:
     MUA(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

@@ -8,6 +8,9 @@ class SRR : public NullaryOperation
 public:
     SRR(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

@@ -13,6 +13,9 @@ class ADI : public IndexregisterOperation
 public:
     ADI(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

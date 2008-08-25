@@ -14,6 +14,9 @@ class XOR : public LogicOperation
 public:
     XOR(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

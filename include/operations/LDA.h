@@ -13,6 +13,9 @@ class LDA : public IndirectOperation
 public:
     LDA(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

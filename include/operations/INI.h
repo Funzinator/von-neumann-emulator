@@ -16,6 +16,9 @@ class INI : public InputOperation
 public:
     INI(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

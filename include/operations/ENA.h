@@ -12,6 +12,9 @@ class ENA : public UnaryOperation
 public:
     ENA(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

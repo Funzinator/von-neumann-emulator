@@ -14,6 +14,9 @@ class MDA : public IntegerOperation
 public:
     MDA(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

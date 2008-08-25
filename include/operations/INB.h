@@ -15,6 +15,9 @@ class INB : public InputOperation
 public:
     INB(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

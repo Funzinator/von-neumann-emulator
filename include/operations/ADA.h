@@ -14,6 +14,9 @@ class ADA : public IntegerOperation
 public:
     ADA(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

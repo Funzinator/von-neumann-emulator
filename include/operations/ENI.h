@@ -12,6 +12,9 @@ class ENI : public IndexregisterOperation
 public:
     ENI(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

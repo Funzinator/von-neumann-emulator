@@ -12,6 +12,9 @@ class ENAI : public IndexregisterOperation
 public:
     ENAI(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

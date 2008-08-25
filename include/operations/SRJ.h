@@ -13,6 +13,9 @@ class SRJ : public IndirectOperation
 public:
     SRJ(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

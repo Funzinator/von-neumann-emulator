@@ -12,6 +12,9 @@ class FNG : public NegateOperation
 public:
     FNG(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

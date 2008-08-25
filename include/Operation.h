@@ -22,9 +22,18 @@ public:
     Operation(RawOperation*);
     ~Operation();
 
+    /*!
+     * gibt den Namen der Operation zurück. Wahlweise mit Parametern
+     * \param full vollständige Angabe der Parameter
+     */
     QString getOperationName(bool);
 
-    virtual void run(Configuration*) = 0;
+    /*!
+     * abstrakte Methode, die die abgeleiteten Operationen auf die
+     * Konfiguration anwendet.
+     * \param c zu verändernde Konfiguration
+     */
+    virtual void run(Configuration* c) = 0;
 };
 
 #endif /*OPERATION_H_*/

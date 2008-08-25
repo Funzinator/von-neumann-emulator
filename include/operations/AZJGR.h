@@ -14,6 +14,9 @@ class AZJGR : public CompareOperation
 public:
     AZJGR(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

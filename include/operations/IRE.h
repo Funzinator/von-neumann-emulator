@@ -13,6 +13,9 @@ class IRE : public ConvertOperation
 public:
     IRE(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

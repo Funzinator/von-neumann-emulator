@@ -14,6 +14,9 @@ class FSB : public FloatOperation
 public:
     FSB(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

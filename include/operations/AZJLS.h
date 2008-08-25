@@ -14,6 +14,9 @@ class AZJLS : public CompareOperation
 public:
     AZJLS(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

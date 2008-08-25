@@ -14,6 +14,9 @@ class FMU : public FloatOperation
 public:
     FMU(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

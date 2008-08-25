@@ -17,6 +17,9 @@ class RIN : public ConvertOperation
 public:
     RIN(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

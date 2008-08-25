@@ -13,6 +13,9 @@ class OUB : public OutputOperation
 public:
     OUB(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

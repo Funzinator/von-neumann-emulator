@@ -13,6 +13,8 @@
 #include "GuiInterface.h"
 #include "Highlighter.h"
 
+#define INPUT_REGEXP "(-|\\+)?([0-9]+|[0-9]*\\.[0-9]*)"
+
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {
     Q_OBJECT
@@ -25,6 +27,8 @@ private:
     Interpreter *i;
     Parser *parser;
     QFile *file;
+
+    QRegExp *inputRegExp;
 
     Highlighter *highlighter;
 

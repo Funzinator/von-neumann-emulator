@@ -12,8 +12,8 @@ MainWindow::MainWindow() : QMainWindow()
     connect(this->timerRun, SIGNAL(timeout()), this, SLOT(timerNextStep()));
 
     /* Nur Zahlen (Integer und Float) für lineEditInput zulassen */ 
-    QRegExp inputRegExp("-?([0-9]+|[0-9]*\\.[0-9]*)");
-    QValidator *inputValidator = new QRegExpValidator(inputRegExp, this);
+    this->inputRegExp = new QRegExp(INPUT_REGEXP);
+    QValidator *inputValidator = new QRegExpValidator(*this->inputRegExp, this);
     this->lineEditInput->setValidator(inputValidator); 
 
     this->resetConfiguration();
@@ -318,5 +318,26 @@ void MainWindow::on_toolBtnClearInput_clicked()
 
 void MainWindow::on_toolBtnOpenInput_clicked()
 {
-    // FIXME: implementieren!
+    QString filename = QFileDialog::getOpenFileName(this,
+                                                    "Eingabeband öffnen",
+                                                    "",
+                                                    "Alle Dateien (*)");
+    if (filename.length())
+    {
+        QFile file(filename);
+        if (file.open(QFile::ReadOnly | QFile::Text))
+        {
+            QString line;
+
+            while (!file.atEnd())
+            {
+                line = file.readLine().simplified();
+
+                if (this->inputRegExp->exactMatch(line))
+                {
+                    this->listWidgetInput->addItem(line);
+                }
+            }
+        }
+    }
 }

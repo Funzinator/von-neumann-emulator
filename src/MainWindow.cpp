@@ -98,7 +98,7 @@ void MainWindow::on_toolBtnNext_clicked()
 {
     this->toolBtnStop->setEnabled(true);
     
-    timerNextStep();
+    this->timerNextStep();
 }
 
 void MainWindow::on_toolBtnPause_clicked()
@@ -145,12 +145,7 @@ void MainWindow::on_toolBtnStop_clicked()
 
 void MainWindow::timerNextStep()
 {
-    if (!this->i->next())
-    {
-        QString tmp;
-
-        halt("Error at line "+ tmp.setNum(this->i->getConfiguration()->getPC()) + ".");
-    }
+    this->i->next();
 
     this->showConfiguration(this->i->getConfiguration());  
 }
@@ -158,7 +153,7 @@ void MainWindow::timerNextStep()
 void MainWindow::stop(QString message)
 {
     this->timerRun->stop();
-    
+
     this->listWidgetOutput->addItem(QString("System stopped%1").arg((message.length() ? QString(": %1").arg(message) : ".")));
 
     this->toolBtnPause->setEnabled(false);

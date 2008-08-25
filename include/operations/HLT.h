@@ -12,6 +12,9 @@ class HLT : public NullaryOperation
 public:
     HLT(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

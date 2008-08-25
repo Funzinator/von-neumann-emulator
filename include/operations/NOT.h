@@ -12,6 +12,9 @@ class NOT : public NegateOperation
 public:
     NOT(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

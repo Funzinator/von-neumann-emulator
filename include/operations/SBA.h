@@ -14,6 +14,9 @@ class SBA : public IntegerOperation
 public:
     SBA(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

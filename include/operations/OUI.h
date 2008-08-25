@@ -14,6 +14,9 @@ class OUI : public OutputOperation
 public:
     OUI(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

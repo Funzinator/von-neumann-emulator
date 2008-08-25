@@ -14,6 +14,9 @@ class AZJNE : public CompareOperation
 public:
     AZJNE(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

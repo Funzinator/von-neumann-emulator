@@ -16,6 +16,9 @@ class ENTIER : public ConvertOperation
 public:
     ENTIER(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

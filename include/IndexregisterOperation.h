@@ -13,6 +13,12 @@ public:
     IndexregisterOperation(RawOperation*);
 
 protected:
+    //! OP,I b: OP (Inhalt(b))
+    /*! 
+     * Bei der indirekten Adressierung wird als Adresse, der in Adresse b
+     * gespeicherte Wert verwendet.
+     * \param c Konfiguration
+     */
     StorageCell* IndirectToDirect(Configuration*);
 };
 

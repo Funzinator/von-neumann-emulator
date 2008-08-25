@@ -14,6 +14,9 @@ class FAD : public FloatOperation
 public:
     FAD(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

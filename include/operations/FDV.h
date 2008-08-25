@@ -14,6 +14,9 @@ class FDV : public FloatOperation
 public:
     FDV(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

@@ -13,6 +13,9 @@ class SBI : public IndexregisterOperation
 public:
     SBI(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

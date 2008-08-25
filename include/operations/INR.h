@@ -16,6 +16,9 @@ class INR : public InputOperation
 public:
     INR(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

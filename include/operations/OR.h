@@ -13,6 +13,9 @@ class OR : public LogicOperation
 public:
     OR(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

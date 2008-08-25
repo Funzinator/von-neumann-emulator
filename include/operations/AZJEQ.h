@@ -14,6 +14,9 @@ class AZJEQ : public CompareOperation
 public:
     AZJEQ(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

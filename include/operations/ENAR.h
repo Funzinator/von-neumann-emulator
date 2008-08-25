@@ -12,6 +12,9 @@ class ENAR : public UnaryOperation
 public:
     ENAR(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

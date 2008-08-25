@@ -12,6 +12,9 @@ class ENIA : public IndexregisterOperation
 public:
     ENIA(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

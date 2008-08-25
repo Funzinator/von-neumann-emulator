@@ -13,6 +13,9 @@ class NOP : public NullaryOperation
 public:
     NOP(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

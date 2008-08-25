@@ -12,6 +12,9 @@ class NGA : public NegateOperation
 public:
     NGA(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

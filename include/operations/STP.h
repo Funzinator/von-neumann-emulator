@@ -12,6 +12,9 @@ class STP : public NullaryOperation
 public:
     STP(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

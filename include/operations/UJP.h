@@ -12,6 +12,9 @@ class UJP : public ControlOperation
 public:
     UJP(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

@@ -14,6 +14,9 @@ class OUR : public OutputOperation
 public:
     OUR(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

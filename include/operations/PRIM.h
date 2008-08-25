@@ -16,6 +16,9 @@ private:
 public:
     PRIM(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

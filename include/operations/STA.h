@@ -13,6 +13,9 @@ class STA : public IndirectOperation
 public:
     STA(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

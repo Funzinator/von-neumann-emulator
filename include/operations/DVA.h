@@ -15,6 +15,9 @@ class DVA : public IntegerOperation
 public:
     DVA(RawOperation*);
 
+    /*!
+     * \sa Operation::run()
+     */
     void run(Configuration*);
 };
 

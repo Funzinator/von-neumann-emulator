@@ -22,16 +22,59 @@ public:
 
     StorageCell();
 
+    //! setzt die Speicherzelle auf den Binärwert s
+    /*!
+     * \param s Binärwert, wird in eine Festpunktzahl umgewandelt
+     */
     void setBinary(QString);
+
+    //! setzt die Speicherzelle auf die Festpunkzahl i
+    /*!
+     * \param i Festpunktzahlwert
+     */
     void setInt(int);
+
+    //! setzt die Speicherzelle auf die Gleitpunkzahl f
+    /*!
+     * \param f Gleitpunktzahlwert
+     */
     void setFloat(double);
+
+    //! setzt den Wert der Speicherzelle auf den einer anderen Speicherzelle values
+    /*!
+     * \param values Speicherzelle
+     * \param type   Typ der Speicherzelle
+     */
     void setRaw(Storage, const unsigned char);
 
+    //! gibt den Wert der Speicherzelle, interpretiert als Binärwert, zurück
+    /*!
+     * \return Binärwert
+     */
     QString getBinary();
+
+    //! gibt den Wert der Speicherzelle, interpretiert als Festpunktzahl, zurück
+    /*!
+     * \return Festpunktzahlwert
+     */    
     int getInt();
+
+    //! gibt den Wert der Speicherzelle, interpretiert als Gleitpunktzahl, zurück
+    /*!
+     * \return Gleitpunktzahlwert
+     */
     double getFloat();
+    
+    //! gibt die Speicherzelle zurück
+    /*!
+     * \return Binärwert
+     */    
     Storage getRaw();
 
+    //! gibt den Typ der Speicherzelle zurück
+    /*!
+     * \return Typ der Speicherzelle
+     */
     const unsigned char getType();
 };
 

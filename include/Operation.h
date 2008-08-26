@@ -22,15 +22,14 @@ public:
     Operation(RawOperation*);
     ~Operation();
 
+    //! gibt den Namen der Operation zurück. Wahlweise mit Parametern
     /*!
-     * gibt den Namen der Operation zurück. Wahlweise mit Parametern
      * \param full vollständige Angabe der Parameter
      */
     QString getOperationName(bool);
 
-    /*!
-     * abstrakte Methode, die die abgeleiteten Operationen auf die
-     * Konfiguration anwendet.
+    //! wendet die abgeleitete Operation auf die Konfiguration an
+    /*
      * \param c zu verändernde Konfiguration
      */
     virtual void run(Configuration* c) = 0;

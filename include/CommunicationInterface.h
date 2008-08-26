@@ -13,15 +13,45 @@ class CommunicationInterface : public QObject
 {
 public:
     CommunicationInterface();
-    
+
     static const unsigned char STP = 1;
     static const unsigned char HLT = 2;
-    
-    virtual void sendSignal(unsigned char) = 0;
-    virtual void sendSignal(unsigned char, QString) = 0;
-    virtual void sendString(QString) = 0;
+
+    //! sendet ein Signal an die Oberfläche
+    /*!
+     * \param signal Stop- oder Halt-Signal
+     */
+    virtual void sendSignal(unsigned char signal) = 0;
+
+    //! sendet ein Signal an die Oberfläche
+    /*!
+     * \param signal Stop- oder Halt-Signal
+     * \param message Fehlermeldung
+     */
+    virtual void sendSignal(unsigned char signal, QString message ) = 0;
+
+    //! sendet eine Ausgabe an die Oberfläche
+    /*!
+     * \param message Ausgabe
+     */  
+    virtual void sendString(QString message) = 0;
+
+    //! fordert eine Festpunktzahl von der Oberfläche an
+    /*!
+     * \return Festpunktzahl
+     */
     virtual int receiveInteger() = 0;
+
+    //! fordert eine Gleitpunktzahl von der Oberfläche an
+    /*!
+     * \return Gleitpunktzahl
+     */
     virtual double receiveFloat() = 0;
+
+    //! fordert einen Binärwert von der Oberfläche an
+    /*!
+     * \return Binärwert
+     */
     virtual QString receiveBinary() = 0;
 };
 

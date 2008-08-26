@@ -22,13 +22,41 @@ private:
     QListWidget *listWidgetOutput;
 
 public:
-    GuiInterface(QMainWindow *, QListWidget*, QListWidget *);
+    /*!
+     * \param Hauptfenster
+     * \param Eingabeband
+     * \param Ausgabeband
+     */
+    GuiInterface(QMainWindow*, QListWidget*, QListWidget*);
 
+    /*!
+     * \sa CommunicationInterface::sendSignal()
+     */
     void sendSignal(unsigned char);
+
+    /*!
+     * \sa CommunicationInterface::sendSignal()
+     */
     void sendSignal(unsigned char, QString);
+
+    /*!
+     * \sa CommunicationInterface::sendString()
+     */
     void sendString(QString);
+
+    /*!
+     * \sa CommunicationInterface::receiveInteger()
+     */
     int receiveInteger();
+
+    /*!
+     * \sa CommunicationInterface::receiveFloat()
+     */
     double receiveFloat();
+
+    /*!
+     * \sa CommunicationInterface::receiveBinary()
+     */
     QString receiveBinary();
     
 signals:

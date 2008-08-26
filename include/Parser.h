@@ -18,15 +18,43 @@ private:
     QRegExp *ParseRegExp;
     QRegExp *SplitRegExp;
 
+    //! prüft, ob die Quelltextzeile eine gültige Anweisung enthält
+    /*!
+     * \param line Quelltextzeile
+     * \return Gültigkeit
+     */
     bool validateLine(QString);
+
+    //! wandelt eine Quelltextzeile in eine RawOperation um.
+    /*!
+     * \param line Quelltextzeile
+     * \return RawOperation-Objekt zu dieser Zeile
+     */
     RawOperation* convertLine(QString);
 
 public:
     Parser();
     ~Parser();
-    
+
+    //! parst ein QVector mit Quelltextzeilen
+    /*
+     * \param input Quelltextzeilen
+     * \return Map mit Operationen zur Verwendung durch den Interpreter
+     */
     QMap<unsigned int,Operation *> Parse(QVector<QString>);
+
+    //! parst eine Quelltextdatei
+    /**
+     * \param file Quelltextdatei
+     * \return Map mit Operationen zur Verwendung durch den Interpreter
+     */ 
     QMap<unsigned int,Operation *> Parse(QFile *);
+
+    //! parst einen Quelltext
+    /**
+     * \param plainText Quelltext
+     * \return Map mit Operationen zur Verwendung durch den Interpreter
+     */
     QMap<unsigned int,Operation *> Parse(QString);
 };
 

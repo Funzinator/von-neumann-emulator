@@ -13,7 +13,7 @@ class Interpreter
 private:
     Configuration *config;
     QMap<unsigned int, Operation *> ops;
-    
+
 public:
     /*!
      * \param ops    QMap mit Operationen

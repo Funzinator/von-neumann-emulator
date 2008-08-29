@@ -37,7 +37,7 @@ void StorageCell::setFloat(double f)
 void StorageCell::setRaw(Storage values, const unsigned char type)
 {
     this->values = values;
-    
+
     switch (type)
     {
         case StorageCell::Integer:

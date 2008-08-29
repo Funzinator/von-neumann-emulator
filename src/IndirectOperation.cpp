@@ -18,7 +18,7 @@ StorageCell* IndirectOperation::setP1(Configuration *c)
 {
     StorageCell *p1;
 
-    p1 = (this->Param2 ? this->BinaryToUnary(c) : this->IndirectToDirect(c));  
+    p1 = (this->Param2 ? this->BinaryToUnary(c) : this->IndirectToDirect(c));
 
     return p1;
 }

@@ -10,7 +10,7 @@ void OUB::run(Configuration *c)
     QString tmp;
 
     tmp.setNum(c->getAC()->getInt(), 2);
-    
-    c->getInterface()->sendString(tmp);  
+
+    c->getInterface()->sendString(tmp);
     c->setPC(c->getPC() + 1);
 }

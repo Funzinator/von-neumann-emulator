@@ -64,7 +64,7 @@ public:
      * \return Gleitpunktzahlwert
      */
     double getFloat();
-    
+
     //! gibt die Speicherzelle zurück
     /*!
      * \return Binärwert

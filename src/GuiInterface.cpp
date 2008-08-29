@@ -5,7 +5,7 @@ GuiInterface::GuiInterface(QMainWindow *MainWindow, QListWidget *listWidgetInput
     this->MainWindow = MainWindow;
     this->listWidgetInput = listWidgetInput;
     this->listWidgetOutput = listWidgetOutput;
-    
+
     this->regExpBinary = 0;
     this->regExpInteger = 0;
     this->regExpFloat = 0;
@@ -30,7 +30,7 @@ void GuiInterface::sendSignal(unsigned char signal, QString message)
         default:
         case CommunicationInterface::HLT:
             emit halt(message);
-            break;    
+            break;
     }
 }
 

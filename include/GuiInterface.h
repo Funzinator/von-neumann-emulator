@@ -64,7 +64,7 @@ public:
      * \sa CommunicationInterface::receiveBinary()
      */
     QString receiveBinary();
-    
+
 signals:
     void halt(QString);
     void stop(QString);

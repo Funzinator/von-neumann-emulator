@@ -3,10 +3,11 @@
 
 #include <QMainWindow>
 #include <QListWidget>
-#include <QInputDialog>
 
 #include "CommunicationInterface.h"
 #include "DialogInputBinary.h"
+#include "DialogInputFloat.h"
+#include "DialogInputInteger.h"
 
 //! Kommunikationsschnittstelle zwischen Interpreter und grafischer Oberfläche
 /*!

@@ -37,66 +37,30 @@ void GuiInterface::sendString(QString message)
 
 int GuiInterface::receiveInteger()
 {
-    int res;
+    DialogInputInteger dialog("Eingabe", QString::fromUtf8("Integerwert:"), this->MainWindow);
 
-    if (this->listWidgetInput->count())
+    if (dialog.exec())
     {
-        QListWidgetItem *item = this->listWidgetInput->takeItem(0); 
-        res = item->text().toInt();
-        delete item;
+        return dialog.lineEditInput->text().toInt();
     }
     else
     {
-        bool ok = false;
-
-        res = QInputDialog::getInteger(this->MainWindow,
-                                       "Eingabe",
-                                       "Integerwert:",
-                                       0,           /* Voreinstellung */
-                                       -2147483647, /* Minimum */
-                                       2147483647,  /* Maximum */
-                                       1,           /* Schrittweite */
-                                       &ok);
-
-        if(!ok)
-        {
-            throw "input error";
-        }
+        throw "input error";
     }
-
-    return res;
 }
 
 double GuiInterface::receiveFloat()
 {
-    double res;
+    DialogInputFloat dialog("Eingabe", QString::fromUtf8("Doublewert:"), this->MainWindow);
 
-    if (this->listWidgetInput->count())
+    if (dialog.exec())
     {
-        QListWidgetItem *item = this->listWidgetInput->takeItem(0); 
-        res = item->text().toDouble();
-        delete item;
+        return dialog.lineEditInput->text().toDouble();
     }
     else
     {
-        bool ok = false;
-        
-        res = QInputDialog::getDouble(this->MainWindow,
-                                      "Eingabe",
-                                      "Doublewert:",
-                                      0,            /* Voreinstellung */
-                                      -2147483647,  /* Minimum */
-                                      2147483647,   /* Maximum */
-                                      10,           /* Maximale Anzahl Nachkommastellen */
-                                      &ok);
-
-        if(!ok)
-        {
-            throw "input error";
-        }
+        throw "input error";
     }
-
-    return res;
 }
 
 QString GuiInterface::receiveBinary()

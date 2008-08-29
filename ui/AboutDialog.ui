@@ -54,6 +54,9 @@ p, li { white-space: pre-wrap; }
 &lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">sich dabei zum einen um die &lt;a href="http://www.famfamfam.com/lab/icons/silk/">&lt;span style=" text-decoration: underline; color:#0000ff;">famfamfam Silk Icons&lt;/span>&lt;/a> (&lt;a href="http://creativecommons.org/licenses/by/2.5/">&lt;span style=" text-decoration: underline; color:#0000ff;">CCA&lt;/span>&lt;/a>) und zum anderen um&lt;/p>
 &lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">die &lt;a href="http://tango.freedesktop.org/Tango_Icon_Library">&lt;span style=" text-decoration: underline; color:#0000ff;">Tango Icon Library&lt;/span>&lt;/a> (&lt;a href="http://creativecommons.org/licenses/by-sa/2.5/">&lt;span style=" text-decoration: underline; color:#0000ff;">CCASA&lt;/span>&lt;/a>).&lt;/p>&lt;/body>&lt;/html></string>
        </property>
+       <property name="openExternalLinks" >
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>

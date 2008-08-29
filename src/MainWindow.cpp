@@ -144,7 +144,6 @@ void MainWindow::on_toolBtnStop_clicked()
 
     this->timerRun->stop();
 
-    // FIXME: alles zurücksetzen
     this->resetConfiguration();
 }
 
@@ -204,7 +203,7 @@ void MainWindow::on_actionNew_activated()
 void MainWindow::on_actionOpen_activated()
 {
     QString filename = QFileDialog::getOpenFileName(this,
-                                                    "von-Neumann-Programm öffnen",
+                                                    QString::fromUtf8("von-Neumann-Programm öffnen"),
                                                     "",
                                                     "Alle Dateien (*)");
     if (filename.length())
@@ -234,12 +233,16 @@ void MainWindow::on_actionSave_activated()
             ts << this->txtEditSourcecode->toPlainText();
         }
     }
+    else
+    {
+        this->on_actionSaveAs_activated();
+    }
 }
 
 void MainWindow::on_actionSaveAs_activated()
 {
     QString filename = QFileDialog::getSaveFileName(this,
-                                                    "von-Neumann-Programm speichern",
+                                                    QString::fromUtf8("von-Neumann-Programm speichern"),
                                                     "",
                                                     "Alle Dateien (*)");
     if (filename.length())
@@ -324,7 +327,7 @@ void MainWindow::on_toolBtnClearInput_clicked()
 void MainWindow::on_toolBtnOpenInput_clicked()
 {
     QString filename = QFileDialog::getOpenFileName(this,
-                                                    "Eingabeband öffnen",
+                                                    QString::fromUtf8("Eingabeband öffnen"),
                                                     "",
                                                     "Alle Dateien (*)");
     if (filename.length())

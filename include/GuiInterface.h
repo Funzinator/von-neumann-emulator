@@ -23,6 +23,10 @@ private:
     QListWidget *listWidgetInput;
     QListWidget *listWidgetOutput;
 
+    QRegExp *regExpBinary;
+    QRegExp *regExpFloat;
+    QRegExp *regExpInteger;
+
 public:
     /*!
      * \param Hauptfenster

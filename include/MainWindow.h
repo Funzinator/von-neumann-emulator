@@ -14,7 +14,7 @@
 #include "Highlighter.h"
 #include "AboutDialog.h"
 
-#define INPUT_REGEXP "(-|\\+)?([0-9]+|[0-9]*\\.[0-9]*)"
+#define INPUT_REGEXP "[-+]?([0-9]+|[0-9]*\\.[0-9]*)"
 
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {

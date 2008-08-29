@@ -29,7 +29,7 @@ Configuration *Interpreter::getConfiguration()
 QString Interpreter::getNextOperation(bool full)
 {
     unsigned int PC = this->config->getPC();
-    
+
     if (this->ops[PC])
     {
         return this->ops[PC]->getOperationName(full);

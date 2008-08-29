@@ -17,7 +17,7 @@ Operation::~Operation()
     {
         delete this->Param1;
     }
-    
+
     if (this->Param2)
     {
         delete this->Param2;
@@ -30,7 +30,7 @@ QString Operation::getOperationName(bool full = false)
     {
         QString res, p1, p2;
         res = "%1%2%3%4";
-        
+
         if (this->Param1)
         {
             p1 = " %1";
@@ -40,7 +40,7 @@ QString Operation::getOperationName(bool full = false)
         {
             p1 = "";
         }
-        
+
         if (this->Param2)
         {
             p2 = ",%1";

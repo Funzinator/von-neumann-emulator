@@ -20,10 +20,10 @@ private:
     QMap<unsigned int,StorageCell *> Data;
     QVector<StorageCell *> IndexRegister;
     CommunicationInterface *Interface;
-    
+
 public:
     static const unsigned short int IndexRegisterCount = 16;
-    
+
     Configuration(CommunicationInterface *);
     ~Configuration();
 
@@ -35,7 +35,7 @@ public:
     StorageCell* getIndexRegister(unsigned int);
     QVector<unsigned int> getUsedData();
     CommunicationInterface* getInterface();
-    
+
     void setPC(unsigned int);
     void setSR(unsigned int);
 };

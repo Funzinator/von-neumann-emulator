@@ -56,7 +56,7 @@ public slots:
     void on_toolBtnOpenInput_clicked();
 
     void timerNextStep();
-    
+
     void stop(QString);
     void halt(QString);
 };

@@ -10,13 +10,13 @@ MainWindow::MainWindow() : QMainWindow()
 
     this->timerRun = new QTimer(this);
     connect(this->timerRun, SIGNAL(timeout()), this, SLOT(timerNextStep()));
-    
+
     connect(this->actionAboutQt, SIGNAL(activated()), qApp, SLOT(aboutQt()));
 
     /* Nur Zahlen (Integer und Float) für lineEditInput zulassen */ 
     this->inputRegExp = new QRegExp(INPUT_REGEXP);
     QValidator *inputValidator = new QRegExpValidator(*this->inputRegExp, this);
-    this->lineEditInput->setValidator(inputValidator); 
+    this->lineEditInput->setValidator(inputValidator);
 
     this->resetConfiguration();
 
@@ -69,7 +69,7 @@ void MainWindow::showConfiguration(Configuration *config)
 
     this->lblPC->setText(QString("%1").arg(config->getPC()));
     this->lblSR->setText(QString("%1").arg(config->getSR()));
-    
+
     for (int i = 0; i < Configuration::IndexRegisterCount; i++)
     {
         if (config->getIndexRegister(i)->getType() != StorageCell::Unused)
@@ -78,7 +78,7 @@ void MainWindow::showConfiguration(Configuration *config)
             this->listWidgetIndexregister->addItem(QString("%1: %2").arg(i).arg(tmp));
         }
     }
-    
+
     QVector<unsigned int> usedSlots = config->getUsedData();
     for (int i = 0; i < usedSlots.size(); i++)
     {
@@ -102,7 +102,7 @@ void MainWindow::showConfiguration(Configuration *config)
 void MainWindow::on_toolBtnNext_clicked()
 {
     this->toolBtnStop->setEnabled(true);
-    
+
     this->timerNextStep();
 }
 
@@ -151,7 +151,7 @@ void MainWindow::timerNextStep()
 {
     this->i->next();
 
-    this->showConfiguration(this->i->getConfiguration());  
+    this->showConfiguration(this->i->getConfiguration());
 }
 
 void MainWindow::stop(QString message)
@@ -356,6 +356,6 @@ void MainWindow::on_actionAbout_activated()
     {
         this->aboutDialog = new AboutDialog;
     }
-    
+
     this->aboutDialog->show();
 }

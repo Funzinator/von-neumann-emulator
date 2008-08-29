@@ -17,7 +17,7 @@ protected:
     bool indirect;
     QString Operatorname;
     QString Comment;
-    
+
 public:
     Operation(RawOperation*);
     ~Operation();

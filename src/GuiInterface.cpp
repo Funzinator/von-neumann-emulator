@@ -101,31 +101,14 @@ double GuiInterface::receiveFloat()
 
 QString GuiInterface::receiveBinary()
 {
-    QString res;
+    DialogInputBinary dialog("Eingabe", QString::fromUtf8("Binärwert:"), this->MainWindow);
 
-    if (this->listWidgetInput->count())
+    if (dialog.exec())
     {
-        QListWidgetItem *item = this->listWidgetInput->takeItem(0); 
-        res = item->text();
-        delete item;
+        return dialog.lineEditInput->text();
     }
     else
     {
-        bool ok = false;
-
-        // FIXME: hier soll der Benutzer nur Worte aus {0,1}+ eingeben können
-        res = QInputDialog::getText(this->MainWindow,
-                                   "Eingabe",
-                                   "Binärwert:",
-                                   QLineEdit::Normal, /* EchoMode */
-                                   "0",               /* Voreinstellung */
-                                   &ok);
-
-        if(!ok)
-        {
-            throw "input error";
-        }
+        throw "input error";
     }
-
-    return res;
 }

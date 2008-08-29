@@ -1,6 +1,6 @@
 #include "MainWindow.h"
 
-QString version = "1.0rc1";
+QString version = "1.0svn";
 QString autoren;
 
 int main(int argc, char *argv[])

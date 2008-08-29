@@ -6,6 +6,7 @@
 #include <QInputDialog>
 
 #include "CommunicationInterface.h"
+#include "DialogInputBinary.h"
 
 //! Kommunikationsschnittstelle zwischen Interpreter und grafischer Oberfläche
 /*!

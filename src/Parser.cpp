@@ -7,8 +7,8 @@ bool Parser::validateLine(QString line)
 
 Parser::Parser()
 {
-    this->ParseRegExp = new QRegExp(PARSE_REGEXP);
-    this->SplitRegExp = new QRegExp(SPLIT_REGEXP);
+    this->ParseRegExp = new QRegExp(PARSE_REGEXP, Qt::CaseInsensitive);
+    this->SplitRegExp = new QRegExp(SPLIT_REGEXP, Qt::CaseInsensitive);
 }
 
 Parser::~Parser()
@@ -26,7 +26,7 @@ RawOperation* Parser::convertLine(QString line)
         this->SplitRegExp->indexIn(line);
 
         res->LineNumber = this->SplitRegExp->cap(1).toInt();
-        res->Operator = this->SplitRegExp->cap(2);
+        res->Operator = this->SplitRegExp->cap(2).toUpper();
         res->Param1 = this->SplitRegExp->cap(5);
         res->Param2 = this->SplitRegExp->cap(7);
         res->Comment = this->SplitRegExp->cap(8);

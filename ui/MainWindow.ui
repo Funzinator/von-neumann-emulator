@@ -359,7 +359,7 @@
           </property>
           <property name="font" >
            <font>
-            <family>DejaVu Sans Mono</family>
+            <family>DejaVu Sans Mono, Courier New</family>
             <pointsize>10</pointsize>
            </font>
           </property>

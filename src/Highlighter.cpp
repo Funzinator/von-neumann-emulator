@@ -24,7 +24,7 @@ Highlighter::Highlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
     classFormat.setForeground(Qt::darkGreen);
     classFormat.setFontItalic(false);
     classFormat.setFontWeight(QFont::Normal);
-    rule.pattern = QRegExp("-?[0-9]+");
+    rule.pattern = QRegExp("[-+]?[0-9]+");
     rule.format = classFormat;
     highlightingRules.append(rule);
 
@@ -32,7 +32,7 @@ Highlighter::Highlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
     classFormat.setForeground(Qt::darkGreen);
     classFormat.setFontItalic(false);
     classFormat.setFontWeight(QFont::Normal);
-    rule.pattern = QRegExp("-?([0-9]*\\.[0-9]*)");
+    rule.pattern = QRegExp("[-+]?([0-9]*\\.[0-9]*)");
     rule.format = classFormat;
     highlightingRules.append(rule);
 

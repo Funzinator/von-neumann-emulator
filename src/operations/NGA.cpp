@@ -7,6 +7,6 @@ NGA::NGA(RawOperation *rawOp) : NegateOperation(rawOp)
 
 void NGA::run(Configuration *c)
 {
-    c->getAC()->setInt(-(c->getAC()->getInt() * (-1)));
+    c->getAC()->setInt(-(c->getAC()->getInt()));
     c->setPC(c->getPC() + 1);
 }

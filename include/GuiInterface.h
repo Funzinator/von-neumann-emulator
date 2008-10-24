@@ -29,11 +29,11 @@ private:
 
 public:
     /*!
-     * \param Hauptfenster
-     * \param Eingabeband
-     * \param Ausgabeband
+     * \param MainWindow Hauptfenster
+     * \param listWidgetInput Eingabeband
+     * \param listWidgetOutput Ausgabeband
      */
-    GuiInterface(QMainWindow*, QListWidget*, QListWidget*);
+    GuiInterface(QMainWindow *MainWindow, QListWidget *listWidgetInput, QListWidget *listWidgetOutput);
 
     /*!
      * \sa CommunicationInterface::sendSignal()

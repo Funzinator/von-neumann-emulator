@@ -108,7 +108,7 @@ QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
             }
             else if (rawOp->Operator == "ENIA")
             {
-                op[rawOp->LineNumber] = new ENAI(rawOp);
+                op[rawOp->LineNumber] = new ENIA(rawOp);
             }
             else if (rawOp->Operator == "ENTIER")
             {

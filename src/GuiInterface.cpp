@@ -41,7 +41,7 @@ void GuiInterface::sendString(QString message)
 
 int GuiInterface::receiveInteger()
 {
-    double res;
+    int res = 0;
 
     if (this->listWidgetInput->count())
     {
@@ -59,7 +59,7 @@ int GuiInterface::receiveInteger()
         else
         {
             delete item;
-            throw "input error: invalid integer value";
+            this->sendSignal(CommunicationInterface::HLT, "input error: invalid integer value");
         }
     }
     else
@@ -72,7 +72,7 @@ int GuiInterface::receiveInteger()
         }
         else
         {
-            throw "input error: no input";
+            this->sendSignal(CommunicationInterface::HLT, "input error: no input");
         }
     }
 
@@ -81,7 +81,7 @@ int GuiInterface::receiveInteger()
 
 double GuiInterface::receiveFloat()
 {
-    double res;
+    double res = 0;
 
     if (this->listWidgetInput->count())
     {
@@ -99,7 +99,7 @@ double GuiInterface::receiveFloat()
         else
         {
             delete item;
-            throw "input error: invalid double value";
+            this->sendSignal(CommunicationInterface::HLT, "input error: invalid double value");
         }
     }
     else
@@ -112,7 +112,7 @@ double GuiInterface::receiveFloat()
         }
         else
         {
-            throw "input error: no input";
+            this->sendSignal(CommunicationInterface::HLT, "input error: no input");
         }
     }
 
@@ -139,7 +139,7 @@ QString GuiInterface::receiveBinary()
         else
         {
             delete item;
-            throw "input error: invalid binary value";
+            this->sendSignal(CommunicationInterface::HLT, "input error: invalid binary value");
         }
     }
     else
@@ -152,7 +152,7 @@ QString GuiInterface::receiveBinary()
         }
         else
         {
-            throw "input error: no input";
+            this->sendSignal(CommunicationInterface::HLT, "input error: no input");
         }
     }
 

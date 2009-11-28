@@ -7,13 +7,6 @@ INR::INR(RawOperation *rawOp) : InputOperation(rawOp)
 
 void INR::run(Configuration *c)
 {
-    try
-    {
-        c->getAC()->setFloat(c->getInterface()->receiveFloat());
-        c->setPC(c->getPC() + 1);
-    }
-    catch (char *e)
-    {
-        c->getInterface()->sendSignal(CommunicationInterface::HLT, e);
-    }
+    c->getAC()->setFloat(c->getInterface()->receiveFloat());
+    c->setPC(c->getPC() + 1);
 }

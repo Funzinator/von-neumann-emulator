@@ -6,6 +6,8 @@
 #include <QTimer>
 #include <QMessageBox>
 
+#include <ctime>
+
 #include "ui_MainWindow.h"
 
 #include "Interpreter.h"

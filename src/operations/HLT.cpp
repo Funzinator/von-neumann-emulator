@@ -7,5 +7,5 @@ HLT::HLT(RawOperation *rawOp) : NullaryOperation(rawOp)
 
 void HLT::run(Configuration *c)
 {
-    c->getInterface()->sendSignal(CommunicationInterface::HLT);
+    c->getInterface()->sendSignal(CommunicationInterface::HLT, "HLT invoked");
 }

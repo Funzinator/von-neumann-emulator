@@ -64,7 +64,7 @@ int GuiInterface::receiveInteger()
     }
     else
     {
-        DialogInputFloat dialog("Eingabe", QString::fromUtf8("Integerwert:"), this->MainWindow);
+        DialogInputInteger dialog("Eingabe", QString::fromUtf8("Integerwert:"), this->MainWindow);
 
         if (dialog.exec())
         {

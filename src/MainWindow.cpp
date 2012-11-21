@@ -3,6 +3,7 @@
 MainWindow::MainWindow() : QMainWindow()
 {
     this->setupUi(this);
+    this->setWindowTitle("von-Neumann-Emulator (untitled*)");
 
     this->i = 0;
     this->parser = 0;
@@ -33,6 +34,33 @@ MainWindow::~MainWindow()
     delete this->timerRun;
     delete this->highlighter;
     delete this->aboutDialog;
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (this->txtEditSourcecode->document()->isModified())
+    {
+        switch (saveChanges())
+        {
+            case QMessageBox::Yes:
+                this->on_actionSave_activated();
+            case QMessageBox::No:
+                event->accept();
+                break;
+            case QMessageBox::Cancel:
+                event->ignore();
+                break;
+        }
+    }
+}
+
+int MainWindow::saveChanges()
+{
+    QMessageBox msgBxSave;
+    msgBxSave.setWindowTitle("Unsaved changes");
+    msgBxSave.setText("Code has been modified. Save changes?");
+    msgBxSave.setStandardButtons(QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+    return msgBxSave.exec();
 }
 
 void MainWindow::resetConfiguration()
@@ -189,6 +217,19 @@ void MainWindow::halt(QString message)
 
 void MainWindow::on_actionNew_activated()
 {
+    if (this->txtEditSourcecode->document()->isModified())
+    {
+        switch (saveChanges())
+        {
+            case QMessageBox::Yes:
+                this->on_actionSave_activated();
+            case QMessageBox::No:
+                break;
+            case QMessageBox::Cancel:
+                return;
+        }
+    }
+
     this->txtEditSourcecode->setPlainText("");
     this->listWidgetOutput->clear();
     this->listWidgetInput->clear();
@@ -198,10 +239,24 @@ void MainWindow::on_actionNew_activated()
         delete this->file;
     }
     this->file = 0;
+    this->setWindowTitle("von-Neumann-Emulator (untitled*)");
 }
 
 void MainWindow::on_actionOpen_activated()
 {
+    if (this->txtEditSourcecode->document()->isModified())
+    {
+        switch (saveChanges())
+        {
+            case QMessageBox::Yes:
+                this->on_actionSave_activated();
+            case QMessageBox::No:
+                break;
+            case QMessageBox::Cancel:
+                return;
+        }
+    }
+
     QString filename = QFileDialog::getOpenFileName(this,
                                                     QString::fromUtf8("von-Neumann-Programm öffnen"),
                                                     "",
@@ -219,6 +274,7 @@ void MainWindow::on_actionOpen_activated()
         {
             this->txtEditSourcecode->setPlainText(file.readAll());
         }
+        this->setWindowTitle("von-Neumann-Emulator ("+filename+")");
     }
 }
 
@@ -231,6 +287,8 @@ void MainWindow::on_actionSave_activated()
         {
             QTextStream ts(&file);
             ts << this->txtEditSourcecode->toPlainText();
+            this->txtEditSourcecode->document()->setModified(false);
+            this->setWindowTitle("von-Neumann-Emulator ("+this->file->fileName()+")");
         }
     }
     else
@@ -258,6 +316,8 @@ void MainWindow::on_actionSaveAs_activated()
         {
             QTextStream ts(&file);
             ts << this->txtEditSourcecode->toPlainText();
+            this->txtEditSourcecode->document()->setModified(false);
+            this->setWindowTitle("von-Neumann-Emulator ("+this->file->fileName()+")");
         }
     }
 }
@@ -285,6 +345,11 @@ void MainWindow::on_txtEditSourcecode_textChanged()
     this->i = new Interpreter(this->parser->Parse(this->txtEditSourcecode->toPlainText()), new Configuration(new GuiInterface(this, this->listWidgetInput, this->listWidgetOutput)));
 
     this->resetConfiguration();
+    
+    if ( (this->file) && (this->txtEditSourcecode->document()->isModified()) )
+    {
+        this->setWindowTitle("von-Neumann-Emulator ("+this->file->fileName()+"*)");
+    }
 }
 
 void MainWindow::on_lineEditInput_returnPressed()
@@ -298,8 +363,9 @@ void MainWindow::on_lineEditInput_returnPressed()
 
 void MainWindow::on_toolBtnNumber_clicked()
 {
-    QString line, out, tmp(this->txtEditSourcecode->toPlainText());
-    QStringList list = tmp.split("\n", QString::SkipEmptyParts);
+    QString line, out, tmp, old(this->txtEditSourcecode->toPlainText());
+    QStringList list = old.split("\n", QString::SkipEmptyParts);
+    bool modif;
 
     int comments = 0;
     for (int i = 0; i < list.size(); i++)
@@ -316,7 +382,21 @@ void MainWindow::on_toolBtnNumber_clicked()
         }
         out += "\n";
     }
+    //setPlaintext() sets modified false... Therefore:
+    modif = this->txtEditSourcecode->document()->isModified();
+    
     this->txtEditSourcecode->setPlainText(out);
+    
+    //if nothing changed and isModified==false, do not change Title
+    if ( (old == out) && (! modif) && this->file )
+    {
+        this->setWindowTitle("von-Neumann-Emulator ("+this->file->fileName()+")");
+    }
+    //else: set modified true [again]
+    else
+    {
+        this->txtEditSourcecode->document()->setModified(true);
+    }
 }
 
 void MainWindow::on_toolBtnClearInput_clicked()

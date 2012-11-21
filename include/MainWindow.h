@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QTimer>
 #include <QMessageBox>
+#include <QCloseEvent>
 
 #include <ctime>
 
@@ -23,6 +24,7 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
     Q_OBJECT
 
 private:
+    int saveChanges();
     void showConfiguration(Configuration *);
     void resetConfiguration();
     QTimer *timerRun;
@@ -36,6 +38,9 @@ private:
     Highlighter *highlighter;
 
     AboutDialog *aboutDialog;
+
+protected:
+    void closeEvent(QCloseEvent *);
 
 public:
     MainWindow();

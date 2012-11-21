@@ -9,8 +9,15 @@ void MDA::run(Configuration *c)
 {
     StorageCell *p1 = this->setP1(c);
 
-    c->getAC()->setInt(c->getAC()->getInt() % c->getData(p1->getInt())->getInt());
-    c->setPC(c->getPC() + 1);
+    if (c->getData(p1->getInt())->getInt())
+    {
+        c->getAC()->setInt(c->getAC()->getInt() % c->getData(p1->getInt())->getInt());
+        c->setPC(c->getPC() + 1);
+    }
+    else
+    {
+        c->getInterface()->sendSignal(CommunicationInterface::HLT, "division by zero");
+    }
 
     delete p1;
 }

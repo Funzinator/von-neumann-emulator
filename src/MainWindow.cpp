@@ -12,7 +12,7 @@ MainWindow::MainWindow() : QMainWindow()
     this->timerRun = new QTimer(this);
     connect(this->timerRun, SIGNAL(timeout()), this, SLOT(timerNextStep()));
 
-    connect(this->actionAboutQt, SIGNAL(activated()), qApp, SLOT(aboutQt()));
+    connect(this->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 
     /* Nur Zahlen (Integer und Float) für lineEditInput zulassen */ 
     this->inputRegExp = new QRegExp(INPUT_REGEXP);
@@ -43,7 +43,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
         switch (saveChanges())
         {
             case QMessageBox::Yes:
-                this->on_actionSave_activated();
+                this->on_actionSave_triggered();
             case QMessageBox::No:
                 event->accept();
                 break;
@@ -215,14 +215,14 @@ void MainWindow::halt(QString message)
     this->txtEditSourcecode->setReadOnly(false);
 }
 
-void MainWindow::on_actionNew_activated()
+void MainWindow::on_actionNew_triggered()
 {
     if (this->txtEditSourcecode->document()->isModified())
     {
         switch (saveChanges())
         {
             case QMessageBox::Yes:
-                this->on_actionSave_activated();
+                this->on_actionSave_triggered();
             case QMessageBox::No:
                 break;
             case QMessageBox::Cancel:
@@ -242,14 +242,14 @@ void MainWindow::on_actionNew_activated()
     this->setWindowTitle("von-Neumann-Emulator (untitled*)");
 }
 
-void MainWindow::on_actionOpen_activated()
+void MainWindow::on_actionOpen_triggered()
 {
     if (this->txtEditSourcecode->document()->isModified())
     {
         switch (saveChanges())
         {
             case QMessageBox::Yes:
-                this->on_actionSave_activated();
+                this->on_actionSave_triggered();
             case QMessageBox::No:
                 break;
             case QMessageBox::Cancel:
@@ -278,7 +278,7 @@ void MainWindow::on_actionOpen_activated()
     }
 }
 
-void MainWindow::on_actionSave_activated()
+void MainWindow::on_actionSave_triggered()
 {
     if (this->file)
     {
@@ -293,11 +293,11 @@ void MainWindow::on_actionSave_activated()
     }
     else
     {
-        this->on_actionSaveAs_activated();
+        this->on_actionSaveAs_triggered();
     }
 }
 
-void MainWindow::on_actionSaveAs_activated()
+void MainWindow::on_actionSaveAs_triggered()
 {
     QString filename = QFileDialog::getSaveFileName(this,
                                                     QString::fromUtf8("von-Neumann-Programm speichern"),
@@ -430,7 +430,7 @@ void MainWindow::on_toolBtnOpenInput_clicked()
     }
 }
 
-void MainWindow::on_actionAbout_activated()
+void MainWindow::on_actionAbout_triggered()
 {
     if (!this->aboutDialog)
     {

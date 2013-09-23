@@ -51,11 +51,11 @@ public slots:
     void on_toolBtnPause_clicked();
     void on_toolBtnPlay_clicked();
     void on_toolBtnStop_clicked();
-    void on_actionNew_activated();
-    void on_actionOpen_activated();
-    void on_actionSave_activated();
-    void on_actionSaveAs_activated();
-    void on_actionAbout_activated();
+    void on_actionNew_triggered();
+    void on_actionOpen_triggered();
+    void on_actionSave_triggered();
+    void on_actionSaveAs_triggered();
+    void on_actionAbout_triggered();
     void on_txtEditSourcecode_textChanged();
     void on_lineEditInput_returnPressed();
     void on_toolBtnNumber_clicked();

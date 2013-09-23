@@ -6,6 +6,7 @@
 #include <QTimer>
 #include <QMessageBox>
 #include <QCloseEvent>
+#include <QDate>
 
 #include <ctime>
 

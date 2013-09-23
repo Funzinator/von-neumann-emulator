@@ -5,6 +5,7 @@
 
 extern QString version;
 extern QString autoren;
+extern int jahr;
 
 class AboutDialog : public QDialog, public Ui::AboutDialog
 {

@@ -5,7 +5,7 @@
 
 //! ENI a,b: Inhalt(IRa) := b
 /*!
- * Lade das Indexregister mit der Adresse a AC mit Festpunktzahl b.
+ * Lade das Indexregister a mit Festpunktzahl b.
  */
 class ENI : public IndexregisterOperation
 {

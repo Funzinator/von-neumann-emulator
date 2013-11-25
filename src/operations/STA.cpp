@@ -9,8 +9,11 @@ void STA::run(Configuration *c)
 {
     StorageCell *p1 = this->setP1(c);
 
-    c->getData(p1->getInt())->setRaw(c->getAC()->getRaw(), c->getAC()->getType());
-    c->setPC(c->getPC() + 1);
+    if (p1)
+    {
+        c->getData(p1->getInt())->setRaw(c->getAC()->getRaw(), c->getAC()->getType());
+        c->setPC(c->getPC() + 1);
+    }
 
     delete p1;
 }

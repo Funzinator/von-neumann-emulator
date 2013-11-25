@@ -53,16 +53,19 @@ StorageCell* Configuration::getData(unsigned int x)
 
 StorageCell* Configuration::getIndexRegister(unsigned int x)
 {
-	if (x >= Configuration::IndexRegisterCount)
-	{
-	        this->Interface->sendSignal(CommunicationInterface::HLT, "only 16 index registers available");
-		x = Configuration::IndexRegisterCount - 1;
-	}
-	if (this->IndexRegister[x] == 0)
-	{
-		this->IndexRegister[x] = new StorageCell;
-	}
-	return this->IndexRegister[x];
+    if (x < Configuration::IndexRegisterCount)
+    {
+        if (this->IndexRegister[x] == 0)
+        {
+            this->IndexRegister[x] = new StorageCell;
+        }
+        return this->IndexRegister[x];
+    }
+    else
+    {
+        this->Interface->sendSignal(CommunicationInterface::HLT, QString("only %1 index registers available").arg(Configuration::IndexRegisterCount));
+        return 0;
+    }
 }
 
 void Configuration::setPC(unsigned int i)

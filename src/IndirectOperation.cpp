@@ -7,11 +7,16 @@ IndirectOperation::IndirectOperation(RawOperation *rawOp) : IndexregisterOperati
 
 StorageCell* IndirectOperation::BinaryToUnary(Configuration *c)
 {
-    StorageCell *p1 = new StorageCell;
-
-    p1->setInt(this->Param1->getInt() + (this->Param2 ? c->getIndexRegister(this->Param2->getInt())->getInt() : 0));
-
-    return p1;
+    if (c->getIndexRegister(this->Param2->getInt()))
+    {
+        StorageCell *p1 = new StorageCell;
+        p1->setInt(this->Param1->getInt() + (this->Param2 ? c->getIndexRegister(this->Param2->getInt())->getInt() : 0));
+        return p1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 StorageCell* IndirectOperation::setP1(Configuration *c)

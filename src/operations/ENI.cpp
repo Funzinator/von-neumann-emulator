@@ -13,8 +13,11 @@ void ENI::run(Configuration *c)
 
     p1->setInt(this->Param1->getInt());	
 
-    c->getIndexRegister(p1->getInt())->setInt(this->Param2->getInt());
-    c->setPC(c->getPC() + 1);
+    if (c->getIndexRegister(p1->getInt()))
+    {
+        c->getIndexRegister(p1->getInt())->setInt(this->Param2->getInt());
+        c->setPC(c->getPC() + 1);
+    }
 
     delete p1;
 }

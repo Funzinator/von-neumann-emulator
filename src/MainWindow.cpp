@@ -68,7 +68,7 @@ void MainWindow::resetConfiguration()
     this->lblOperation->setText(this->i ? this->i->getNextOperation(true) : "");
     this->lblAC->setText("0");
     this->lblPC->setText("0");
-    this->lblSR->setText("0");
+    this->lblSR->setText("-");
 
     this->listWidgetData->clear();
     this->listWidgetIndexregister->clear();
@@ -96,7 +96,30 @@ void MainWindow::showConfiguration(Configuration *config)
     this->lblAC->setText(tmp);
 
     this->lblPC->setText(QString("%1").arg(config->getPC()));
-    this->lblSR->setText(QString("%1").arg(config->getSR()));
+
+    if (config->isEmptySR())
+    {
+        this->lblSR->setText("-");
+    }
+    else
+    {
+        QVector<unsigned int> SRStackContent = config->getSRStackContent();
+        int n = SRStackContent.size();
+        int l = (n<MainWindow::MaxVisibleStack ?  n : MainWindow::MaxVisibleStack);
+        tmp.setNum(SRStackContent.at(n-1));
+        if (l > 1)
+        {
+            for (int i = 2 ; i <= l; i++)
+            {
+                tmp += QString("|%1").arg(SRStackContent.at(n-i));
+            }
+            if (l < n)
+            {
+                tmp += "|...";
+            }
+        }
+        this->lblSR->setText(tmp);
+    }
 
     for (int i = 0; i < Configuration::IndexRegisterCount; i++)
     {

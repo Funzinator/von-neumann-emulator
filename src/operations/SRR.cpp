@@ -7,5 +7,12 @@ SRR::SRR(RawOperation *rawOp) : NullaryOperation(rawOp)
 
 void SRR::run(Configuration *c)
 {
-    c->setPC(c->getSR());
+    if (c->isEmptySR())
+    {
+        c->getInterface()->sendSignal(CommunicationInterface::HLT, "subroutine stack empty");
+    }
+    else
+    {
+        c->setPC(c->popSR());
+    }
 }

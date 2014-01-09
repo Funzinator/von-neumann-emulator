@@ -7,7 +7,6 @@ Configuration::Configuration(CommunicationInterface *Interface)
     this->AC = new StorageCell;
 
     this->PC = 0;
-    this->SR = 0;
 
     this->Interface = Interface;
 }
@@ -36,9 +35,35 @@ unsigned int Configuration::getPC()
     return this->PC;
 }
 
-unsigned int Configuration::getSR()
+unsigned int Configuration::topSR()
 {
-    return this->SR;
+    if (this->SRStack.isEmpty())
+    {
+        this->Interface->sendSignal(CommunicationInterface::HLT, "subroutine stack empty");
+        return 0;
+    }
+    else
+    {
+        return this->SRStack.top();
+    }
+}
+
+unsigned int Configuration::popSR()
+{
+    if (this->SRStack.isEmpty())
+    {
+        this->Interface->sendSignal(CommunicationInterface::HLT, "subroutine stack empty");
+        return 0;
+    }
+    else
+    {
+        return this->SRStack.pop();
+    }
+}
+
+bool Configuration::isEmptySR()
+{
+    return this->SRStack.isEmpty();
 }
 
 StorageCell* Configuration::getData(unsigned int x)
@@ -73,9 +98,9 @@ void Configuration::setPC(unsigned int i)
     this->PC = i;
 }
 
-void Configuration::setSR(unsigned int i)
+void Configuration::pushSR(unsigned int i)
 {
-    this->SR = i;
+    this->SRStack.push(i);
 }
 
 QVector<unsigned int> Configuration::getUsedData()
@@ -90,6 +115,11 @@ QVector<unsigned int> Configuration::getUsedData()
     }
 
     return res;
+}
+
+QVector<unsigned int> Configuration::getSRStackContent()
+{
+    return QVector<unsigned int>(this->SRStack);
 }
 
 CommunicationInterface* Configuration::getInterface()

@@ -11,7 +11,7 @@ void SRJ::run(Configuration *c)
 
     if (p1)
     {
-        c->setSR(c->getPC() + 1);
+        c->pushSR(c->getPC() + 1);
         c->setPC(p1->getInt());
     }
 

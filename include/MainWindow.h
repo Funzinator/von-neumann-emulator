@@ -40,6 +40,8 @@ private:
 
     AboutDialog *aboutDialog;
 
+    static const unsigned short int MaxVisibleStack = 4;
+
 protected:
     void closeEvent(QCloseEvent *);
 

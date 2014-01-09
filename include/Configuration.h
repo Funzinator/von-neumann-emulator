@@ -3,6 +3,7 @@
 
 #include <QMap>
 #include <QVector>
+#include <QStack>
 
 #include "CommunicationInterface.h"
 #include "StorageCell.h"
@@ -16,7 +17,7 @@ class Configuration
 private:
     StorageCell *AC; /* Akkumulator       */
     unsigned int PC; /* Befehlszähler     */
-    unsigned int SR; /* Subroutine-Zeiger */
+    QStack<unsigned int> SRStack; /* Subroutine-Stack */
     QMap<unsigned int,StorageCell *> Data;
     QVector<StorageCell *> IndexRegister;
     CommunicationInterface *Interface;
@@ -29,15 +30,18 @@ public:
 
     StorageCell* getAC();
     unsigned int getPC();
-    unsigned int getSR();
+    unsigned int topSR();
+    unsigned int popSR();
+    bool isEmptySR();
 
     StorageCell* getData(unsigned int);
     StorageCell* getIndexRegister(unsigned int);
     QVector<unsigned int> getUsedData();
+    QVector<unsigned int> getSRStackContent();
     CommunicationInterface* getInterface();
 
     void setPC(unsigned int);
-    void setSR(unsigned int);
+    void pushSR(unsigned int);
 };
 
 #endif /*CONFIGURATION_H_*/

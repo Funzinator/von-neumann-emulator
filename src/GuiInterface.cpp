@@ -66,6 +66,8 @@ int GuiInterface::receiveInteger()
     {
         DialogInputInteger dialog("Eingabe", QString::fromUtf8("Integerwert:"), this->MainWindow);
 
+        this->MainWindow->setEnabled(false);
+
         if (dialog.exec())
         {
             res = dialog.lineEditInput->text().toInt();
@@ -74,6 +76,8 @@ int GuiInterface::receiveInteger()
         {
             this->sendSignal(CommunicationInterface::HLT, "input error: no input");
         }
+
+        this->MainWindow->setEnabled(true);
     }
 
     return res;
@@ -106,6 +110,8 @@ double GuiInterface::receiveFloat()
     {
         DialogInputFloat dialog("Eingabe", QString::fromUtf8("Doublewert:"), this->MainWindow);
 
+        this->MainWindow->setEnabled(false);
+
         if (dialog.exec())
         {
             res = dialog.lineEditInput->text().toDouble();
@@ -114,6 +120,8 @@ double GuiInterface::receiveFloat()
         {
             this->sendSignal(CommunicationInterface::HLT, "input error: no input");
         }
+
+        this->MainWindow->setEnabled(true);
     }
 
     return res;
@@ -146,6 +154,8 @@ QString GuiInterface::receiveBinary()
     {
         DialogInputBinary dialog("Eingabe", QString::fromUtf8("Binärwert:"), this->MainWindow);
 
+        this->MainWindow->setEnabled(false);
+
         if (dialog.exec())
         {
             res = dialog.lineEditInput->text();
@@ -154,6 +164,8 @@ QString GuiInterface::receiveBinary()
         {
             this->sendSignal(CommunicationInterface::HLT, "input error: no input");
         }
+
+        this->MainWindow->setEnabled(true);
     }
 
     return res;

@@ -35,19 +35,6 @@ unsigned int Configuration::getPC()
     return this->PC;
 }
 
-unsigned int Configuration::topSR()
-{
-    if (this->SRStack.isEmpty())
-    {
-        this->Interface->sendSignal(CommunicationInterface::HLT, "subroutine stack empty");
-        return 0;
-    }
-    else
-    {
-        return this->SRStack.top();
-    }
-}
-
 unsigned int Configuration::popSR()
 {
     if (this->SRStack.isEmpty())

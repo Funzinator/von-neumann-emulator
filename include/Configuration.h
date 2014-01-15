@@ -30,7 +30,6 @@ public:
 
     StorageCell* getAC();
     unsigned int getPC();
-    unsigned int topSR();
     unsigned int popSR();
     bool isEmptySR();
 

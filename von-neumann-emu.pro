@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = emulator
+TARGET = von-neumann-emu
 INCLUDEPATH += . include include/operations
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets

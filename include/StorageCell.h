@@ -75,7 +75,7 @@ public:
     /*!
      * \return Typ der Speicherzelle
      */
-    const unsigned char getType();
+    unsigned char getType();
 };
 
 #endif /*STORAGECELL_H_*/

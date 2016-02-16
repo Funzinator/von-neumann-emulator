@@ -76,7 +76,7 @@ Storage StorageCell::getRaw()
     return this->values;
 }
 
-const unsigned char StorageCell::getType()
+unsigned char StorageCell::getType()
 {
 	return this->type;
 }

@@ -2,6 +2,8 @@
 
 DialogInput::DialogInput(const QString &title, const QString &label, const QValidator *validator, QObject *parent) : QDialog()
 {
+    Q_UNUSED(parent);
+
     this->setupUi(this);
 
     this->setWindowTitle(title);

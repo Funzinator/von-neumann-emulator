@@ -1,0 +1,8 @@
+*.o
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+.qmake.stash
+Makefile
+von-neumann-emu
+von-neumann-emu.app/

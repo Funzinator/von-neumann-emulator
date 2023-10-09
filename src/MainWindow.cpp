@@ -44,6 +44,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
         {
             case QMessageBox::Yes:
                 this->on_actionSave_triggered();
+                /* FALLTHRU */
             case QMessageBox::No:
                 event->accept();
                 break;
@@ -272,7 +273,7 @@ void MainWindow::on_actionOpen_triggered()
         switch (saveChanges())
         {
             case QMessageBox::Yes:
-                this->on_actionSave_triggered();
+                this->();
             case QMessageBox::No:
                 break;
             case QMessageBox::Cancel:

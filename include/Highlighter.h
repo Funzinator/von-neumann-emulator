@@ -2,6 +2,7 @@
 #define HIGHLIGHTER_H_
 
 #include <QSyntaxHighlighter>
+#include <QRegularExpression>
 
 //! Highlightingklasse für von-Neumann-Befehle
 /*!
@@ -20,13 +21,13 @@ protected:
 private:
     struct HighlightingRule
     {
-        QRegExp pattern;
+        QRegularExpression pattern;
         QTextCharFormat format;
     };
     QVector<HighlightingRule> highlightingRules;
 
-    QRegExp commentStartExpression;
-    QRegExp commentEndExpression;
+    QRegularExpression commentStartExpression;
+    QRegularExpression commentEndExpression;
 
     QTextCharFormat keywordFormat;
     QTextCharFormat classFormat;

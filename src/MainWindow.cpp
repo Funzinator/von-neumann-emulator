@@ -15,8 +15,8 @@ MainWindow::MainWindow() : QMainWindow()
     connect(this->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 
     /* Nur Zahlen (Integer und Float) für lineEditInput zulassen */ 
-    this->inputRegExp = new QRegExp(INPUT_REGEXP);
-    QValidator *inputValidator = new QRegExpValidator(*this->inputRegExp, this);
+    this->inputRegExp = new QRegularExpression(INPUT_REGEXP);
+    QValidator *inputValidator = new QRegularExpressionValidator(*this->inputRegExp, this);
     this->lineEditInput->setValidator(inputValidator);
 
     this->resetConfiguration();
@@ -395,9 +395,9 @@ void MainWindow::on_toolBtnNumber_clicked()
     for (int i = 0; i < list.size(); i++)
     {
         line = list.at(i);
-        if (!line.contains(QRegExp("^\\s*\\{")))
+        if (!line.contains(QRegularExpression("^\\s*\\{")))
         {
-            out += tmp.setNum(i - comments) + ": " + line.remove(QRegExp("^\\s*[0-9]+\\s*:\\s*"));
+            out += tmp.setNum(i - comments) + ": " + line.remove(QRegularExpression("^\\s*[0-9]+\\s*:\\s*"));
         }
         else
         { 
@@ -445,7 +445,7 @@ void MainWindow::on_toolBtnOpenInput_clicked()
             {
                 line = file.readLine().simplified();
 
-                if (this->inputRegExp->exactMatch(line))
+                if (this->inputRegExp->match(line).hasMatch())
                 {
                     this->listWidgetInput->addItem(line);
                 }

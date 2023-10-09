@@ -34,7 +34,7 @@ private:
     Parser *parser;
     QFile *file;
 
-    QRegExp *inputRegExp;
+    QRegularExpression *inputRegExp;
 
     Highlighter *highlighter;
 

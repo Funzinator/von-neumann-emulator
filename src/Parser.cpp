@@ -2,13 +2,13 @@
 
 bool Parser::validateLine(QString line)
 {
-    return this->ParseRegExp->exactMatch(line);
+    return this->ParseRegExp->match(line).hasMatch();
 }
 
 Parser::Parser()
 {
-    this->ParseRegExp = new QRegExp(PARSE_REGEXP, Qt::CaseInsensitive);
-    this->SplitRegExp = new QRegExp(SPLIT_REGEXP, Qt::CaseInsensitive);
+    this->ParseRegExp = new QRegularExpression(PARSE_REGEXP, QRegularExpression::CaseInsensitiveOption);
+    this->SplitRegExp = new QRegularExpression(SPLIT_REGEXP, QRegularExpression::CaseInsensitiveOption);
 }
 
 Parser::~Parser()
@@ -23,14 +23,14 @@ RawOperation* Parser::convertLine(QString line)
 
     if (this->validateLine(line))
     {
-        this->SplitRegExp->indexIn(line);
+        QRegularExpressionMatch m = this->SplitRegExp->match(line);
 
-        res->LineNumber = this->SplitRegExp->cap(1).toInt();
-        res->Operator = this->SplitRegExp->cap(2).toUpper();
-        res->Param1 = this->SplitRegExp->cap(5);
-        res->Param2 = this->SplitRegExp->cap(7);
-        res->Comment = this->SplitRegExp->cap(8);
-        res->indirect = (this->SplitRegExp->cap(3).toStdString() == ",I");
+        res->LineNumber = m.captured(1).toInt();
+        res->Operator = m.captured(2).toUpper();
+        res->Param1 = m.captured(5);
+        res->Param2 = m.captured(7);
+        res->Comment = m.captured(8);
+        res->indirect = (m.captured(3).toStdString() == ",I");
 
         return res;
     }

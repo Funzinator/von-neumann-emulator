@@ -1,7 +1,7 @@
 #ifndef DIALOGINPUTBINARY_H_
 #define DIALOGINPUTBINARY_H_
 
-#include <QRegExpValidator>
+#include <QRegularExpressionValidator>
 
 #include "DialogInput.h"
 

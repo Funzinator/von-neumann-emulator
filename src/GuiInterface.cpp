@@ -47,11 +47,11 @@ int GuiInterface::receiveInteger()
     {
         if (!this->regExpInteger)
         {
-            this->regExpInteger = new QRegExp("[-+]?[0-9]+");
+            this->regExpInteger = new QRegularExpression("^[-+]?[0-9]+$");
         }
 
         QListWidgetItem *item = this->listWidgetInput->takeItem(0);
-        if (this->regExpInteger->exactMatch(item->text()))
+        if (this->regExpInteger->match(item->text()).hasMatch())
         {
             res = item->text().toInt();
             delete item;
@@ -91,11 +91,11 @@ double GuiInterface::receiveFloat()
     {
         if (!this->regExpFloat)
         {
-            this->regExpFloat = new QRegExp("[-+]?([0-9]*\\.?[0-9]*)");
+            this->regExpFloat = new QRegularExpression("^[-+]?([0-9]*\\.?[0-9]*)$");
         }
 
         QListWidgetItem *item = this->listWidgetInput->takeItem(0);
-        if (this->regExpFloat->exactMatch(item->text()))
+        if (this->regExpFloat->match(item->text()).hasMatch())
         {
             res = item->text().toDouble();
             delete item;
@@ -135,11 +135,11 @@ QString GuiInterface::receiveBinary()
     {
         if (!this->regExpBinary)
         {
-            this->regExpBinary = new QRegExp("[01]+");
+            this->regExpBinary = new QRegularExpression("^[01]+$");
         }
 
         QListWidgetItem *item = this->listWidgetInput->takeItem(0);
-        if (this->regExpBinary->exactMatch(item->text()))
+        if (this->regExpBinary->match(item->text()).hasMatch())
         {
             res = item->text();
             delete item;

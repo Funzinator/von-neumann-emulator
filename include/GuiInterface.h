@@ -23,9 +23,9 @@ private:
     QListWidget *listWidgetInput;
     QListWidget *listWidgetOutput;
 
-    QRegExp *regExpBinary;
-    QRegExp *regExpFloat;
-    QRegExp *regExpInteger;
+    QRegularExpression *regExpBinary;
+    QRegularExpression *regExpFloat;
+    QRegularExpression *regExpInteger;
 
 public:
     /*!

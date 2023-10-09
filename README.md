@@ -9,7 +9,7 @@ Es emuliert von-Neumann-Instruktionen und erlaubt Debugging der Programme.
 
 ## Kompilieren
 
-Zum Kompilieren wird QT4 oder höher verwendet. Diese Bibliothek muss installiert sein. Dann ist die Kompilierung sehr einfach:
+Zum Kompilieren wird Qt5 oder höher verwendet. Diese Bibliothek muss installiert sein. Dann ist die Kompilierung sehr einfach:
 
         qmake
         make

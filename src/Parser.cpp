@@ -257,7 +257,7 @@ QMap<unsigned int,Operation *> Parser::Parse(QString plainText)
 {
     QVector<QString> input;
     QString tmp(plainText);
-    QStringList list = tmp.split("\n", QString::SkipEmptyParts);
+    QStringList list = tmp.split("\n", Qt::SkipEmptyParts);
 
     for (int i = 0; i < list.size(); i++)
     {

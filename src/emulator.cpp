@@ -8,7 +8,7 @@ int jahr;
 
 int main(int argc, char *argv[])
 {
-    QRandomGenerator qrand = new QRandomGenerator(time(NULL));
+    QRandomGenerator qrand = QRandomGenerator(time(NULL));
     autoren = (qrand.generate() % 2 ? "C. Beppler, S. Jakobi" : "S. Jakobi, C. Beppler");
     jahr = QDate::currentDate().year();
 

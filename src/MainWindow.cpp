@@ -44,6 +44,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
         {
             case QMessageBox::Yes:
                 this->on_actionSave_triggered();
+                /* FALLTHRU */
             case QMessageBox::No:
                 event->accept();
                 break;
@@ -387,7 +388,7 @@ void MainWindow::on_lineEditInput_returnPressed()
 void MainWindow::on_toolBtnNumber_clicked()
 {
     QString line, out, tmp, old(this->txtEditSourcecode->toPlainText());
-    QStringList list = old.split("\n", QString::SkipEmptyParts);
+    QStringList list = old.split("\n", Qt::SkipEmptyParts);
     bool modif;
 
     int comments = 0;

@@ -273,7 +273,7 @@ void MainWindow::on_actionOpen_triggered()
         switch (saveChanges())
         {
             case QMessageBox::Yes:
-                this->();
+                this->on_actionSave_triggered();
             case QMessageBox::No:
                 break;
             case QMessageBox::Cancel:

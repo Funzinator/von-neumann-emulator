@@ -5,7 +5,7 @@
 union Storage
 {
     int i;
-    double f;
+    float f;
 };
 
 #endif /*STORAGE_H_*/

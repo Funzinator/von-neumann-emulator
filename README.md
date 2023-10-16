@@ -8,6 +8,12 @@ Dieses Programm wurde im Rahmen des Fortgeschrittenen-Praktikums im Wintersemest
 
 Es emuliert von-Neumann-Instruktionen und erlaubt Debugging der Programme.
 
+## Releases
+
+Unter [Releases](https://github.com/Funzinator/von-neumann-emulator/releases) befinden sich fertig kompilierte Pakete für Windows, macOS und Linux.
+
+Es gibt außerdem eine [Web-Variante](https://funzinator.github.io/von-neumann-emulator/), die in einem aktuellen WASM-fähigen Browser läuft.
+
 ## Kompilieren
 
 Zum Kompilieren wird Qt6 oder höher verwendet. Diese Bibliothek muss installiert sein. Dann ist die Kompilierung sehr einfach:

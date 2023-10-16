@@ -2,7 +2,7 @@
 
 #include "MainWindow.h"
 
-QString version = "1.0-github";
+QString version = "1.0";
 QString autoren;
 int jahr;
 

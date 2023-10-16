@@ -14,6 +14,13 @@ for:
     build_script:
       - qmake
       - nmake
+    # before_deploy can only be used on Windows, see https://github.com/appveyor/ci/issues/3597
+    before_deploy:
+      - mkdir emulator
+      - windeployqt release/von-neumann-emu.exe --release --dir emulator\
+      - copy release\von-neumann-emu.exe emulator\emulator.exe
+      - 7z a -r -tzip "emulator-%%APPVEYOR_REPO_TAG_NAME%%-windows-x86_64.zip" emulator\
+      - appveyor PushArtifact "emulator-%%APPVEYOR_REPO_TAG_NAME%%-windows-x86_64.zip"
 
   - matrix:
       only:
@@ -22,8 +29,16 @@ for:
       - export QTDIR=$HOME/Qt/6.4/macos
       - export PATH="${PATH}:${QTDIR}/bin"
     build_script:
+      # "qmake QMAKE_APPLE_DEVICE_ARCHS=arm64 -qtdir <QtDir with ARM64>" will enable M1/M2 builds once provided by AppVeyor
       - qmake
       - make
+    after_build:
+      - sh: |
+          if [ "$APPVEYOR_REPO_TAG" = "true" ] ; then
+            macdeployqt von-neumann-emu.app -dmg
+            mv von-neumann-emu.dmg "emulator-${APPVEYOR_REPO_TAG_NAME}-macos-x86_64.dmg"
+            appveyor PushArtifact "emulator-${APPVEYOR_REPO_TAG_NAME}-macos-x86_64.dmg"
+          fi
 
   - matrix:
       only:
@@ -34,3 +49,28 @@ for:
     build_script:
       - qmake
       - make
+    after_build:
+      - sh: |
+          if [ "$APPVEYOR_REPO_TAG" = "true" ] ; then
+            wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
+            wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
+            chmod +x linuxdeploy*.AppImage
+            cp res/famfamfam/control_play_blue.png von-neumann-emu.png
+            ./linuxdeploy-x86_64.AppImage -e von-neumann-emu -i von-neumann-emu.png --appdir AppDir --create-desktop-file --plugin qt --output appimage
+            mv von-neumann-emu-x86_64.AppImage "emulator-${APPVEYOR_REPO_TAG_NAME}-linux-x86_64.AppImage"
+            appveyor PushArtifact "emulator-${APPVEYOR_REPO_TAG_NAME}-linux-x86_64.AppImage"
+          fi
+
+deploy:
+  - release: $(APPVEYOR_REPO_TAG_NAME)
+    description: 'von-Neumann-Emulator $(APPVEYOR_REPO_TAG_NAME)'
+    provider: GitHub
+    auth_token:
+      secure: PL44es3rGKnzlt+xc0ZcUSqy/81+fxqB+LAgbKUc2pULxR8cV5zKLvcvbvxGp36u
+    artifact: /emulator-.*\.(zip|dmg|AppImage)/
+    draft: false
+    prerelease: false
+    tag: $(APPVEYOR_REPO_TAG_NAME)
+    on:
+      branch: master
+      APPVEYOR_REPO_TAG: true

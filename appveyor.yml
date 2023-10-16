@@ -1,6 +1,36 @@
-install:
-  - set QTDIR=C:\Qt\5.3\mingw482_32
-  - set PATH=%PATH%;%QTDIR%\bin;C:\MinGW\bin
-build_script:
-  - qmake
-  - mingw32-make
+image:
+  - Visual Studio 2019
+  - macos-monterey
+  - Ubuntu2004
+
+for:
+  - matrix:
+      only:
+        - image: Visual Studio 2019
+    install:
+      - set QTDIR=C:\Qt\6.5\msvc2019_64
+      - set PATH=%PATH%;%QTDIR%\bin
+      - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
+    build_script:
+      - qmake
+      - nmake
+
+  - matrix:
+      only:
+        - image: macos-monterey
+    install:
+      - export QTDIR=$HOME/Qt/6.4/macos
+      - export PATH="${PATH}:${QTDIR}/bin"
+    build_script:
+      - qmake
+      - make
+
+  - matrix:
+      only:
+        - image: Ubuntu2004
+    install:
+      - export QTDIR=$HOME/Qt/6.4/gcc_64
+      - export PATH="${PATH}:${QTDIR}/bin"
+    build_script:
+      - qmake
+      - make

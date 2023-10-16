@@ -1,7 +1,8 @@
 # von-Neumann-Emulator
 
-[![Linux-Build Status](https://img.shields.io/travis/Funzinator/von-neumann-emulator/master.svg?label=Linux-Build)](https://travis-ci.org/Funzinator/von-neumann-emulator)
-[![Windows-Build Status](https://img.shields.io/appveyor/ci/Funzinator/von-neumann-emulator/master.svg?label=Windows-Build)](https://ci.appveyor.com/project/Funzinator/von-neumann-emulator/branch/master)
+![Windows-Build](https://img.shields.io/appveyor/job/build/Funzinator/von-neumann-emulator/Image%3A%20Visual%20Studio%202019?label=Windows)
+![macOS-Build](https://img.shields.io/appveyor/job/build/Funzinator/von-neumann-emulator/Image%3A%20macos-monterey?label=macOS)
+![Linux-Build](https://img.shields.io/appveyor/job/build/Funzinator/von-neumann-emulator/Image%3A%20Ubuntu2004?label=Linux)
 
 Dieses Programm wurde im Rahmen des Fortgeschrittenen-Praktikums im Wintersemester 2008 an der Justus-Liebig-Universität Gießen entwickelt.
 

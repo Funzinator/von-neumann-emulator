@@ -11,5 +11,7 @@ Es emuliert von-Neumann-Instruktionen und erlaubt Debugging der Programme.
 
 Zum Kompilieren wird Qt6 oder höher verwendet. Diese Bibliothek muss installiert sein. Dann ist die Kompilierung sehr einfach:
 
-        qmake
-        make
+```shell
+qmake
+make
+```

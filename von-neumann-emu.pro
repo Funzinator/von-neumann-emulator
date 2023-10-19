@@ -50,7 +50,7 @@ HEADERS += include/AboutDialog.h \
            include/operations/ENAR.h \
            include/operations/ENI.h \
            include/operations/ENIA.h \
-           include/operations/ENTIER.h \
+           include/operations/ENTIRE.h \
            include/operations/FAD.h \
            include/operations/FDV.h \
            include/operations/FMU.h \
@@ -125,7 +125,7 @@ SOURCES += src/AboutDialog.cpp \
            src/operations/ENAR.cpp \
            src/operations/ENI.cpp \
            src/operations/ENIA.cpp \
-           src/operations/ENTIER.cpp \
+           src/operations/ENTIRE.cpp \
            src/operations/FAD.cpp \
            src/operations/FDV.cpp \
            src/operations/FMU.cpp \

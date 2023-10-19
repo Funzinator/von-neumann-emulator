@@ -110,9 +110,9 @@ QMap<unsigned int,Operation *> Parser::Parse(QVector<QString> input)
             {
                 op[rawOp->LineNumber] = new ENIA(rawOp);
             }
-            else if (rawOp->Operator == "ENTIER")
+            else if (rawOp->Operator == "ENTIRE" || rawOp->Operator == "ENTIER")
             {
-                op[rawOp->LineNumber] = new ENTIER(rawOp);
+                op[rawOp->LineNumber] = new ENTIRE(rawOp);
             }
             else if (rawOp->Operator == "FAD")
             {

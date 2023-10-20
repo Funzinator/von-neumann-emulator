@@ -32,13 +32,13 @@ public:
     /*!
      * \param i Festpunktzahlwert
      */
-    void setInt(int);
+    void setInt(qint32);
 
     //! setzt die Speicherzelle auf die Gleitpunkzahl f
     /*!
      * \param f Gleitpunktzahlwert
      */
-    void setFloat(double);
+    void setFloat(float);
 
     //! setzt den Wert der Speicherzelle auf den einer anderen Speicherzelle values
     /*!
@@ -57,13 +57,13 @@ public:
     /*!
      * \return Festpunktzahlwert
      */    
-    int getInt();
+    qint32 getInt();
 
     //! gibt den Wert der Speicherzelle, interpretiert als Gleitpunktzahl, zurück
     /*!
      * \return Gleitpunktzahlwert
      */
-    double getFloat();
+    float getFloat();
 
     //! gibt die Speicherzelle zurück
     /*!

@@ -40,13 +40,13 @@ public:
     /*!
      * \return Festpunktzahl
      */
-    virtual int receiveInteger() = 0;
+    virtual qint32 receiveInteger() = 0;
 
     //! fordert eine Gleitpunktzahl von der Oberfläche an
     /*!
      * \return Gleitpunktzahl
      */
-    virtual double receiveFloat() = 0;
+    virtual float receiveFloat() = 0;
 
     //! fordert einen Binärwert von der Oberfläche an
     /*!

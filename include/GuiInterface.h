@@ -53,12 +53,12 @@ public:
     /*!
      * \sa CommunicationInterface::receiveInteger()
      */
-    int receiveInteger();
+    qint32 receiveInteger();
 
     /*!
      * \sa CommunicationInterface::receiveFloat()
      */
-    double receiveFloat();
+    float receiveFloat();
 
     /*!
      * \sa CommunicationInterface::receiveBinary()

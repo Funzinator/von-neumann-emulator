@@ -22,13 +22,13 @@ void StorageCell::setBinary(QString s)
     this->type = StorageCell::Binary;
 }
 
-void StorageCell::setInt(int i)
+void StorageCell::setInt(qint32 i)
 {
     this->values.i = i;
     this->type = StorageCell::Integer;
 }
 
-void StorageCell::setFloat(double f)
+void StorageCell::setFloat(float f)
 {
     this->values.f = f;
     this->type = StorageCell::Float;
@@ -61,12 +61,12 @@ QString StorageCell::getBinary()
     return bin;
 }
 
-int StorageCell::getInt()
+qint32 StorageCell::getInt()
 {
     return this->values.i;
 }
 
-double StorageCell::getFloat()
+float StorageCell::getFloat()
 {
     return this->values.f;
 }

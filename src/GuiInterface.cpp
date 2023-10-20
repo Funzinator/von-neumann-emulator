@@ -39,9 +39,9 @@ void GuiInterface::sendString(QString message)
     this->listWidgetOutput->addItem(message);
 }
 
-int GuiInterface::receiveInteger()
+qint32 GuiInterface::receiveInteger()
 {
-    int res = 0;
+    qint32 res = 0;
 
     if (this->listWidgetInput->count())
     {
@@ -53,7 +53,7 @@ int GuiInterface::receiveInteger()
         QListWidgetItem *item = this->listWidgetInput->takeItem(0);
         if (this->regExpInteger->match(item->text()).hasMatch())
         {
-            res = item->text().toInt();
+            res = (qint32) item->text().toInt();
             delete item;
         }
         else
@@ -70,7 +70,7 @@ int GuiInterface::receiveInteger()
 
         if (dialog.exec())
         {
-            res = dialog.lineEditInput->text().toInt();
+            res = (qint32) dialog.lineEditInput->text().toInt();
         }
         else
         {
@@ -83,9 +83,9 @@ int GuiInterface::receiveInteger()
     return res;
 }
 
-double GuiInterface::receiveFloat()
+float GuiInterface::receiveFloat()
 {
-    double res = 0;
+    float res = 0;
 
     if (this->listWidgetInput->count())
     {
@@ -97,24 +97,24 @@ double GuiInterface::receiveFloat()
         QListWidgetItem *item = this->listWidgetInput->takeItem(0);
         if (this->regExpFloat->match(item->text()).hasMatch())
         {
-            res = item->text().toDouble();
+            res = item->text().toFloat();
             delete item;
         }
         else
         {
             delete item;
-            this->sendSignal(CommunicationInterface::HLT, "input error: invalid double value");
+            this->sendSignal(CommunicationInterface::HLT, "input error: invalid float value");
         }
     }
     else
     {
-        DialogInputFloat dialog("Eingabe", QString::fromUtf8("Doublewert:"), this->MainWindow);
+        DialogInputFloat dialog("Eingabe", QString::fromUtf8("Floatwert:"), this->MainWindow);
 
         this->MainWindow->setEnabled(false);
 
         if (dialog.exec())
         {
-            res = dialog.lineEditInput->text().toDouble();
+            res = dialog.lineEditInput->text().toFloat();
         }
         else
         {

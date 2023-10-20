@@ -4,10 +4,18 @@ MainWindow::MainWindow() : QMainWindow()
 {
     this->setupUi(this);
     this->setWindowTitle("von-Neumann-Emulator (untitled*)");
-
     this->i = 0;
     this->parser = 0;
     this->file = 0;
+
+#ifdef Q_OS_WASM
+    QAction *action;
+    foreach (action, this->menuFile->actions()) {
+        if (action->text() != "&Beenden") {
+            this->menuFile->removeAction(action);
+        }
+    }
+#endif
 
     this->timerRun = new QTimer(this);
     connect(this->timerRun, SIGNAL(timeout()), this, SLOT(timerNextStep()));
@@ -36,6 +44,7 @@ MainWindow::~MainWindow()
     delete this->aboutDialog;
 }
 
+#ifndef Q_OS_WASM
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     if (this->txtEditSourcecode->document()->isModified())
@@ -54,7 +63,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
         }
     }
 }
+#endif
 
+#ifndef Q_OS_WASM
 int MainWindow::saveChanges()
 {
     QMessageBox msgBxSave;
@@ -63,6 +74,7 @@ int MainWindow::saveChanges()
     msgBxSave.setStandardButtons(QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
     return msgBxSave.exec();
 }
+#endif
 
 void MainWindow::resetConfiguration()
 {
@@ -239,6 +251,7 @@ void MainWindow::halt(QString message)
     this->txtEditSourcecode->setReadOnly(false);
 }
 
+#ifndef Q_OS_WASM
 void MainWindow::on_actionNew_triggered()
 {
     if (this->txtEditSourcecode->document()->isModified())
@@ -265,7 +278,9 @@ void MainWindow::on_actionNew_triggered()
     this->file = 0;
     this->setWindowTitle("von-Neumann-Emulator (untitled*)");
 }
+#endif
 
+#ifndef Q_OS_WASM
 void MainWindow::on_actionOpen_triggered()
 {
     if (this->txtEditSourcecode->document()->isModified())
@@ -301,7 +316,9 @@ void MainWindow::on_actionOpen_triggered()
         this->setWindowTitle("von-Neumann-Emulator ("+filename+")");
     }
 }
+#endif
 
+#ifndef Q_OS_WASM
 void MainWindow::on_actionSave_triggered()
 {
     if (this->file)
@@ -320,7 +337,9 @@ void MainWindow::on_actionSave_triggered()
         this->on_actionSaveAs_triggered();
     }
 }
+#endif
 
+#ifndef Q_OS_WASM
 void MainWindow::on_actionSaveAs_triggered()
 {
     QString filename = QFileDialog::getSaveFileName(this,
@@ -345,6 +364,7 @@ void MainWindow::on_actionSaveAs_triggered()
         }
     }
 }
+#endif
 
 void MainWindow::on_txtEditSourcecode_textChanged()
 {

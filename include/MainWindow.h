@@ -25,7 +25,9 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
     Q_OBJECT
 
 private:
+#ifndef Q_OS_WASM
     int saveChanges();
+#endif
     void showConfiguration(Configuration *);
     void resetConfiguration();
     QTimer *timerRun;
@@ -43,7 +45,9 @@ private:
     static const unsigned short int MaxVisibleStack = 4;
 
 protected:
+#ifndef Q_OS_WASM
     void closeEvent(QCloseEvent *);
+#endif
 
 public:
     MainWindow();
@@ -54,10 +58,12 @@ public slots:
     void on_toolBtnPause_clicked();
     void on_toolBtnPlay_clicked();
     void on_toolBtnStop_clicked();
+#ifndef Q_OS_WASM
     void on_actionNew_triggered();
     void on_actionOpen_triggered();
     void on_actionSave_triggered();
     void on_actionSaveAs_triggered();
+#endif
     void on_actionAbout_triggered();
     void on_txtEditSourcecode_textChanged();
     void on_lineEditInput_returnPressed();

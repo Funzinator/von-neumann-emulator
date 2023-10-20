@@ -7,6 +7,12 @@ INI::INI(RawOperation *rawOp) : InputOperation(rawOp)
 
 void INI::run(Configuration *c)
 {
-    c->getAC()->setInt(c->getInterface()->receiveInteger());
-    c->setPC(c->getPC() + 1);
+    IntResult val = c->getInterface()->receiveInteger();
+    bool ok = std::get<1>(val);
+
+    if (ok)
+    {
+        c->getAC()->setInt(std::get<0>(val));
+        c->setPC(c->getPC() + 1);
+    }
 }

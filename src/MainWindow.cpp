@@ -27,6 +27,8 @@ MainWindow::MainWindow() : QMainWindow()
     QValidator *inputValidator = new QRegularExpressionValidator(*this->inputRegExp, this);
     this->lineEditInput->setValidator(inputValidator);
 
+    this->waitForInputState = CommunicationInterface::STATE_NO_WAIT;
+
     this->resetConfiguration();
 
     this->highlighter = new Highlighter(this->txtEditSourcecode->document());
@@ -238,10 +240,12 @@ void MainWindow::halt(QString message)
 
     this->listWidgetOutput->addItem(QString("System halted%1").arg((message.length() ? QString(": %1").arg(message) : ".")));
 
+#ifndef Q_OS_WASM
     QMessageBox::critical(this,
                           "Programmabbruch",
                           message,
                           QMessageBox::Ok);
+#endif
 
     this->toolBtnPause->setEnabled(false);
     this->toolBtnPlay->setEnabled(false);
@@ -249,6 +253,37 @@ void MainWindow::halt(QString message)
     this->toolBtnNext->setEnabled(false);
 
     this->txtEditSourcecode->setReadOnly(false);
+}
+
+void MainWindow::requestInput(QString type)
+{
+    if (this->timerRun->isActive())
+    {
+        this->timerRun->stop();
+        this->waitForInputState = CommunicationInterface::STATE_WAIT_RUN;
+    }
+    else
+    {
+        this->waitForInputState = CommunicationInterface::STATE_WAIT_STEP;
+    }
+
+    QFont font;
+    font.setBold(true);
+
+    QListWidgetItem *item = new QListWidgetItem();
+    item->setText(QString("Waiting for %1...").arg(type));
+    item->setFont(font);
+
+    this->listWidgetOutput->addItem(item);
+
+    this->toolBtnPause->setEnabled(false);
+    this->toolBtnPlay->setEnabled(false);
+    this->toolBtnStop->setEnabled(true);
+    this->toolBtnNext->setEnabled(false);
+
+    this->txtEditSourcecode->setReadOnly(true);
+
+    this->lineEditInput->setFocus();
 }
 
 #ifndef Q_OS_WASM
@@ -402,6 +437,27 @@ void MainWindow::on_lineEditInput_returnPressed()
     {
         this->listWidgetInput->addItem(this->lineEditInput->text());
         this->lineEditInput->clear();
+        if (this->waitForInputState != CommunicationInterface::STATE_NO_WAIT)
+        {
+            this->toolBtnPause->setEnabled(true);
+            this->toolBtnPlay->setEnabled(false);
+            this->toolBtnStop->setEnabled(true);
+            this->toolBtnNext->setEnabled(true);
+
+            this->txtEditSourcecode->setReadOnly(false);
+
+            if (this->listWidgetOutput->count() > 0)
+            {
+                delete this->listWidgetOutput->takeItem(this->listWidgetOutput->count() - 1);
+            }
+
+            this->timerNextStep();
+            if (this->waitForInputState == CommunicationInterface::STATE_WAIT_RUN)
+            {
+                this->timerRun->start();
+            }
+            this->waitForInputState = CommunicationInterface::STATE_NO_WAIT;
+        }
     }
 }
 

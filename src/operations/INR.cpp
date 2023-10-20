@@ -7,6 +7,12 @@ INR::INR(RawOperation *rawOp) : InputOperation(rawOp)
 
 void INR::run(Configuration *c)
 {
-    c->getAC()->setFloat(c->getInterface()->receiveFloat());
-    c->setPC(c->getPC() + 1);
+    FloatResult val = c->getInterface()->receiveFloat();
+    bool ok = std::get<1>(val);
+
+    if (ok)
+    {
+        c->getAC()->setFloat(std::get<0>(val));
+        c->setPC(c->getPC() + 1);
+    }
 }

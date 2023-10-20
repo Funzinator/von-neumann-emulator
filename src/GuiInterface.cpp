@@ -12,6 +12,7 @@ GuiInterface::GuiInterface(QMainWindow *MainWindow, QListWidget *listWidgetInput
 
     connect(this, SIGNAL(stop(QString)), this->MainWindow, SLOT(stop(QString)));
     connect(this, SIGNAL(halt(QString)), this->MainWindow, SLOT(halt(QString)));
+    connect(this, SIGNAL(requestInput(QString)), this->MainWindow, SLOT(requestInput(QString)));
 }
 
 void GuiInterface::sendSignal(unsigned char signal)
@@ -27,6 +28,10 @@ void GuiInterface::sendSignal(unsigned char signal, QString message)
             emit stop(message);
             break;
 
+        case CommunicationInterface::REQUEST_INPUT:
+            emit requestInput(message);
+            break;
+
         default:
         case CommunicationInterface::HLT:
             emit halt(message);
@@ -39,9 +44,10 @@ void GuiInterface::sendString(QString message)
     this->listWidgetOutput->addItem(message);
 }
 
-qint32 GuiInterface::receiveInteger()
+IntResult GuiInterface::receiveInteger()
 {
     qint32 res = 0;
+    bool ok = false;
 
     if (this->listWidgetInput->count())
     {
@@ -54,6 +60,7 @@ qint32 GuiInterface::receiveInteger()
         if (this->regExpInteger->match(item->text()).hasMatch())
         {
             res = (qint32) item->text().toInt();
+            ok = true;
             delete item;
         }
         else
@@ -64,6 +71,9 @@ qint32 GuiInterface::receiveInteger()
     }
     else
     {
+#ifdef Q_OS_WASM
+        this->sendSignal(CommunicationInterface::REQUEST_INPUT, "integer");
+#else
         DialogInputInteger dialog("Eingabe", QString::fromUtf8("Integerwert:"), this->MainWindow);
 
         this->MainWindow->setEnabled(false);
@@ -71,6 +81,7 @@ qint32 GuiInterface::receiveInteger()
         if (dialog.exec())
         {
             res = (qint32) dialog.lineEditInput->text().toInt();
+            ok = true;
         }
         else
         {
@@ -78,14 +89,16 @@ qint32 GuiInterface::receiveInteger()
         }
 
         this->MainWindow->setEnabled(true);
+#endif
     }
 
-    return res;
+    return std::make_tuple(res, ok);
 }
 
-float GuiInterface::receiveFloat()
+FloatResult GuiInterface::receiveFloat()
 {
     float res = 0;
+    bool ok = false;
 
     if (this->listWidgetInput->count())
     {
@@ -98,6 +111,7 @@ float GuiInterface::receiveFloat()
         if (this->regExpFloat->match(item->text()).hasMatch())
         {
             res = item->text().toFloat();
+            ok = true;
             delete item;
         }
         else
@@ -108,6 +122,9 @@ float GuiInterface::receiveFloat()
     }
     else
     {
+#ifdef Q_OS_WASM
+        this->sendSignal(CommunicationInterface::REQUEST_INPUT, "float");
+#else
         DialogInputFloat dialog("Eingabe", QString::fromUtf8("Floatwert:"), this->MainWindow);
 
         this->MainWindow->setEnabled(false);
@@ -115,6 +132,7 @@ float GuiInterface::receiveFloat()
         if (dialog.exec())
         {
             res = dialog.lineEditInput->text().toFloat();
+            ok = true;
         }
         else
         {
@@ -122,14 +140,16 @@ float GuiInterface::receiveFloat()
         }
 
         this->MainWindow->setEnabled(true);
+#endif
     }
 
-    return res;
+    return std::make_tuple(res, ok);
 }
 
-QString GuiInterface::receiveBinary()
+BinaryResult GuiInterface::receiveBinary()
 {
     QString res;
+    bool ok = false;
 
     if (this->listWidgetInput->count())
     {
@@ -142,6 +162,7 @@ QString GuiInterface::receiveBinary()
         if (this->regExpBinary->match(item->text()).hasMatch())
         {
             res = item->text();
+            ok = true;
             delete item;
         }
         else
@@ -152,6 +173,9 @@ QString GuiInterface::receiveBinary()
     }
     else
     {
+#ifdef Q_OS_WASM
+        this->sendSignal(CommunicationInterface::REQUEST_INPUT, "binary");
+#else
         DialogInputBinary dialog("Eingabe", QString::fromUtf8("Binärwert:"), this->MainWindow);
 
         this->MainWindow->setEnabled(false);
@@ -159,6 +183,7 @@ QString GuiInterface::receiveBinary()
         if (dialog.exec())
         {
             res = dialog.lineEditInput->text();
+            ok = true;
         }
         else
         {
@@ -166,7 +191,8 @@ QString GuiInterface::receiveBinary()
         }
 
         this->MainWindow->setEnabled(true);
+#endif
     }
 
-    return res;
+    return std::make_tuple(res, ok);
 }

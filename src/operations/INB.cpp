@@ -7,6 +7,12 @@ INB::INB(RawOperation *rawOp) : InputOperation(rawOp)
 
 void INB::run(Configuration *c)
 {
-    c->getAC()->setBinary(c->getInterface()->receiveBinary());
-    c->setPC(c->getPC() + 1);
+    BinaryResult val = c->getInterface()->receiveBinary();
+    bool ok = std::get<1>(val);
+
+    if (ok)
+    {
+        c->getAC()->setBinary(std::get<0>(val));
+        c->setPC(c->getPC() + 1);
+    }
 }

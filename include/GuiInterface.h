@@ -53,21 +53,22 @@ public:
     /*!
      * \sa CommunicationInterface::receiveInteger()
      */
-    qint32 receiveInteger();
+    IntResult receiveInteger();
 
     /*!
      * \sa CommunicationInterface::receiveFloat()
      */
-    float receiveFloat();
+    FloatResult receiveFloat();
 
     /*!
      * \sa CommunicationInterface::receiveBinary()
      */
-    QString receiveBinary();
+    BinaryResult receiveBinary();
 
 signals:
     void halt(QString);
     void stop(QString);
+    void requestInput(QString);
 };
 
 #endif /*GUIINTERFACE_H_*/

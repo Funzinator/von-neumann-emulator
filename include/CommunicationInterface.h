@@ -3,6 +3,11 @@
 
 #include <QObject>
 #include <QString>
+#include <tuple>
+
+typedef std::tuple<qint32, bool> IntResult;
+typedef std::tuple<float, bool> FloatResult;
+typedef std::tuple<QString, bool> BinaryResult;
 
 //! Kommunikationsschnittstelle zwischen Interpreter und Oberfläche
 /*!
@@ -16,6 +21,11 @@ public:
 
     static const unsigned char STP = 1;
     static const unsigned char HLT = 2;
+    static const unsigned char REQUEST_INPUT = 3;
+
+    static const unsigned char STATE_NO_WAIT = 0;
+    static const unsigned char STATE_WAIT_STEP = 1;
+    static const unsigned char STATE_WAIT_RUN = 2;
 
     //! sendet ein Signal an die Oberfläche
     /*!
@@ -40,19 +50,19 @@ public:
     /*!
      * \return Festpunktzahl
      */
-    virtual qint32 receiveInteger() = 0;
+    virtual IntResult receiveInteger() = 0;
 
     //! fordert eine Gleitpunktzahl von der Oberfläche an
     /*!
      * \return Gleitpunktzahl
      */
-    virtual float receiveFloat() = 0;
+    virtual FloatResult receiveFloat() = 0;
 
     //! fordert einen Binärwert von der Oberfläche an
     /*!
      * \return Binärwert
      */
-    virtual QString receiveBinary() = 0;
+    virtual BinaryResult receiveBinary() = 0;
 };
 
 #endif /*COMMUNICATIONINTERFACE_H_*/

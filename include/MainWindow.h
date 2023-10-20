@@ -31,6 +31,7 @@ private:
     void showConfiguration(Configuration *);
     void resetConfiguration();
     QTimer *timerRun;
+    unsigned char waitForInputState;
 
     Interpreter *i;
     Parser *parser;
@@ -75,6 +76,7 @@ public slots:
 
     void stop(QString);
     void halt(QString);
+    void requestInput(QString);
 };
 
 #endif /*MAINWINDOW_H_*/

@@ -2,6 +2,11 @@ image:
   - Visual Studio 2019
   - macos-monterey
   - Ubuntu2004
+  - Ubuntu2204
+
+environment:
+  access_token:
+    secure: i6EjJctBS70th59Adk4m/aVlt8mOxvlyI5GIrHY3AkdHFX2MlIK1RvdK/lC6SqDB
 
 for:
   - matrix:
@@ -61,13 +66,39 @@ for:
             appveyor PushArtifact "emulator-${APPVEYOR_REPO_TAG_NAME}-linux-x86_64.AppImage"
           fi
 
+  - matrix:
+      only:
+        - image: Ubuntu2204
+    install:
+      - docker pull ghcr.io/funzinator/qt6-wasm:6.6
+    build_script:
+      - docker run --rm -v "$HOME/projects/von-neumann-emulator:/home/user/project:rw" -w /home/user/project ghcr.io/funzinator/qt6-wasm:6.6 sh -c 'qmake && make -j $(nproc)'
+    after_build:
+      - ps: Set-Content -Path "$HOME\.git-credentials" -Value "https://$($env:access_token):x-oauth-basic@github.com`n" -NoNewline
+      - sh: |
+          if [ "$APPVEYOR_REPO_TAG" = "true" ] ; then
+            mv von-neumann-emu.html index.html
+            tar cvzf "emulator-${APPVEYOR_REPO_TAG_NAME}-wasm.tar.gz" index.html qtloader.js qtlogo.svg von-neumann-emu.js von-neumann-emu.wasm
+            appveyor PushArtifact "emulator-${APPVEYOR_REPO_TAG_NAME}-wasm.tar.gz"
+            git config --global credential.helper store
+            git config --global user.email "github@funzi.de"
+            git config --global user.name "Funzinator"
+            git clone --branch wasm "https://github.com/funzinator/${APPVEYOR_PROJECT_NAME}.git" $HOME/projects/wasm
+            cd $HOME/projects/wasm
+            rm *
+            tar xvzf "$HOME/projects/${APPVEYOR_PROJECT_NAME}/emulator-${APPVEYOR_REPO_TAG_NAME}-wasm.tar.gz"
+            git add .
+            git commit -m "$(echo ${APPVEYOR_REPO_TAG_NAME} | sed -e 's/v/Version /g')"
+            git push
+          fi
+
 deploy:
   - release: $(APPVEYOR_REPO_TAG_NAME)
     description: 'von-Neumann-Emulator $(APPVEYOR_REPO_TAG_NAME)'
     provider: GitHub
     auth_token:
       secure: PL44es3rGKnzlt+xc0ZcUSqy/81+fxqB+LAgbKUc2pULxR8cV5zKLvcvbvxGp36u
-    artifact: /emulator-.*\.(zip|dmg|AppImage)/
+    artifact: /emulator-.*\.(zip|dmg|AppImage|tar\.gz)/
     draft: false
     prerelease: false
     tag: $(APPVEYOR_REPO_TAG_NAME)

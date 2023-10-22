@@ -6,3 +6,10 @@ ui_*.h
 Makefile
 von-neumann-emu
 von-neumann-emu.app/
+
+qtloader.js
+qtlogo.svg
+von-neumann-emu.js
+von-neumann-emu.wasm
+von-neumann-emu.html
+index.html

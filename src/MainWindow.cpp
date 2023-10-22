@@ -1,12 +1,19 @@
 #include "MainWindow.h"
 
+#if QT_VERSION >= 0x060500
+MainWindow::MainWindow(Qt::ColorScheme colorScheme) : QMainWindow()
+#else
 MainWindow::MainWindow() : QMainWindow()
+#endif
 {
     this->setupUi(this);
     this->setWindowTitle("von-Neumann-Emulator (untitled*)");
     this->i = 0;
     this->parser = 0;
     this->file = 0;
+#if QT_VERSION >= 0x060500
+    this->colorScheme = colorScheme;
+#endif
 
 #ifdef Q_OS_WASM
     QAction *action;
@@ -31,7 +38,11 @@ MainWindow::MainWindow() : QMainWindow()
 
     this->resetConfiguration();
 
+#if QT_VERSION >= 0x060500
+    this->highlighter = new Highlighter(this->txtEditSourcecode->document(), colorScheme);
+#else
     this->highlighter = new Highlighter(this->txtEditSourcecode->document());
+#endif
 
     this->aboutDialog = 0;
 }

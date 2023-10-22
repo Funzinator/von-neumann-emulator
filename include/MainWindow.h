@@ -43,6 +43,10 @@ private:
 
     AboutDialog *aboutDialog;
 
+#if QT_VERSION >= 0x060500
+    Qt::ColorScheme colorScheme;
+#endif
+
     static const unsigned short int MaxVisibleStack = 4;
 
 protected:
@@ -51,7 +55,11 @@ protected:
 #endif
 
 public:
+#if QT_VERSION >= 0x060500
+    MainWindow(Qt::ColorScheme);
+#else
     MainWindow();
+#endif
     ~MainWindow();
 
 public slots:

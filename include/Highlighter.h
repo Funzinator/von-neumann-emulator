@@ -13,7 +13,11 @@ class Highlighter : public QSyntaxHighlighter
     Q_OBJECT
 
 public:
+#if QT_VERSION >= 0x060500
+    Highlighter(QTextDocument *parent = 0, Qt::ColorScheme colorScheme = Qt::ColorScheme::Unknown);
+#else
     Highlighter(QTextDocument *parent = 0);
+#endif
 
 protected:
     void highlightBlock(const QString &text);

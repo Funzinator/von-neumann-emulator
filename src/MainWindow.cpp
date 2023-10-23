@@ -38,6 +38,15 @@ MainWindow::MainWindow() : QMainWindow()
 
     this->resetConfiguration();
 
+#if QT_VERSION >= 0x060200
+    /* See https://doc.qt.io/qt-6.2/qfont.html#setFamily */
+    QFont font = this->txtEditSourcecode->currentFont();
+    QStringList families = font.family().split(QRegularExpression("\\s*,\\s*"), Qt::SkipEmptyParts);
+    font.setFamilies(families);
+    font.setStyleHint(QFont::Monospace);
+    this->txtEditSourcecode->setFont(font);
+#endif
+
 #if QT_VERSION >= 0x060500
     this->highlighter = new Highlighter(this->txtEditSourcecode->document(), colorScheme);
 #else

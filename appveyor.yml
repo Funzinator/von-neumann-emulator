@@ -17,7 +17,7 @@ for:
       - set PATH=%PATH%;%QTDIR%\bin
       - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
     build_script:
-      - qmake
+      - qmake APP_VERSION=%%APPVEYOR_REPO_TAG_NAME%%
       - nmake
     # before_deploy can only be used on Windows, see https://github.com/appveyor/ci/issues/3597
     before_deploy:
@@ -35,7 +35,7 @@ for:
       - export PATH="${PATH}:${QTDIR}/bin"
     build_script:
       # "qmake QMAKE_APPLE_DEVICE_ARCHS=arm64 -qtdir <QtDir with ARM64>" will enable M1/M2 builds once provided by AppVeyor
-      - qmake
+      - qmake APP_VERSION="${APPVEYOR_REPO_TAG_NAME}"
       - make
     after_build:
       - sh: |
@@ -52,7 +52,7 @@ for:
       - export QTDIR=$HOME/Qt/6.4/gcc_64
       - export PATH="${PATH}:${QTDIR}/bin"
     build_script:
-      - qmake
+      - qmake APP_VERSION="${APPVEYOR_REPO_TAG_NAME}"
       - make
     after_build:
       - sh: |
@@ -72,7 +72,7 @@ for:
     install:
       - docker pull ghcr.io/funzinator/qt6-wasm:6.6
     build_script:
-      - docker run --rm -v "$HOME/projects/von-neumann-emulator:/home/user/project:rw" -w /home/user/project ghcr.io/funzinator/qt6-wasm:6.6 sh -c 'qmake && make -j $(nproc)'
+      - docker run --rm -v "$HOME/projects/$APPVEYOR_PROJECT_NAME:/home/user/project:rw" -w /home/user/project -e APP_VERSION="${APPVEYOR_REPO_TAG_NAME}" ghcr.io/funzinator/qt6-wasm:6.6 sh -c 'qmake APP_VERSION="${APP_VERSION}" && make -j $(nproc)'
     after_build:
       - ps: Set-Content -Path "$HOME\.git-credentials" -Value "https://$($env:access_token):x-oauth-basic@github.com`n" -NoNewline
       - sh: |

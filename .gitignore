@@ -4,6 +4,7 @@ qrc_*.cpp
 ui_*.h
 .qmake.stash
 Makefile
+include/info.h
 von-neumann-emu
 von-neumann-emu.app/
 

@@ -2,6 +2,14 @@ TEMPLATE = app
 TARGET = von-neumann-emu
 INCLUDEPATH += . include include/operations
 
+!defined(APP_VERSION, var):APP_VERSION = "2.0.0-github"
+
+info_file.input = $$PWD/info.h.in
+info_file.output = $$OUT_PWD/include/info.h
+QMAKE_SUBSTITUTES += info_file
+OTHER_FILES += \
+    info.h.in
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 # Input

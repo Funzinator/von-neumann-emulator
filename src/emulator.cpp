@@ -5,13 +5,22 @@
 
 #include "MainWindow.h"
 
-QString version = "1.2-github";
+#include "info.h"
+
+QString version;
 QString autoren;
 int jahr;
 
 int main(int argc, char *argv[])
 {
     QRandomGenerator qrand = QRandomGenerator(time(NULL));
+
+    version = AppVersion;
+    if (version.startsWith("v"))
+    {
+        version.remove(0, 1);
+    }
+
     autoren = (qrand.generate() % 2 ? "C. Beppler, S. Jakobi" : "S. Jakobi, C. Beppler");
     jahr = QDate::currentDate().year();
 

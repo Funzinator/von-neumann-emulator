@@ -38,7 +38,7 @@ Highlighter::Highlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
     }
 
     /* Befehle (allgemein, unvalidiert) */
-    ruleCmd.pattern = QRegularExpression("(NGA|FNG|NOT|PRIM|INR|INI|INB|OUR|OUI|OUB|IRE|RIN|ENTIRE|ENTIER|NOP|STP|HLT|SRR|ENA|ENAR|ENAI|ENIA|ADI|SBI|ENI|LDA|STA|ADA|SBA|MUA|DVA|MDA|FAD|FSB|FMU|FDV|AND|OR|XOR|UJP|SRJ|AZJ,(GR|GE|LS|LE|EQ|NE))", QRegularExpression::CaseInsensitiveOption);
+    ruleCmd.pattern = QRegularExpression("(NGA|FNG|NOT|PRIM|INR|INI|INB|OUR|OUI|OUB|IRE|RIN|ENTIRE|ENTIER|NOP|STP|HLT|SRR|ENAR|ENAI|ENA|ENIA|ADI|SBI|ENI|LDA|STA|ADA|SBA|MUA|DVA|MDA|FAD|FSB|FMU|FDV|AND|OR|XOR|UJP|SRJ|AZJ,(GR|GE|LS|LE|EQ|NE))", QRegularExpression::CaseInsensitiveOption);
     ruleCmd.format = formatCmd;
     highlightingRules.append(ruleCmd);
 

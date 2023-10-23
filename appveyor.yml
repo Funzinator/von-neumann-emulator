@@ -36,7 +36,7 @@ for:
     build_script:
       # "qmake QMAKE_APPLE_DEVICE_ARCHS=arm64 -qtdir <QtDir with ARM64>" will enable M1/M2 builds once provided by AppVeyor
       - qmake APP_VERSION="${APPVEYOR_REPO_TAG_NAME}"
-      - make
+      - make -j $(nproc)
     after_build:
       - sh: |
           if [ "$APPVEYOR_REPO_TAG" = "true" ] ; then
@@ -53,7 +53,7 @@ for:
       - export PATH="${PATH}:${QTDIR}/bin"
     build_script:
       - qmake APP_VERSION="${APPVEYOR_REPO_TAG_NAME}"
-      - make
+      - make -j $(nproc)
     after_build:
       - sh: |
           if [ "$APPVEYOR_REPO_TAG" = "true" ] ; then
